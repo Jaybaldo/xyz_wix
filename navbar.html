@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!--
+		<meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="623547845164-2neto0hq74tivarbpi3n54isq63m1dq9.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        -->
+
+
+		<!--
+		These are the files than have be include in your html document to get a correct navbar performance
+
+		<script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="js/jqueryvalidate/dist/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="js/validate.js"></script>
+		<script type="text/javascript" src="js/table_ajax.js"></script>
+		<script type="text/javascript" src="js/cookiesManager.js"></script>
+		<script type="text/javascript" src="js/modalGenerator.js"></script>
+    	<script type="text/javascript" src="js/modalToggle.js"></script>
+    	<script type="text/javascript" src="js/openPage.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="assets/fonts/font-awesome.css" />
+		-->
+
+		<script type="text/javascript">
+			var language = getCookie("wixplorLanguage");
+			var currency = getCookie("wixplorCurrency");
+			var user = getCookie("wixplorUser");
+			var user_mode = getCookie("wixplorUserMode");
+
+			$(document).ready(function(){
+				if(currency == false){
+					switch_navbar_currency('mxn');
+				}else if(currency.currency == 'mxn'){
+					switch_to_mxn();
+				}else if(currency.currency == 'usd'){
+					switch_to_usd();
+				}
+
+				if(user == false){
+					$('body .invited').removeClass('hidden');
+					$('.nav > li > a').css({'text-align':'center'});
+					$('.navbar_img_profile').attr({'src':'assets/img/users/0/user_no_login.png'});
+
+					if(user_mode.user_mode != 'invited'){
+						var datacookie = [];
+						datacookie[0] = 'wixplorUserMode';
+						datacookie[1] = null;
+						datacookie[2] = null;
+						user_mode = {'user_mode':'invited'}
+
+						setCookie(user_mode, datacookie);
+					}
+				}else if(user[0].type == 1){
+					switch_to_explorer();
+					$('.navbar_img_profile').attr({'src':user[0].img});
+					$('.li_view_profile a').attr({'href':'http://wixplor.com/test/profile.html?userid=' + user[0].user_id});
+				}else if(user[0].type == 2){
+					$('.navbar_img_profile').attr({'src':user[0].img});
+					$('.li_view_profile a').attr({'href':'http://wixplor.com/test/profile.html?userid=' + user[0].user_id});
+
+					if(user_mode.user_mode == 'wixer_2'){
+						switch_to_wixer_2();
+					}else{
+						var datacookie = [];
+						datacookie[0] = 'wixplorUserMode';
+						datacookie[1] = null;
+						datacookie[2] = null;
+						user_mode = {'user_mode':'wixer_1'}
+
+						setCookie(user_mode, datacookie);
+						switch_to_wixer_1();
+					}
+				}
+
+				console.log(user);
+
+				inicializar();
+
+				function inicializar(){
+					pantallaMoviles();
+					compress_navbar();
+
+					$('.city_temp_mazatlan').attr({'href':'http://wixplor.com/test/activities.html?city=1'});
+					$('.city_temp_los_cabos').attr({'href':'http://wixplor.com/test/activities.html?city=2'});
+
+					$("body").fadeIn(2000);
+				}
+
+				$(window).on('resize', function(){
+					pantallaMoviles();
+				});
+
+				function pantallaMoviles(){
+					var width = $(window).width() + 17;
+
+					if(width <= 767){
+						/* xs ********************************/
+						if(!$('.pre_full_modal').hasClass('full_modal')){
+							$('.pre_full_modal').addClass('full_modal');
+						}
+					}else if(width >= 768){
+						if($('.pre_full_modal').hasClass('full_modal')){
+							$('.pre_full_modal').removeClass('full_modal');
+						}
+
+						if(width >= 1200 && $('#myNavbar').hasClass('in')){
+							$('#my_navbar_toggle_2').click();
+						}
+					}
+
+					if(width >= 768 && width <= 991){
+						$('.navbar-nav > li > a, .btn-group > .btn, .btn-group-vertical > .btn').css({'font-size':'1em'});
+					}else if(width >= 992){
+						$('.navbar-nav > li > a, .btn-group > .btn, .btn-group-vertical > .btn').css({'font-size':'1.2em'});
+					}
+				}
+
+	            $('.my_navbar_toggle').click(function(){
+	            	if($('#myNavbar').hasClass('in')){
+	            		$('#myNavbar').attr({'could_change':'yes'});
+	            		if($('#myNavbar').attr('my_mode') == 'my_transparent'){
+	            			navbar_transparent();
+	            		}
+	            		compress_navbar();
+	            	}else{
+	            		var navbar_class = $('#myNavbar').hasClass('my_white')?'my_white':'my_transparent';
+	            		if(navbar_white()){
+	            			$('#myNavbar').attr({'could_change':'no'});
+	            			$('#myNavbar').attr({'my_mode':navbar_class});
+	            		}
+	            		expand_navbar();
+	            	}
+
+	            	$('#myNavbar').toggleClass('in')
+	            });
+
+				function compress_navbar(){
+					$('.navbar-collapse').attr('style', 'height: 50px');
+					$('#my_navbar_toggle_2').addClass('hidden');
+					$('#my_navbar_toggle_1').removeClass('hidden');
+				}
+
+				function expand_navbar(){
+					var _height = screen.height - parseInt($('.navbar-header').css('height'));
+					$('#my_navbar_toggle_1').addClass('hidden');
+					$('#my_navbar_toggle_2').removeClass('hidden');
+					$('.navbar-collapse').attr('style', 'height: ' + _height + 'px');
+				}
+
+				$('.li_sign_in_as_explorer').click(function(){
+					$('#li_sign_in_as').attr({'sign_in_as':'explorer'});
+					$('#li_sign_in_as_explorer_open').click();
+				});
+
+				$('.li_sign_in_as_wixer').click(function(){
+					$('#li_sign_in_as').attr({'sign_in_as':'wixer'});
+					$('#li_sign_in_as_wixer_open').click();
+				});
+
+				$('.input_start_register_wixer').click(function(){
+					$('#modal_why_be_a_wixer').modal('hide');
+
+					if(user_mode.user_mode == 'invited'){
+						$('#modal_sign_in').modal('show');
+					}else if(user_mode.user_mode == 'explorer'){
+						pre_open_form_continue_register();
+					}
+				});
+
+				$('#form_continue_register_wixer_img').click(function(){
+	            	$('#form_continue_register_input_img').click();
+	            });
+
+	            $('#form_continue_register_wixer_identification').click(function(){
+	            	$('#form_continue_register_input_identification').click();
+	            });
+
+	            $('#form_continue_register_input_img').change(function(){
+	            	var reader = new FileReader();
+					var ext = $(this).prop('files')[0].name;
+					var fl_ext = ext.split('.');
+                    ext = fl_ext[fl_ext.length - 1];
+                    ext = ext.toLowerCase();
+
+					reader.onload = function(e){
+						if(ext == 'jpg' || ext == 'png' || ext == 'jpeg'){
+							$('#form_continue_register_wixer_p_img').addClass('hidden');
+							$('#form_continue_register_wixer_img div').css({'background-image':"url('"+e.target.result+"')"});
+							$('#form_continue_register_div_img').attr({'is_valid':1});
+						}else{
+							if(language.language == 'es'){
+		                		alertModal($('#modals_container'), 'Agregue una imagen con formato jpg, png o jpeg', 'modal-2', '0');
+		                    	modalToggle('modal-2');
+		                	}else if(language.language == 'en'){
+		                		alertModal($('#modals_container'), 'Add an image with jpg, png or jpeg format', 'modal-2', '0');
+		                    	modalToggle('modal-2');
+	                		}
+						}
+					}
+
+					reader.readAsDataURL(this.files[0]);
+				});
+
+				$('#form_continue_register_input_identification').change(function(){
+					var reader = new FileReader();
+					var ext = $(this).prop('files')[0].name;
+					var fl_ext = ext.split('.');
+                    ext = fl_ext[fl_ext.length - 1];
+                    ext = ext.toLowerCase();
+
+					reader.onload = function(e){
+						if(ext == 'jpg' || ext == 'png' || ext == 'jpeg'){
+							$('#form_continue_register_wixer_p_identification').addClass('hidden');
+							$('#form_continue_register_wixer_identification div').css({'background-image':"url('"+e.target.result+"')"});
+							$('#form_continue_register_div_identification').attr({'is_valid':1});
+						}else{
+							if(language.language == 'es'){
+		                		alertModal($('#modals_container'), 'Agregue una imagen con formato jpg, png o jpeg', 'modal-2', '0');
+		                    	modalToggle('modal-2');
+		                	}else if(language.language == 'en'){
+		                		alertModal($('#modals_container'), 'Add an image with jpg, png or jpeg format', 'modal-2', '0');
+		                    	modalToggle('modal-2');
+	                		}
+						}
+					}
+
+					reader.readAsDataURL(this.files[0]);
+				});
+
+				$('#input_continue_register_wixer').click(function(){
+					if($('#form_continue_register_div_img').attr('is_valid') == 0){
+						if(language.language == 'es'){
+	                		alertModal($('#modals_container'), 'Por favor agregue una foto de perfil', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}else if(language.language == 'en'){
+	                		alertModal($('#modals_container'), 'Please add a profile picture', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+                		}
+					}else if($('#form_continue_register_div_identification').attr('is_valid') == 0){
+						if(language.language == 'es'){
+	                		alertModal($('#modals_container'), 'Por favor agregue la foto de una identificación', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}else if(language.language == 'en'){
+	                		alertModal($('#modals_container'), 'Please add the photo of an identification', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+                		}
+					}else if($('#form_continue_register_div_img').attr('is_valid') == 1 && $('#form_continue_register_div_identification').attr('is_valid') == 1){
+						var data = new FormData();
+
+						data.append('case', 1);
+						data.append('id_element', $(user)[0].user_id);
+						data.append('imagen', $('#form_continue_register_input_img').prop('files')[0]);
+						data.append('identification', $('#form_continue_register_input_identification').prop('files')[0]);
+
+						ajax_images(data, postSaveImg, null);
+
+						function postSaveImg(json, unused){
+							if(json == 1){
+								var dataphp = {'case':1, 'name_table':'wixer', 'id_element':user[0].user_id, 'status':'PENDIENTE'}
+		                   		ajax_status(dataphp, post_update_status, null);
+
+		                   		function post_update_status(json, unused){
+		                   			var dataphp = {'case':5, 'id':user[0].user_id}
+		                   			var datacookie = [];
+		                  			datacookie[0] = 'wixplorUser';
+		                  			datacookie[1] = open_edit_profile;
+		                  			datacookie[2] = null;
+
+		                  			ajax_user(dataphp, setCookie, datacookie);
+		                   		}
+							}else{
+								if(language.language == 'es'){
+	                  				alertModal($('#modals_container'),"Se presento un problema al cargar la imagen. \nPor favor intente nuevamente", 'modal', '0');
+									modalToggle('modal','modals_container');
+	                  			}else if(language.language == 'en'){
+	                  				alertModal($('#modals_container'), 'There was a problem loading the image. \nPlease try again', 'modal-2', '0');
+	                    			modalToggle('modal-2');
+	                  			}
+							}
+						}
+					}
+				});
+
+				$('#modal_sign_in .modal-footer a').click(function(){
+					$('#modal_sign_in').modal('hide');
+					$('#modal_login').modal('show');
+				});
+
+				$('#pre_register_email').click(function(){
+					$('#li_enter_with').attr({'li_enter_with':'email'});
+					$('#modal_sign_in').modal('hide');
+				});
+
+				$('#modal_register_explorer .modal-footer a').click(function(){
+					$('#modal_register_explorer').modal('hide');
+					$('#modal_login').modal('show');
+				});
+
+				$('#form_login_email').keyup(function(e){
+				    if(e.keyCode == 13){
+				    	$('#form_login_submit').click();
+				    }
+				});
+
+				$('#form_login_password').keyup(function(e){
+				    if(e.keyCode == 13){
+				    	$('#form_login_submit').click();
+				    }
+				});
+
+				$('#form_login_submit').click(function(){
+	               	var email = $('#form_login_email').val();
+	                var password = $('#form_login_password').val();
+	                var remember_me = ($('#form_login_remember_me').prop('checked'))?1:0;
+	                var validator = $('#formLogin').validate();
+
+	        		if(validator.form()){
+	                   var dataphp = {'case':6,'email':email, 'password':password}
+	                   ajax_user(dataphp, post_login, null);
+
+	                  	function post_login(json, unused){
+	                  		if(json.length == 1){
+	                  			if(remember_me){
+	                  				var datacookie = [];
+		                  			datacookie[0] = 'wixplorUser';
+		                  			datacookie[1] = open_reload;
+		                  			datacookie[2] = 364;
+
+		                  			setCookie(json, datacookie);
+	                  			}else{
+	                  				var datacookie = [];
+		                  			datacookie[0] = 'wixplorUser';
+		                  			datacookie[1] = open_reload;
+		                  			datacookie[2] = null;
+
+		                  			setCookie(json, datacookie);
+	                  			}
+	                  		}else{
+	                  			if(language.language == 'es'){
+	                  				alertModal($('#modals_container'), 'Datos incorrectos', 'modal-2', '0');
+                        			modalToggle('modal-2');
+	                  			}else if(language.language == 'en'){
+	                  				alertModal($('#modals_container'), 'Incorrect data', 'modal-2', '0');
+                        			modalToggle('modal-2');
+	                  			}
+	                  		}
+	                  	}
+	                }
+	            });
+
+	            $('#form_register_account-submit').click(function(){
+	                var email = $('#form_register_email').val();
+	                var name = $('#form_register_full_name').val();
+	                var password = $('#form_register_password').val();
+	                var confirm_password = $('#form_register_confirm_password').val();
+	                var send_promos = ($('#form_register_send_promos').prop('checked'))?1:0;
+	                var adult = ($('#form_register_adult').prop('checked'))?1:0;
+
+	                var validator = $('#form_register_explorer').validate();
+
+	                if(validator.form()){
+	                    if(password == confirm_password){
+	                        var dataphp = {'case':2, 'email':email}
+	                        ajax_user(dataphp, success, null);
+
+	                        function success(json, unused){
+	                            if(json.length == 0){
+	                            	if(adult){
+	                            		$('#modal_register_explorer').modal('hide');
+	                            		$('.name_span').html(name);
+	                            		$('#modal_confirm_explorer').modal('show');
+										$('#email-registered-to-confirmation').html(email);
+	                            	}else{
+	                            		if(language.language == 'es'){
+				                    		alertModal($('#modals_container'), 'Debe ser mayor de edad para poder registrarse como usuario', 'modal-2', '0');
+		                                	modalToggle('modal-2');
+				                    	}else if(language.language == 'en'){
+				                    		alertModal($('#modals_container'), 'You must be an adult to register as a user', 'modal-2', '0');
+		                                	modalToggle('modal-2');
+				                    	}
+	                            	}
+	                            }else{
+	                            	if(language.language == 'es'){
+			                    		alertModal($('#modals_container'), 'Este correo ya se encuentra en uso', 'modal-2', '0');
+	                                	modalToggle('modal-2');
+			                    	}else if(language.language == 'en'){
+			                    		alertModal($('#modals_container'), 'This email is already registered', 'modal-2', '0');
+	                                	modalToggle('modal-2');
+			                    	}
+	                            }
+	                        }
+	                    }else{
+	                    	if(language.language == 'es'){
+	                    		alertModal($('#modals_container'), 'Las contraseñas no coinciden', 'modal-2', '0');
+	                        	modalToggle('modal-2');
+	                    	}else if(language.language == 'en'){
+	                    		alertModal($('#modals_container'), 'Passwords do not match', 'modal-2', '0');
+	                        	modalToggle('modal-2');
+	                    	}
+	                    }
+	                }
+	            });
+
+				$('#mobile-submit').click(function(){
+	                $('#form_mobile_code').removeClass('correct');
+
+	                if($('#form_mobile').hasClass('valid')){
+	                    var dataphp = {'case':3, 'mobile':$('#form_mobile').val()}
+	                    ajax_user(dataphp, success, null);
+
+	                    function success(json, unused){
+	                        if(json[0].count == '0'){
+	                            $('#form_mobile2').val($('#form_mobile').val());
+
+	                            /*Código para mandar mensaje*/
+	                        }else{
+								if(language.language == 'es'){
+		                            alertModal($('#modals_container'), 'Este teléfono celular ya se encuentra en uso', 'modal-2', '0');
+		                            modalToggle('modal-2');
+								}
+								else{
+									alertModal($('#modals_container'), 'The phone number is already registered', 'modal-2', '0');
+		                            modalToggle('modal-2');
+								}
+	                        }
+	                    }
+	                }else{
+	                	if(language.language == 'es'){
+	                		alertModal($('#modals_container'), 'Ingrese un teléfono celular para recibir un SMS', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}else if(language.language == 'en'){
+	                		alertModal($('#modals_container'), 'Enter a cellphone number to receive a SMS', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}
+	                }
+	            });
+
+	            $('#mobile_code_submit').click(function(){
+	                var mobile_code = $('#form_mobile_code').val();
+
+	                if(!$('#form_mobile_code').hasClass('error') && mobile_code!=""){
+	                    /*AQUÍ SE VALIDA EL CÓDIGO POR SMS*/
+	                    $('#form_mobile_code').addClass('correct');
+	                }else{
+	                	if(language.language == 'es'){
+	                		alertModal($('#modals_container'), 'Ingrese el código en formato correcto', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}else if(language.language == 'en'){
+	                		alertModal($('#modals_container'), 'Enter the code in the correct format', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}
+	                }
+	            });
+
+	            $('#resend_email').click(function(){
+	                $('#form_email_code').removeClass('correct');
+	                /*Código para mandar correo*/
+	                console.log('mandando correo');
+	            });
+
+	            $('#email-code-submit').click(function(){
+	                var email_code = $('#form_email_code').val();
+
+	                if(!$('#form_email_code').hasClass('error') && email_code!=""){
+	                    /*AQUÍ SE VALIDA EL CÓDIGO POR EMAUL*/
+	                    $('#form_email_code').addClass('correct');
+	                }else{
+	                	if(language.language == 'es'){
+	                		alertModal($('#modals_container'), 'Ingrese el código en formato correcto', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}else if(language.language == 'en'){
+	                		alertModal($('#modals_container'), 'Enter the code in the correct format', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}
+	                }
+	            });
+
+	            $('#account-continue').click(function(){
+	                var validator = $('#form_validate_explorer').validate();
+
+	                if(validator.form()){
+	                    if($('#form_mobile_code').hasClass('correct') && $('#form_email_code').hasClass('correct')){
+	                        if($('#form_mobile').val() == $('#form_mobile2').val()){
+	                            var email = $('#form_register_email').val();
+				                var name = $('#form_register_full_name').val();
+				                var password = $('#form_register_password').val();
+				                var mobile = $('#form_mobile').val();
+				                var send_promos = ($('#form_register_send_promos').prop('checked'))?1:0;
+	                        	var dataphp = {'case':1, 'email': email, 'name': name, 'password': password, 'mobile':mobile, 'send_promos':send_promos}
+
+                                ajax_user(dataphp, success, null);
+
+                                function success(json, unused){
+                                    if(json==1) {
+                                    	if($('#li_sign_in_as').attr('sign_in_as') == 'explorer'){
+                                    		var dataphp = {'case':2, 'email':email}
+	                                    	var cookieData = [];
+	                                        cookieData[0] = 'wixplorUser';
+	                                        cookieData[1] = open_reload;
+	                                        cookieData[2] = null;
+
+	                                    	ajax_user(dataphp, setCookie, cookieData);
+                                    	}else if($('#li_sign_in_as').attr('sign_in_as') == 'wixer'){
+                                    		var dataphp = {'case':2, 'email':email}
+	                                    	var cookieData = [];
+	                                        cookieData[0] = 'wixplorUser';
+	                                        cookieData[1] = open_edit_profile;
+	                                        cookieData[2] = null;
+
+	                                        ajax_user(dataphp, setCookie, cookieData);
+                                    	}
+                                    }else{
+                                    	if(language.language == 'es'){
+					                		alertModal($('#modals_container'), 'Se ha presentado un error inesperado', 'modal-2', '0');
+					                    	modalToggle('modal-2');
+					                	}else if(language.language == 'en'){
+					                		alertModal($('#modals_container'), 'An unexpected error has occurred', 'modal-2', '0');
+					                    	modalToggle('modal-2');
+					                	}
+                                    }
+                                }
+	                        }else{
+	                        	if(language.language == 'es'){
+			                		alertModal($('#modals_container'), 'El teléfono que deja registrado debe ser el mismo que recibió el código de confirmación', 'modal-2', '0');
+	                            	modalToggle('modal-2');
+			                	}else if(language.language == 'en'){
+			                		alertModal($('#modals_container'), 'The phone you register must be the same that will recieve the SMS with the confirmation code', 'modal-2', '0');
+			                    	modalToggle('modal-2');
+			                	}
+	                        }
+	                    }else{
+	                        if(language.language == 'es'){
+		                		alertModal($('#modals_container'), 'Confirme ambos códigos', 'modal-2', '0');
+		                    	modalToggle('modal-2');
+		                	}else if(language.language == 'en'){
+		                		alertModal($('#modals_container'), 'Confirm both codes', 'modal-2', '0');
+		                    	modalToggle('modal-2');
+		                	}
+	                    }
+	                }
+	            });
+
+	            $('.li_explorer_log_out').click(function(){
+	            	removeAllCookies();
+	            	window.location.href = "http://wixplor.com/test/index.html";
+	            });
+
+	            $("#form_login_google").click(function(){
+	            	/*
+	            	$('#li_enter_with').attr({'li_enter_with':'google'});
+	            	$('#g-signin2 div.abcRioButton').click();
+	            	*/
+	            });
+
+	            $("#pre_register_google").click(function(){
+	            	/*
+	            	$('#li_enter_with').attr({'li_enter_with':'google'});
+	            	$('#g-signin2 div.abcRioButton').click();
+	            	*/
+	            });
+
+	            $('#navbar_select_city_div').hover(function(){
+	            	$('#navbar_select_city').css({'background':'#CC9340', 'color':'white'});
+	            	//$('#navbar_select_city').css({'background':'#5A999E', 'color':'white'});
+	            	$('img', this).attr({'src':'assets/icons/binoculares_blanco.png'});
+                }, function(){
+                	$('#navbar_select_city').css({'background':'white', 'color':'black'});
+                	$('img', this).attr({'src':'assets/icons/binoculares.png'});
+                });
+			});
+
+			/********************************************************************************************************/
+			/********************************************************************************************************/
+			/********************************************************************************************************/
+			/********************************************************************************************************/
+
+			function pre_open_form_continue_register(){
+				if(user[0].type == 1){
+					if(user[0].status_wixer == 'PENDIENTE'){
+						if(language.language == 'es'){
+	                		alertModal($('#modals_container'), 'Su solicitud para ser Wixer ya esta pendiente. Un administrador se pondrá en contacto con usted', 'modal-2', '0');
+                        	modalToggle('modal-2');
+	                	}else if(language.language == 'en'){
+	                		alertModal($('#modals_container'), 'Your request to be a Wixer is already under revition. An admin will contact you', 'modal-2', '0');
+	                    	modalToggle('modal-2');
+	                	}
+					}else if(user[0].status_wixer == 'CREADO'){
+						$('#form_continue_register_wixer_mobile').html(user[0].mobile);
+						$('#form_continue_register_wixer_email').html(user[0].email);
+
+						if(user[0].img != null && user[0].img != "assets/img/users/0/user_no_login.png"){
+							$('#form_continue_register_wixer_p_img').addClass('hidden');
+							$('#form_continue_register_wixer_img div').css({'background-image':"url('"+user[0].img+"')"});
+							$('#form_continue_register_div_img').attr({'is_valid':1});
+						}
+
+						var dataphp = {'case':4, 'id':user[0].user_id}
+						ajax_user(dataphp, post_get_identification, null);
+
+						function post_get_identification(json, unused){
+							if(json.length > 0){
+								$('#form_continue_register_wixer_p_identification').addClass('hidden');
+								$('#form_continue_register_wixer_identification div').css({'background-image':"url('"+json[0].source+"')"});
+								$('#form_continue_register_div_identification').attr({'is_valid':1});
+							}
+
+							$('#modal_sign_in_wixer').modal('show');
+						}
+					}
+				}
+			}
+
+			if(language == false){
+				switch_navbar_language('es');
+			}else if(language.language == 'es'){
+				switch_to_spanish();
+			}else if(language.language == 'en'){
+				switch_to_english();
+			}
+
+			/* SWITCH USER MODE *************************************/
+			$('.li_panel_explorer').click(function(){
+				switch_to_wixer_1();
+			});
+
+			$('.li_panel_wixer').click(function(){
+				switch_to_wixer_2()
+			});
+
+			function switch_to_explorer(){
+				if(user_mode.user_mode != 'explorer'){
+					var datacookie = [];
+					datacookie[0] = 'wixplorUserMode';
+					datacookie[1] = null;
+					datacookie[2] = null;
+					user_mode = {'user_mode':'explorer'}
+
+					setCookie(user_mode, datacookie);
+				}
+
+				$('body .explorer').removeClass('hidden');
+			}
+
+			function switch_to_wixer_1(){
+				if(user_mode.user_mode != 'wixer_1'){
+					var datacookie = [];
+					datacookie[0] = 'wixplorUserMode';
+					datacookie[1] = null;
+					datacookie[2] = null;
+					user_mode = {'user_mode':'wixer_1'}
+
+					setCookie(user_mode, datacookie);
+				}
+
+				$('body .wixer_2').addClass('hidden');
+				$('body .wixer_1').removeClass('hidden');
+			}
+
+			function switch_to_wixer_2(){
+				if(user_mode.user_mode != 'wixer_2'){
+					var datacookie = [];
+					datacookie[0] = 'wixplorUserMode';
+					datacookie[1] = null;
+					datacookie[2] = null;
+					user_mode = {'user_mode':'wixer_2'}
+
+					setCookie(user_mode, datacookie);
+				}
+
+				$('body .wixer_1').addClass('hidden')
+				$('body .wixer_2').removeClass('hidden');
+			}
+			/* /SWITCH USER MODE ************************************|/
+
+			/* SWITCH LANGUAGE **************************************/
+			$('.li_navbar_switch_to_spanish').click(function(){
+				switch_to_spanish();
+			});
+
+			function switch_to_spanish(){
+				switch_navbar_language('es');
+
+				$('#pre_register_facebook').val("Continuar con Facebook");
+				$('#pre_register_google').val("Continuar con Google");
+				$('#pre_register_email').val("Registro con correo");
+				$('#pre_register_team').val("Registro como empresa local");
+
+				$('#form_login_email').attr('placeholder', 'Dirección de correo electrónico');
+				$('#form_login_password').attr('placeholder', 'Contraseña');
+				$('#form_login_facebook').val("Continuar con Facebook");
+				$('#form_login_google').val("Continuar con Google");
+				$('#form_login_submit').val("Iniciar sesión");
+
+				$('#form_register_email').attr('placeholder', 'Dirección de correo electrónico');
+				$('#form_register_full_name').attr('placeholder', 'Nombre y Apellidos');
+				$('#form_register_password').attr('placeholder', 'Crea una contraseña');
+				$('#form_register_confirm_password').attr('placeholder', 'Confirmar contraseña');
+				$('#form_register_account-submit').val('Continuar');
+
+				$('#form_mobile').attr('placeholder', 'Escribe tu número a 10 dígitos');
+				$('#mobile-submit').val('Enviar sms');
+				$('#mobile_code_submit').val('Confirmar');
+				$('#resend_email').val('Reenviar correo');
+				$('#email-code-submit').val('Confirmar');
+				$('#account-continue').val('Registrar');
+
+				$('.input_start_register_wixer').val('Comenzar');
+				$('#input_continue_register_wixer').val('Guardar');
+
+				$('#navbar_select_city').val('Explorar');
+
+				$('body .es').removeClass('hidden');
+				$('body .en').addClass('hidden');
+			}
+
+			$('.li_navbar_switch_to_english').click(function(){
+				switch_to_english();
+			});
+
+			function switch_to_english(){
+				switch_navbar_language('en');
+
+				$('#pre_register_facebook').val("Continue with Facebook");
+				$('#pre_register_google').val("Continue with Google");
+				$('#pre_register_email').val("Register with email");
+				$('#pre_register_team').val("Register as local company");
+
+				$('#form_login_email').attr('placeholder', 'Email');
+				$('#form_login_password').attr('placeholder', 'Password');
+				$('#form_login_facebook').val("Continue with Facebook");
+				$('#form_login_google').val("Continue with Google");
+				$('#form_login_submit').val("Login");
+
+				$('#form_register_email').attr('placeholder', 'Email address');
+				$('#form_register_full_name').attr('placeholder', 'First name and last name');
+				$('#form_register_password').attr('placeholder', 'Create a password');
+				$('#form_register_confirm_password').attr('placeholder', 'Confirm your password');
+				$('#form_register_account-submit').val('Continue');
+
+				$('#form_mobile').attr('placeholder', 'Input your phone at ten digits');
+				$('#mobile-submit').val('Send sms');
+				$('#mobile_code_submit').val('Confirm');
+				$('#resend_email').val('Resend email');
+				$('#email-code-submit').val('Confirm');
+				$('#account-continue').val('Sign in');
+
+				$('.input_start_register_wixer').val('Begin');
+				$('#input_continue_register_wixer').val('Save');
+
+				$('#navbar_select_city').val('Explore');
+
+				$('body .en').removeClass('hidden');
+				$('body .es').addClass('hidden');
+			}
+
+			function switch_navbar_language(l){
+				var datacookie = [];
+				datacookie[0] = "wixplorLanguage";
+				datacookie[1] = null;
+				datacookie[2] = 364;
+
+				language = {'language':l}
+				setCookie(language, datacookie);
+				switch_language();
+			}
+			/* /SWITCH LANGUAGE *************************************/
+
+			/* SWITCH CURRENCY **************************************/
+			$('.li_navbar_switch_to_mxn').click(function(){
+				switch_to_mxn();
+			});
+
+			function switch_to_mxn(){
+				switch_navbar_currency('mxn');
+
+				$('body .mxn').removeClass('hidden');
+				$('body .usd').addClass('hidden');
+			}
+
+			$('.li_navbar_switch_to_usd').click(function(){
+				switch_to_usd();
+			});
+
+			function switch_to_usd(){
+				switch_navbar_currency('usd');
+
+				$('body .usd').removeClass('hidden');
+				$('body .mxn').addClass('hidden');
+			}
+
+			function switch_navbar_currency(c){
+				var datacookie = [];
+				datacookie[0] = "wixplorCurrency";
+				datacookie[1] = null;
+				datacookie[2] = null;
+
+				currency = {'currency':c}
+				setCookie(currency, datacookie);
+
+
+			}
+			/* /SWITCH CURRENCY *************************************/
+
+			function navbar_transparent(){
+				$('#myNavbar').attr({'my_mode':'my_transparent'});
+
+            	if(!$('#myNavbar').hasClass('my_transparent') && $('#myNavbar').attr('could_change') == 'yes'){
+
+            		$('#myNavbar').addClass('my_transparent').removeClass('my_white');
+            		$('.navbar_transparent').removeClass('hidden');
+            		$('.navbar_white').addClass('hidden');
+            		$('.navbar-default').css({'background':'transparent'});
+            		$('.navbar-default .navbar-nav > li > a').css({'color':'#f8f8f8'});
+            		$('.navbar-default .navbar-nav > li.li_panel_explorer > a').css({'color':'#5A999E'});
+            		$('.navbar-default .navbar-nav > li.li_panel_wixer > a').css({'color':'#CC9340'});
+            		$('.navbar-default .navbar-toggle .icon-bar').css({'background-color':'#f8f8f8'});
+            		$('#myNavbar button.btn.dropdown-toggle').css({'background-color':'transparent', 'color':'#f8f8f8'});
+            	}
+
+            	return true;
+            }
+
+            function navbar_white(){
+            	$('#myNavbar').attr({'my_mode':'my_white'});
+
+            	if(!$('#myNavbar').hasClass('my_white') && $('#myNavbar').attr('could_change') == 'yes'){
+
+            		$('#myNavbar').removeClass('my_transparent').addClass('my_white');
+            		$('.navbar_white').removeClass('hidden');
+            		$('.navbar_transparent').addClass('hidden');
+            		$('.navbar-default').css({'background':'#f8f8f8'});
+            		$('.navbar-default .navbar-nav > li > a').css({'color':'black'});
+            		$('.navbar-default .navbar-nav > li.li_panel_explorer > a').css({'color':'#5A999E'});
+            		$('.navbar-default .navbar-nav > li.li_panel_wixer > a').css({'color':'#CC9340'});
+            		$('.navbar-default .navbar-toggle .icon-bar').css({'background-color':'black'});
+            		$('#myNavbar button.btn.dropdown-toggle').css({'background-color':'#f8f8f8', 'color':'black'});
+            	}
+
+            	return true;
+            }
+
+            function onSignIn(googleUser){
+            	// Useful data for your client-side scripts:
+               	var profile = googleUser.getBasicProfile();
+               	console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+               	console.log('Full Name: ' + profile.getName());
+               	console.log('Given Name: ' + profile.getGivenName());
+               	console.log('Family Name: ' + profile.getFamilyName());
+               	console.log("Image URL: " + profile.getImageUrl());
+               	console.log("Email: " + profile.getEmail());
+
+               	// The ID token you need to pass to your backend:
+               	var id_token = googleUser.getAuthResponse().id_token;
+               	console.log("ID Token: " + id_token);
+             };
+		</script>
+
+		<style type="text/css">
+			/* xs ********************************/
+			@media (min-width: 10px){
+				html{
+					height: 100%;
+				}
+
+				body{
+	            	position: relative;
+	            	min-height: 100%;
+	            	padding-bottom: 20rem;
+	        	}
+
+				.checkbox{
+					color: #9496a2;
+				}
+
+				.navbar-brand{
+					width: 120px; 
+					padding-top: 10px;
+				}
+
+				.input-icon {
+                    position: relative;
+                }
+
+                .input-icon > .ace-icon {
+                    z-index: 2;
+                    position: absolute;
+                    top: -2px;
+                    left: 5px;
+                    line-height: 30px;
+                    display: inline-block;
+                    color: rgb(144, 144, 144);
+                    font-size: 1.5em;
+                    padding: 0px 3px;
+                }
+
+                .input-icon > input{
+                	padding-left: 30px;
+                	width: 100%;
+	            	height: 50px!important;
+	            	border: 1px solid #9496a2;
+	            	border-radius: 3px!important;
+                }
+
+                label.error{
+	                color: red;
+	                font-size: .8em;
+	            }
+
+	            label.correct{
+	                color: green;
+	                font-size: .8em;
+	            }
+
+	            button.error, input.error, div.error, textarea.error{
+	                border: 1px solid red;
+	            }
+
+	            input.input_form_login_validated.valid, input.correct, #form_mobile.valid{
+	                border: 1px solid green!important;
+	            }
+
+	            #form_login_facebook, #pre_register_facebook{
+					background-image:url(assets/icons/facebook.png);
+					background-repeat: no-repeat;
+					background-position: 10px 11px;
+					background-color: #fff;
+				}
+
+				#form_login_google, #pre_register_google{
+					background-image:url(assets/icons/google.png);
+					background-repeat: no-repeat;
+					background-position: 10px 11px;
+					background-color: #fff;
+				}
+
+				#pre_register_email{
+					background-image:url(assets/icons/email.png);
+					background-repeat: no-repeat;
+					background-position: 10px 12px;
+				}
+
+				label{
+		            font-weight: lighter!important;
+		        }
+
+		        .form-control{
+		            height: 40px!important;
+		            border: 1px solid #9496a2;
+		            border-radius: 0;
+		            font-size: 0.8em;
+		            box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+		        }
+
+		        .btn:hover, select:hover {
+		            background-color: rgba(216, 136, 45, 0.2)!important;
+		        }
+
+		        .fourdigits{
+		            text-align: center;
+		            letter-spacing: 20px;
+		            font-weight: bolder!important;
+		            border:1px solid #538e96;
+		            font-size: 14px;
+		        }
+
+		        .btnop:hover{
+		            background-color: rgb(47, 94, 101)!important;
+		        }
+
+		        #myNavbar li.dropdown li{
+		        	padding-top: 5px;
+		        	padding-bottom: 5px;
+		        }
+
+		        #modal_why_be_a_wixer .col_special{
+		        	padding-left: 5px;
+		        	padding-right: 5px;
+		        }
+
+		        #myNavbar hr{
+		        	border-top: 1px solid gray;
+		        }
+
+		        .full_modal .modal-dialog {
+					width: 100%!important;
+				  	height: 100%!important;
+				  	margin: 0!important;
+				  	padding: 0!important;
+				}
+
+				.full_modal .modal-content {
+				  	height: auto!important;
+				  	min-height: 100%!important;
+				  	border-radius: 0!important;
+				}
+
+				.span_margin{
+					margin-left: 20px;
+				}
+
+				.navbar-nav > li > a.a_padding{
+					padding-left: 55px;
+				}
+
+				.button_data_miss{
+					position: absolute; 
+					background-image:url('assets/icons/close.png'); 
+					width: 20px; 
+					height: 20px;
+					padding: 0px;
+					background-position: center; 
+					background-repeat: no-repeat; 
+					background-size: cover; 
+					background-color: white; 
+					border: none; 
+				}
+
+				.navbar_img_profile{
+					width: 28px;
+					height: 28px;
+					border-radius: 50%;
+					position: relative;
+					bottom: 3px;
+				}
+
+				.city_temp{
+					color: black;
+					font-size: 1.2em;
+				}
+
+				.city_temp h6{
+					font-size: 1.1em;
+					padding-left: 5px;	
+				}
+
+				#navbar_select_city_div{
+					width: 120px;
+					margin-left: 0px;
+				}
+			}
+
+			/* sm ********************************/
+			@media (min-width: 768px){
+				body{
+		            padding-bottom: 16rem;
+		        }
+
+				.navbar-brand{
+					width: 150px; 
+					padding-top: 5px;
+				}
+
+				.full_modal .modal-dialog {
+					width: 100%!important;
+				  	height: 100%!important;
+				  	margin: 0!important;
+				  	padding: 0!important;
+				}
+
+				.full_modal .modal-content {
+				  	height: auto!important;
+				  	min-height: 100%!important;
+				  	border-radius: 0!important;
+				}
+			}
+
+			/* md ********************************/
+			@media (min-width: 992px){
+				.navbar-nav > li > a.a_padding{
+					padding-left: 55px;
+				}
+
+				#navbar_select_city_div{
+					width: 120px;
+					margin-left: 5px;
+				}
+
+				#navbar_select_city_div{
+					width: 150px;
+					margin-left: 20px;
+				}
+			}
+
+			/* lg ********************************/
+			@media (min-width: 1200px){
+				#navbar_select_city_div{
+					width: 150px;
+					margin-left: 20px;
+				}
+			}
+
+			.btn:hover, .btn:focus{
+				background-color: #fff!important;
+				border:1px solid #5a999e;
+
+				color: #5a999e!important;
+			}
+
+			.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+			    background-color: transparent;
+			}
+		</style>
+	</head>
+
+	<body style="display: none;">
+		<nav id="main_Navbar" class="navbar navbar-default navbar-fixed-top" style="z-index: 999; margin-bottom: 0px;">
+		  	<div class="container-fluid">
+		    	<div class="navbar-header" style="max-height: 48px;">
+		      		<button type="button" id="my_navbar_toggle_1" class="my_navbar_toggle navbar-toggle">
+	        			<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		      		</button>
+
+		      		<button type="button" id="my_navbar_toggle_2" style="float: right; border: none; padding: 1px; background: transparent; margin-top: 13px; margin-bottom: 13px; margin-right: 27px;" class="my_navbar_toggle hidden">
+		        		<img src="assets/icons/close.png" style="width: 18px; height: 18px;">
+		      		</button>
+
+		      		<a class="navbar-brand" href="http://wixplor.com/test/" style="height: 100%; padding-bottom: 0px;">
+		      			<span class="navbar_transparent">
+		      				<img src="assets/img/wixplor_logo_blanco.png" style="width: 100%; height: 100%;">
+		      			</span>
+
+		      			<span class="navbar_white hidden">
+		      				<img class="hidden invited explorer wixer_1" src="assets/img/wixplor_logo_colores.png" style="width: 100%; height: 100%;">
+		      				<img class="hidden wixer_2" src="assets/img/wixplor_logo_naranja.png" style="width: 100%; height: 100%;">
+		      			</span>
+		      		</a>
+
+		      		<!-- invited explorer wixer_1 -->
+	      			<div class="hidden" id="navbar_select_city_div" style="position: relative; margin-top: 9px; float: left;">
+	      				<input id="navbar_select_city" type="button" class="form-control" style="height: 30px!important; text-align: left;" data-toggle="modal" data-target="#modal_index_choose_city">
+	      				<img src="assets/icons/binoculares.png" style="position:absolute; width:20px; height:20px; top: 5px; right: 5px;">
+	      			</div>
+		    	</div>
+
+		    	<div class="navbar-collapse collapse my_transparent" id="myNavbar" my_mode="my_transparent" could_change="yes">
+		    		<!-- AUXILIARES ******************************* -->
+		      		<ul class="nav navbar-nav navbar-right hidden">
+		        		<li id="li_sign_in_as_explorer_open" data-toggle="modal" data-target="#modal_sign_in"></li>
+		        		<li id="li_sign_in_as_wixer_open" data-toggle="modal" data-target="#modal_why_be_a_wixer"></li>
+		      		</ul>
+		      		<!-- /AUXILIARES ******************************* -->
+
+		    		<!-- USUARIOS INVITADOS ******************************* -->
+		      		<ul class="nav navbar-nav navbar-right invited hidden" style="">
+		        		<li class="li_sign_in_as_explorer"><a href="#"><span class="es">Registrarse</span><span class="en hidden">Sign in</span></a></li>
+		        		<li id="li_login" data-toggle="modal" data-target="#modal_login"><a href="#"><span class="es">Entrar</span><span class="en hidden">Login</span></a></li>
+
+		        		<hr class="hidden-lg">
+
+		        		<li class="li_sign_in_as_wixer hidden invited explorer"><a href="#"><span class="es">Ser Wixer</span><span class="en hidden">Be Wixer</span></a></li>
+
+		        		<hr class="hidden-lg">
+
+		        		<li class="hidden-xs hidden-sm hidden-md"><a style="font-size: 1.5em;">|</a></li>
+		        		<li class="dropdown" style="text-align: center;">
+		        			<div class="btn-group" style="padding: 10px 15px;">
+								<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="border:0px; background-color: transparent; color: #f8f8f8;">
+							      	<span class="es">ESP</span>
+							      	<span class="en hidden">ENG</span>
+							      	<span class="caret">
+							   	</button>
+							   	<ul class="dropdown-menu" role="menu">
+			        				<li class="li_navbar_switch_to_spanish"><a href="#"><span class="es">ESP</span><span class="en hidden">SPA</span></a></li>
+						         	<li class="li_navbar_switch_to_english"><a href="#"><span class="es">ING</span><span class="en hidden">ENG</span></a></li>
+						        </ul>
+						  	</div>
+		        		</li>
+		        		<li class="dropdown" style="text-align: center;">
+		        			<div class="btn-group" style="padding: 10px 15px;">
+								<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="border:0px; background-color: transparent; color: #f8f8f8;">
+							      	<span class="mxn">MXN</span>
+							      	<span class="usd hidden">USD</span>
+							      	<span class="caret">
+							   	</button>
+							   	<ul class="dropdown-menu" role="menu">
+						          	<li class="li_navbar_switch_to_mxn"><a href="#">MXN</a></li>
+						         	<li class="li_navbar_switch_to_usd"><a href="#">USD</a></li>
+						        </ul>
+						  	</div>
+		        		</li>
+		        		<li><a href="#"><span class="es">Ayuda</span><span class="en hidden">Support</span></a></li>
+
+		        		<li id="li_enter_with" li_enter_with="0"></li>
+		        		<li id="li_sign_in_as" sign_in_as="0"></li>
+		      		</ul>
+		      		<!-- /USUARIOS INVITADOS ******************************* -->
+
+		      		<!-- EXPLORADORES Y WIXERS ************************************** -->
+		      		<ul class="nav navbar-nav navbar-right hidden explorer wixer_1 wixer_2" style="">
+		        		<li class="li_sign_in_as_wixer hidden invited explorer hidden-xs hidden-sm hidden-md"><a href="#"><span class="es">Ser Wixer</span><span class="en hidden">Be Wixer</span></a></li>
+		        		<li class="li_panel_explorer hidden wixer_2 hidden-xs hidden-sm hidden-md"><a href="#" style="color: #5A999E;"><strong><span class="es">Volver a explorar</span><span class="en hidden">Explore again</span></strong></a></li>
+		        		<li class="li_panel_wixer hidden wixer_1 hidden-xs hidden-sm hidden-md"><a href="#" style="color: #CC9340;"><strong><span class="es">Ver panel de Wixer</span><span class="en hidden">Open Wixer panel</span></strong></a></li>
+
+		        		<li class="hidden-xs hidden-sm hidden-md"><a style="font-size: 1.5em;">|</a></li>
+
+		        		<li id="li_favorites" class="hidden explorer wixer_1"><a href="http://wixplor.com/test/favorites.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/favoritos.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/favoritos.png"><span class="span_margin hidden-lg"><span class="es">Favoritos</span><span class="en">Favorites</span></span></a></li>
+		        		<li id="li_reservations_explorer" class="hidden explorer wixer_1"><a href="http://wixplor.com/test/reservations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/reservaciones_explorador.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/reservaciones_explorador.png"><span class="span_margin hidden-lg"><span class="es">Reservaciones</span><span class="en">Reservations</span></span></a></li>
+
+		        		<li id="li_experiences" class="hidden wixer_2"><a href="http://wixplor.com/test/wixplor-activity.html?action=view"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/experiencias.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/experiencias.png"><span class="span_margin hidden-lg"><span class="es">Experiencias</span><span class="en">Experiences</span></span></a></li>
+		        		<li id="li_reservations_wixer" class="hidden wixer_2"><a href="http://wixplor.com/test/reservations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/reservaciones_wixer.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/reservaciones_wixer.png"><span class="span_margin hidden-lg"><span class="es">Reservaciones</span><span class="en">Reservations</span></span></a></li>
+
+		        		<li id="li_messages"><a href="http://wixplor.com/test/messages.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/mensajes.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/mensajes.png"><span class="span_margin hidden-lg"><span class="es">Mensajes</span><span class="en">Messages</span></span></a></li>
+		        		<li id="li_evaluations"><a href="http://wixplor.com/test/evaluations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/evaluaciones.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/evaluaciones.png"><span class="span_margin hidden-lg"><span class="es">Evaluaciones</span><span class="en">Evaluation</span></span></a></li>
+
+		        		<hr class="hidden-lg">
+
+		        		<li class="li_sign_in_as_wixer hidden invited explorer hidden-lg"><a href="#" class="a_padding"><span class="es">Ser Wixer</span><span class="en hidden">Be Wixer</span></a></li>
+		        		<li class="li_panel_explorer hidden wixer_2 hidden-lg"><a href="#" style="color: #5A999E;"><strong><span class="es">Volver a explorar</span><span class="en hidden">Explore again</span></strong></a></li>
+		        		<li class="li_panel_wixer hidden wixer_1 hidden-lg"><a href="#" style="color: #CC9340;"><strong><span class="es">Ver panel de Wixer</span><span class="en hidden">Open Wixer panel</span></strong></a></li>
+
+		        		<hr class="hidden-lg">
+
+		        		<li class="hidden-xs hidden-sm hidden-md"><a style="font-size: 1.5em;">|</a></li>
+
+		        		<li class="hidden-lg li_view_profile"><a href="#"><img style="margin-right: 12px;" class="navbar_img_profile" src=""><span class="es">Mi perfil</span><span class="en">Profile</span></a></li>
+		        		<li class="hidden-lg"><a href="http://wixplor.com/test/edit_profile.html" class="a_padding"><span class="es">Editar perfil</span><span class="en hidden">Edit profile</span></a></li>
+
+		        		<hr class="hidden-lg">
+
+		        		<li class="dropdown hidden-lg">
+		        			<div class="btn-group" style="margin-left: 27px;">
+							  	<div class="btn-group" style="padding: 10px 15px;">
+									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="border:0px; background-color: transparent; color: #f8f8f8;">
+								      	<span class="es">ESP</span>
+								      	<span class="en hidden">ENG</span>
+								      	<span class="caret">
+								   	</button>
+								   	<ul class="dropdown-menu" role="menu">
+				        				<li class="li_navbar_switch_to_spanish"><a href="#"><span class="es">ESP</span><span class="en hidden">SPA</span></a></li>
+							         	<li class="li_navbar_switch_to_english"><a href="#"><span class="es">ING</span><span class="en hidden">ENG</span></a></li>
+							        </ul>
+							  	</div>
+
+								<div class="btn-group" style="padding: 10px 15px;">
+									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="border:0px; background-color: transparent; color: #f8f8f8;">
+								      	<span class="mxn">MXN</span>
+								      	<span class="usd hidden">USD</span>
+								      	<span class="caret">
+								   	</button>
+								   	<ul class="dropdown-menu" role="menu">
+							          	<li class="li_navbar_switch_to_mxn"><a href="#">MXN</a></li>
+							         	<li class="li_navbar_switch_to_usd"><a href="#">USD</a></li>
+							        </ul>
+							  	</div>
+							</div>
+		        		</li>
+
+		        		<li class="hidden-lg"><a href="#" class="a_padding"><span class="es">Ayuda</span><span class="en hidden">Support</span></a></li>
+		        		<li class="li_explorer_log_out hidden-lg"><a href="#" class="a_padding"><span class="es">Cerrar sesión</span><span class="en hidden">Log out</span></a></li>
+
+		        		<li class="dropdown hidden-xs hidden-sm hidden-md">
+		        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-bottom: 0px;"><img class="navbar_img_profile" src=""></a>
+		        			<ul class="dropdown-menu">
+		        				<li class="li_view_profile"><a href="#"><span class="es">Ver perfil</span><span class="en hidden">View profile</span></a></li>
+		        				<li><a href="http://wixplor.com/test/edit_profile.html"><span class="es">Editar perfil</span><span class="en hidden">Edit profile</span></a></li>
+		        				<hr>
+		        				<li><a href="#"><span class="es">Ayuda</span><span class="en hidden">Support</span></a></li>
+		        				<li class="li_explorer_log_out"><a href="#"><span class="es">Cerrar sesión</span><span class="en hidden">Log out</span></a></li>
+		        				<br>
+					        </ul>
+		        		</li>
+		      		</ul>
+		      		<!-- /EXPLORADORES ************************************* -->
+		    	</div>
+		  	</div>
+		</nav>
+
+		<!-- Modal login -->
+        <div class="modal fade pre_full_modal" id="modal_login" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    	<button type="button" data-dismiss="modal" class="button_data_miss"></button>
+
+                        <h4 style="text-align: center;" class="modal-title">
+                        	<span class="es" >Iniciar sesión</span>
+                        	<span  class="en hidden">Login</span>
+                        </h4>
+                    </div>
+
+                    <div class="modal-body" class="padding-bottom: 0px;">
+                        <form id="formLogin">
+                            <div class="form-group">
+                                <span class="input-icon">
+                                    <input type="email" id="form_login_email" name="form_login_email" class="input_form_login_validated" placeholder="">
+                                    <i class="ace-icon fas fa-envelope"></i>
+                                </span>
+                                <label for="form_login_email" class="error"></label>
+                            </div><!-- /.form-group -->
+
+                            <div class="form-group">
+                                <span class="input-icon">
+                                    <input type="password" id="form_login_password" name="form_login_password" class="input_form_login_validated" placeholder="">
+                                    <i class="ace-icon fas fa-unlock-alt"></i>
+                                </span>
+                                <label for="form_login_password" class="error"></label>
+                            </div><!-- /.form-group -->
+
+                            <!-- /.form-group -->
+                            <div class="row">
+                            	<div class="col-xs-12 col-sm-6">
+                            		<div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="form_login_remember_me" name="form_login_remember_me" style="margin-left: 0px; margin-right: 20px">
+                                            <label style="color: black;">
+                                            	<span class="es">¿Recordar contraseña?</span>
+                                            	<span class="en hidden">Remember password?</span>
+                                            </label>
+                                        </label>
+                                    </div>
+                            	</div>
+
+                            	<div class="col-xs-12 col-sm-6">
+                            		<div class="checkbox">
+                                        <label style="margin-left: 35px; color: black;">
+                                            <span class="es">¿Olvidaste tu contraseña?</span>
+                                            <span class="en hidden">Did you forget your password?</span>
+                                        </label>
+                                    </div>
+                            	</div>
+                            </div>
+
+                            <br>
+
+                            <div class="form-group clearfix">
+                            	<input type="button" class="btn btn-block" id="form_login_submit" name="form_login_submit" value="Iniciar sesión" style="height:40px;background-color: #CC9340;color: #fff; font-weight: 400; border-radius: 3px;">
+                            </div><!-- /.form-group -->
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                    	<div style="text-align: center;" class="checkbox">
+                    		<label>
+	                    		<span class="es">Continua con:</span><span class="en hidden">Continue with:</span>
+	                    	</label>
+                    	</div>
+
+                    	<br>
+
+                    	<div class="form-group clearfix">
+                        	<input type="button" class="btn btn-block" id="form_login_facebook" name="form_login_facebook" value="Continuar con Facebook" style="font-weight: 400; border-radius: 3px; height: 45px; border: 1px solid #000; font-size: 1.3em;">
+                        </div><!-- /.form-group -->
+
+                        <br>
+
+                        <div class="form-group clearfix">
+                        	<input type="button" class="btn btn-block" id="form_login_google" name="form_login_google" value="Continuar con Google" style="font-weight: 400; border-radius: 3px; height: 45px; border: 1px solid #000; font-size: 1.3em;">
+                        </div><!-- /.form-group -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal login -->
+
+        <!-- Modal Sign in -->
+        <div class="modal fade pre_full_modal" id="modal_sign_in" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    	<button type="button" data-dismiss="modal" class="button_data_miss"></button>
+
+                        <h4 class="modal-title hidden invited" style="text-align: center; font-weight: bolder;">
+                        	<span class="es" style="margin-left: -50px">¡Bienvenido!</span>
+                        	<span class="en">Welcome!</span>
+                       	</h4>
+
+                        <h4 class="modal-title hidden explorer" style="text-align: center;">
+                        	<span class="es">¡Regístrate para reservar tu primera experiencia!</span>
+                        	<span class="en">Sign in and get your first experience!</span>
+                        </h4>
+                    </div>
+
+                    <div class="modal-body">
+                    	<h5 class="hidden invited" style="text-align: center;">
+                    		<span class="es">Estás a unos pasos de formar parte de una gran comunidad de viajeros y locales</span>
+                    		<span class="en hidden">Your about to be part of a big community of travelers and locals</span>
+                    	</h5>
+
+	                    <div style="text-align: justify; margin: 35px;margin-left: 20px;margin-right: 20px;">
+	                    	<input type="button" id="pre_register_facebook" class="btn btn-block" name="pre_register_facebook" value="" style="background-color: transparent; color: #000; border: 1px solid #000; border-radius: 5px; margin-bottom: 30px; height: 45px;">
+
+	                    	<input type="button" id="pre_register_google" class="btn btn-block" name="pre_register_google" value="" style="background-color: transparent; color: #000; border: 1px solid #000; border-radius: 5px; margin-bottom: 30px;height: 45px;">
+
+	                    	<input type="button" id="pre_register_email" class="btn btn-block" name="pre_register_email" value="" style="background-color: transparent; color: #000; border: 1px solid #000; border-radius: 5px; margin-bottom: 30px;height: 45px;" data-toggle="modal" data-target="#modal_register_explorer">
+
+	                    	<input type="button" id="pre_register_team" class="btn btn-block hidden explorer" name="pre_register_team" value="" style="background-color: transparent; color: #000; border: 1px solid #000; border-radius: 5px; margin-bottom: 30px;height: 45px;" data-toggle="modal" data-target="">
+	                    </div>
+                    </div>
+
+                    <div class="modal-footer">
+                    	<p style="text-align: center;"><span class="es">¿Ya estás registrado en Wixplor ? </span><span class="en hidden">Already registered on Wixplor ? </span><a style="text-decoration: none; color: #5a999e" href="#"><span class="es">Iniciar sesión</span><span class="en hidden">Login</span></a></p>
+				   </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal Sign -->
+
+        <!-- Modal register explorer -->
+        <div class="modal fade pre_full_modal" id="modal_register_explorer" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    	<button type="button" data-dismiss="modal" class="button_data_miss"></button>
+
+                        <div style="text-align: center;">
+                        	<figure>
+                        		<img style="height: 30px; width: 30px;" src="assets/icons/email.png">
+                        	</figure>
+                        </div>
+
+                        <h4 class="modal-title" style="text-align: center;">
+                        	<span class="es">Registro con correo</span>
+                        	<span class="en">Sign in with email</span>
+                        </h4>
+                    </div>
+
+                    <div class="modal-body">
+	                    <form id="form_register_explorer" name="form_register_explorer">
+                            <div class="form-group">
+                                <span class="input-icon">
+                                    <input class="input_form_login_validated" type="email" id="form_register_email" name="form_register_email" placeholder="" required>
+                                    <i class="ace-icon fas fa-envelope"></i>
+                                </span>
+                            </div><!-- /.form-group -->
+
+                            <div class="form-group">
+                                <span class="input-icon">
+                                    <input class="input_form_login_validated" type="text" id="form_register_full_name" name="form_register_full_name" placeholder="" required>
+                                    <i class="ace-icon fas fa-user"></i>
+                                </span>
+                            </div><!-- /.form-group -->
+
+                            <div class="form-group">
+                                <span class="input-icon">
+                                    <input class="input_form_login_validated" type="password" id="form_register_password" name="form_register_password" placeholder="" required>
+                                    <i class="ace-icon fas fa-unlock-alt"></i>
+                                </span>
+                            </div><!-- /.form-group -->
+
+                            <div class="form-group">
+                                <span class="input-icon">
+                                    <input class="input_form_login_validated" type="password" id="form_register_confirm_password" name="form_register_confirm_password" placeholder="" required>
+                                    <i class="ace-icon fas fa-unlock-alt"></i>
+                                </span>
+                            </div><!-- /.form-group -->
+
+                            <!-- /.form-group -->
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="form_register_adult" name="form_register_adult" style="margin-left: 0px; margin-right: 20px"><span class="es">Acepto que soy mayor de 18 años</span><span class="en hidden">I agree I am over than 18 years of age</span>
+                                </label>
+                            </div>
+
+                            <!-- /.form-group -->
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="form_register_send_promos" name="form-register-send_promos" style="margin-left: 0px; margin-right: 20px"><span class="es">Deseo recibir promociones y noticias</span><span class="en hidden">I want to receive promotions</span>
+                                </label>
+                            </div>
+
+                            <br>
+
+                             <div class="form-group clearfix row">
+                                <div class="col-xs-12" style="padding: 0;">
+                                    <input type="button" class="btn btn-block" id="form_register_account-submit" name="form_register_account-submit" value="" style="background-color: #CC9340;color: #fff; font-weight: 400; border-radius: 3px;">
+                                </div>
+                            </div><!-- /.form-group -->
+
+                            <div style="padding: 15px;">
+                                <figure class="note" style="font-size: 0.95em;text-align: center;"><span class="es">Al registrarse aceptas </span><span class="en hidden">By accepting you agree </span><a style="color: #CC9340" href="terms-conditions.html"><span class="es">términos y condiciones</span><span class="en hidden">termns and conditions</span></a></figure>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                    	<p style="text-align: center;"><span class="es">¿Ya estás registrado en Wixplor ? </span><span class="en hidden">Already registered on Wixplor ? </span><a style="text-decoration: none; color: #CC9340" href="#"><span class="es">Iniciar sesión</span><span class="en hidden">Login</span></a></p>
+				   </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal register explorer -->
+
+        <!-- Modal confirm explorer -->
+        <div class="modal fade pre_full_modal" id="modal_confirm_explorer" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    	<button type="button" data-dismiss="modal" class="button_data_miss"></button>
+
+                        <h4 class="modal-title" style="text-align: center; font-weight: bolder;">
+                        	<span class="es">Bienvenid@</span>
+                        	<span class="en">Welcome </span>
+                        	<span class="name_span"></span>
+                        </h4>
+                    </div>
+
+                    <div class="modal-body">
+                    	<div style="border-bottom: 1px solid #9496a2; padding-bottom: 10px;">
+                            <span style="font-size: 14px; text-align: justify;">
+                            	<span class="es">Por tu seguridad y de la comunidad, así como para poder comunicarte con tu Wixer y con nosotros es necesario que valides tu celular y tu correo</span>
+								<span class="en hidden">To achieve the community security standards, and also to be able to communicate with you, it is necessary to validate your phone number and your email</span>
+                            </span>
+                        </div>
+
+	                   	<form id="form_validate_explorer" name="form_validate_explorer">
+	                        <div class="form-group row">
+	                            <div class="col-xs-12" style="margin-top: 15px;">
+	                                <label for="form-country_code" style=""><span class="es">Código país</span><span class="en hidden">Area code</span></label>
+	                            </div>
+
+	                            <div class="col-xs-8">
+	                                <select class="form-control" id="form-country_code" name="form-country_code" required>
+	                                    <option value="mex">México (+52)</option>
+										<option value="usa">USA (+1)</option>
+										<option value="uk">UK (+44)</option>
+	                                </select>
+	                            </div>
+	                        </div><!-- /.form-group -->
+
+	                        <br>
+
+	                        <div class="form-group row">
+	                            <div class="col-xs-12">
+	                                <label for="form_mobile"><span class="es">Número de celular</span><span class="en hidden">Phone number</span></label>
+	                            </div>
+
+	                            <div class="col-xs-8" style="padding-right: 5px;">
+	                                <input id="form_mobile" name="form_mobile" class="form-control" placeholder="" required>
+	                                <input id="form_mobile2" name="form_mobile2" class="hidden">
+	                            </div>
+
+	                            <div class="col-xs-4" style="padding-left: 0px;">
+	                                <input type="button" class="btn btn-block form-control" id="mobile-submit" name="mobile-submit" value="" style="background-color: #fff; border:1px solid #000; color: #000;font-weight: bolder!important;border-radius: 0px;">
+	                            </div>
+	                        </div><!-- /.form-group -->
+
+	                        <br>
+
+	                        <div class="form-group row">
+	                             <div class="col-xs-12">
+	                                <label for="form_mobile_code"><span class="es">Ingrese el código de 4 dígitos que recibiste por SMS</span><span class="en hidden">Enter the 4-digit code you recieved as SMS</span></label>
+	                            </div>
+
+	                            <div class="col-xs-6" style="padding-right: 0px;">
+	                                <input class="form-control fourdigits" id="form_mobile_code" name="form_mobile_code" placeholder="XXXX" required maxlength="4">
+	                            </div>
+
+	                            <div class="col-xs-6" style="padding-left: 0px;">
+	                                <input type="button" class="btn btn-block form-control btnop" id="mobile_code_submit" name="mobile_code_submit" value="" style="border:0; background-color: #CC9340; color: #fff; font-size: 14px;border-radius: 0px;">
+	                            </div>
+	                        </div><!-- /.form-group -->
+
+	                        <br>
+	                        <hr style="border: 1px solid #9496a2;">
+	                        <br>
+
+	                         <div class="form-group row">
+	                            <div class="col-xs-12">
+	                                <label for="resend_email">Email</label>
+	                            </div>
+
+	                            <div class="col-xs-6">
+	                                <span style="font-size: 11px; color: #9496a2;"><span class="es">Se ha enviado un mensaje al correo registrado. Correo con el que te registraste: </span><span class="en hidden">A message has been sent to the email you used to register. The email is: </span> <span id="email-registered-to-confirmation"></span> </span>
+	                            </div>
+
+	                            <div class="col-xs-6">
+	                                <input type="button" class="btn btn-block form-control" id="resend_email" name="resend_email" value="" style="background-color: #fff; color: #000;font-weight: bolder!important; border: 1px solid #000; border-radius: 0px">
+	                            </div>
+	                        </div><!-- /.form-group -->
+
+	                        <br>
+
+	                        <div class="form-group row">
+	                            <div class="col-xs-12">
+	                                <label for="form_email_code"><span class="es">Ingrese el código de 4 dígitos que acabas de recibir por correo</span><span class="en hidden">Enter the 4-digit code you recieved by email</span></label>
+	                            </div>
+
+	                            <div class="col-xs-6" style="padding-right: 0px;">
+	                                <input class="form-control fourdigits" id="form_email_code" name="form_email_code" placeholder="XXXX" required maxlength="4">
+	                            </div>
+
+	                            <div class="col-xs-6" style="padding-left: 0px;">
+	                                <input type="button" class="btn btn-block form-control btnop" id="email-code-submit" name="email-code-submit" value="" style="border:0; background-color: #CC9340; color: #fff; font-size: 14px; border-radius: 0px;">
+	                            </div>
+	                        </div><!-- /.form-group -->
+
+	                        <br>
+
+	                        <div class="form-group clearfix row">
+	                            <div class="col-xs-12">
+	                                <input type="button" class="btn btn-block" id="account-continue" name="account-continue" value="" style="background-color: #CC9340; color: #fff; border-radius: 0px;">
+	                            </div>
+	                        </div><!-- /.form-group -->
+	                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal confirm explorer -->
+
+         <!-- Modal why be a wixer -->
+        <div class="modal fade pre_full_modal" id="modal_why_be_a_wixer" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    	<button type="button" data-dismiss="modal" class="button_data_miss"></button>
+
+                         <h4 class="modal-title" style="text-align: center;">
+                         	<span class="es">Antes de comenzar:</span>
+                         	<span class="en">Before making you a Wixer</span>
+                         </h4>
+                    </div>
+
+                    <div class="modal-body">
+                    	<figure style="height: auto; text-align: center;">
+                			<img style="max-height: 100%;" src="https://www.chollovacaciones.com/images/CABC_INDEXES.jpg">
+                		</figure>
+
+                		<div class="row" style="text-align: center!important; position: relative; bottom: 50px;">
+                    		<input type="button" class="input_start_register_wixer col-xs-4 col-xs-offset-7 col-sm-2 col-sm-offset-9 col_special" name="input_start_register_wixer" value="" class="btn" style="background-color: #CC9340; color: white; padding-top: 5px; padding-bottom: 5px;">
+                    	</div>
+
+	                    <br>
+
+	                    <div class="row">
+	                    	<div class="col-xs-10 col-xs-offset-1 col_special">
+	                    		<div class="row">
+	                    			<div class="col-xs-12 col-sm-9 col_special">
+		                				<h4><strong>
+		                					<span class="es">¿Porqué ser un Wixer?</span>
+		                					<span class="en hidden">Why be a Wixer?</span>
+		                				</strong></h4>
+
+		                				<h6 style="text-align: justify;">
+		                					<span class="es">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>
+
+		                					<span class="en hidden">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>
+		                				</h6>
+		                			</div>
+
+		                			<div class="col-xs-12 col-sm-3 col_special">
+		                				<br class="hidden-sm hidden-md hidden-lg">
+
+		                				<figure>
+		                					<img src="http://e02-elmundo.uecdn.es/assets/multimedia/imagenes/2015/05/22/14322801336312.jpg" style="width: 100%;">
+		                				</figure>
+		                			</div>
+	                    		</div>
+
+	                    		<br>
+
+	                    		<div class="row">
+	                    			<div class="col-xs-12 col-sm-3 col_special" style="text-align: center;">
+		        						<img src="assets/icons/compass.png" style="height: 40px; width: 40px;">
+
+		        						<h4 style="font-size: .8em;"><strong>
+		        							<span class="es">LOREM IPSUM</span>
+		        							<span class="en hidden">LOREM IPSUM</span>
+		        						</strong></h4>
+
+		        						<h6 style="text-align: justify; font-size: .8em">
+		        							<span class="es">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+		        							<span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+		        						</h6>
+		        					</div>
+
+		        					<div class="col-xs-12 col-sm-3 col_special" style="text-align: center;">
+		        						<img src="assets/icons/compass.png" style="height: 40px; width: 40px;">
+
+		        						<h4 style="font-size: .8em;"><strong>
+		        							<span class="es">LOREM IPSUM</span>
+		        							<span class="en hidden">LOREM IPSUM</span>
+		        						</strong></h4>
+
+		        						<h6 style="text-align: justify; font-size: .8em">
+		        							<span class="es">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+		        							<span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+		        						</h6>
+		        					</div>
+
+		        					<div class="col-xs-12 col-sm-3 col_special" style="text-align: center;">
+		        						<img src="assets/icons/compass.png" style="height: 40px; width: 40px;">
+
+		        						<h4 style="font-size: .8em;"><strong>
+		        							<span class="es">LOREM IPSUM</span>
+		        							<span class="en hidden">LOREM IPSUM</span>
+		        						</strong></h4>
+
+		        						<h6 style="text-align: justify; font-size: .8em">
+		        							<span class="es">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+		        							<span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+		        						</h6>
+		        					</div>
+	                    		</div>
+
+	                    		<div class="row">
+	                    			<h4 style="position: relative; top: 15px;"><strong>
+	    								<span class="es">¿Cómo ser un Wixer?</span>
+	    								<span class="en hidden">How to become a Wixer?</span>
+	    							</strong></h4>
+
+	    							<br>
+
+	    							<div class="col-xs-12 col-sm-9 col_special" style="margin-bottom: 10px;">
+	        							<div class="col-xs-2 col_special" style="text-align: center;">
+	        								<img src="assets/icons/1.png" style="height: 30px; width: 30px;">
+	        							</div>
+	        							<div class="col-xs-10 col_special">
+	        								<h4 style="font-size: .8em;"><strong>
+	                							<span class="es">LOREM IPSUM</span>
+	                							<span class="en hidden">LOREM IPSUM</span>
+	                						</strong></h4>
+	        							</div>
+	        							<div class="col-xs-12 col-sm-10 col-sm-offset-2 col_special" style="margin-top: -10px;">
+	        								<h6 style="text-align: justify; font-size: .8em">
+	                							<span class="es">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+	                							<span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+	                						</h6>
+	        							</div>
+	    							</div>
+
+	    							<div class="col-xs-12 col-sm-9 col_special" style="margin-bottom: 10px;">
+	        							<div class="col-xs-2 col_special" style="text-align: center;">
+	        								<img src="assets/icons/2.png" style="height: 30px; width: 30px;">
+	        							</div>
+	        							<div class="col-xs-10 col_special">
+	        								<h4 style="font-size: .8em;"><strong>
+	                							<span class="es">LOREM IPSUM</span>
+	                							<span class="en hidden">LOREM IPSUM</span>
+	                						</strong></h4>
+	        							</div>
+	        							<div class="col-xs-12 col-sm-10 col-sm-offset-2 col_special" style="margin-top: -10px;">
+	        								<h6 style="text-align: justify; font-size: .8em">
+	                							<span class="es">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+	                							<span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+	                						</h6>
+	        							</div>
+	    							</div>
+
+	    							<div class="col-xs-12 col-sm-9 col_special">
+	        							<div class="col-xs-2 col_special" style="text-align: center;">
+	        								<img src="assets/icons/3.png" style="height: 30px; width: 30px;">
+	        							</div>
+	        							<div class="col-xs-10 col_special">
+	        								<h4 style="font-size: .8em;"><strong>
+	                							<span class="es">LOREM IPSUM</span>
+	                							<span class="en hidden">LOREM IPSUM</span>
+	                						</strong></h4>
+	        							</div>
+	        							<div class="col-xs-12 col-sm-10 col-sm-offset-2 col_special" style="margin-top: -10px;">
+	        								<h6 style="text-align: justify; font-size: .8em">
+	                							<span class="es">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+	                							<span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+	                						</h6>
+	        							</div>
+	    							</div>
+	                    		</div>
+	                    	</div>
+	                    </div>
+                    </div>
+
+                    <div class="modal-footer">
+                    	<div class="row" style="text-align: center!important;">
+                    		<input type="button" class="input_start_register_wixer col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-2 col_special" name="input_start_register_wixer" value="" class="btn" style="background-color: #CC9340; color: white; padding-top: 5px; padding-bottom: 5px;">
+                    	</div>
+				   </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal why be a wixer -->
+
+        <!-- Modal sign in wixer -->
+        <div class="modal fade pre_full_modal" id="modal_sign_in_wixer" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    	<button type="button" data-dismiss="modal" class="button_data_miss"></button>
+
+                        <h4 style="text-align: center;" class="modal-title">
+                        	<span class="es">¡Hola!</span>
+                        	<span class="en hidden">Hello!</span>
+                        </h4>
+                    </div>
+
+                    <div class="modal-body" class="padding-bottom: 0px;">
+                        <div class="row">
+                        	<div class="col-xs-10 col-xs-offset-1">
+                        		<p>
+                        			<span class="es">Por motivos de seguridad para poder ser un Wixer tienes que validar una identificación oficial</span>
+                        			<span class="en hidden">For security reasons to be a Wixer you have to validate an identification</span>
+                        		</p>
+                        	</div>
+
+                        	<div class="col-xs-12">
+                        		<br>
+                        	</div>
+
+                        	<div class="col-xs-12">
+                        		<form id="form_continue_register_wixer">
+                        			<div class="col-xs-12 col-sm-6">
+                        				<label><strong>
+                        					<span class="es">Teléfono celular</span>
+                        					<span class="en hidden">Phone number</span>
+                        					<i class="fas fa-check" style="color: #5A999E"></i>
+                        				</strong></label>
+
+                        				<label style="font-size: .8em; width: 100%;">
+                        					<span class="es">El número celular</span>
+                        					<span class="en hidden">The phone number</span>
+
+                        					<span id="form_continue_register_wixer_mobile"></span>
+
+                        					<span class="es">se ha confirmado correctamente</span>
+                        					<span class="en hidden">has been successfully confirmed</span>
+                        				</label>
+                        			</div>
+
+                        			<div class="col-xs-12 hidden visible-xs">
+                        				<br>
+                        			</div>
+
+                        			<div class="col-xs-12 col-sm-6">
+                        				<label><strong>
+                        					<span class="es">Email</span>
+                        					<span class="en hidden">Email</span>
+                        					<i class="fas fa-check" style="color: #5A999E"></i>
+                        				</strong></label>
+
+                        				<label style="font-size: .8em; width: 100%;">
+                        					<span class="es">El correo</span>
+                        					<span class="en hidden">The email address</span>
+
+                        					<span id="form_continue_register_wixer_email"></span>
+
+                        					<span class="es">se ha confirmado correctamente</span>
+                        					<span class="en hidden">has been successfully confirmed</span>
+                        				</label>
+                        			</div>
+
+                        			<div class="col-xs-12">
+                        				<br>
+                        			</div>
+
+                        			<div class="col-xs-12 col-sm-6">
+                        				<label><strong>
+                        					<span class="es">Foto de perfil</span>
+                        					<span class="en hidden">Profile picture</span>
+                        					<i class="fas fa-check" style="color: #5A999E"></i>
+                        				</strong></label>
+
+                        				<label style="font-size: .8em; width: 100%;">
+                        					<span class="es">Sube alguna foto de perfil</span>
+                        					<span class="en hidden">Upload a profile picture</span>
+                        				</label>
+
+                        				<br>
+
+                        				<a id="form_continue_register_wixer_img" href=#>
+                        					<div style="width: 150px; height: 120px; border: 1px solid #9496a2; background-position: center; background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; align-items: center;">
+                        						<p id="form_continue_register_wixer_p_img">
+	                        						<span class="es">Subir foto</span>
+	                        						<span class="en hidden">Upload picture</span>
+	                        					</p>
+	                        				</div>
+                        				</a>
+
+                        				<input type="file" name="form_continue_register_input_img" id="form_continue_register_input_img" accept="image/*" class="hidden">
+                        				<div id="form_continue_register_div_img" is_valid="0" class="hidden"></div>
+                        			</div>
+
+                        			<div class="col-xs-12 hidden visible-xs">
+                        				<br>
+                        			</div>
+
+                        			<div class="col-xs-12 col-sm-6">
+                        				<label><strong>
+                        					<span class="es">Identificación oficial</span>
+                        					<span class="en hidden">Identification</span>
+                        					<i class="fas fa-check" style="color: #5A999E"></i>
+                        				</strong></label>
+
+                        				<label style="font-size: .8em; width: 100%;">
+                        					<span class="es">Sube alguna foto de una identificación ya sea licencia de conducir INE o pasaporte</span>
+                        					<span class="en hidden">Upload a photo of an ID, either an INE driver's license or a passport</span>
+                        				</label>
+
+                        				<br>
+
+                        				<a id="form_continue_register_wixer_identification" href=#>
+                        					<div style="width: 200px; height: 170px; border: 1px solid #9496a2; background-position: center; background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; align-items: center;">
+												<p id="form_continue_register_wixer_p_identification">
+	                        						<span class="es">Subir identificación</span>
+	                        						<span class="en hidden">Upload identificatión</span>
+	                        					</p>
+	                        				</div>
+                        				</a>
+
+                        				<input type="file" name="form_continue_register_input_identification" id="form_continue_register_input_identification" accept="image/*" class="hidden">
+                        				<div id="form_continue_register_div_identification" is_valid="0" class="hidden"></div>
+                        			</div>
+                        		</form>
+                        	</div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                    	<div class="row" style="text-align: center!important;">
+                    		<input type="button" id="input_continue_register_wixer" class="col-xs-4 col-xs-offset-4" name="input_continue_register_wixer" value="" style="background-color: #CC9340; color: white; padding-top: 5px; padding-bottom: 5px;">
+                    	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal sign in wixer -->
+
+        <!-- Modal choose your city -->
+	    <div class="modal fade pre_full_modal" id="modal_index_choose_city" role="dialog">
+	        <div class="modal-dialog">
+	            <!-- Modal content-->
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button type="button" data-dismiss="modal" class="button_data_miss"></button>
+	                    
+	                    <h4 class="modal-title" style="text-align: center;">
+	                        <span class="es">Elije tu ciudad</span>
+	                        <span class="en">Choose your city</span>
+	                    </h4>
+	                </div>
+
+	                <div class="modal-body" style="border-top: 1px solid #d8882d;">
+	                	<div class="container-fluid">
+	                		<div class="row">
+	                			<div class="col-xs-12 col-sm-6" >
+				                    <a href="#" class="city_temp city_temp_mazatlan">
+				                    	<h6>
+				                    		<i class="fas fa-map-marker" style="color: #d8882d"></i>
+				                    		Mazatlán
+				                    	</h6>
+				                    </a>
+			                    </div>
+
+			                    <div class="col-xs-12 col-sm-6">
+				                    <a href="#" class="city_temp city_temp_los_cabos">
+				                    	<h6>
+				                    		<i class="fas fa-map-marker" style="color: #d8882d"></i>
+				                    		Los Cabos
+				                    	</h6>
+				                    </a>
+			                    </div>	
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- /Modal choose your city -->
+
+        <div id="modals_container"></div>
+
+        <div id="g-signin2" class="g-signin2 hidden" data-onsuccess="onSignIn" data-theme="dark"></div>
+	</body>
+</html>

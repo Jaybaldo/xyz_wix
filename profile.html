@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/activity_modular.css">
+    <link rel="stylesheet" type="text/css" href="css/slider_main.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nouislider.all.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/cookiesManager.js"></script>
+    <script type="text/javascript" src="js/table_ajax.js"></script>
+    <script type="text/javascript" src="js/modalGenerator.js"></script>
+    <script type="text/javascript" src="js/modalToggle.js"></script>
+    <!--
+    <script type="text/javascript" src="js/jqueryvalidate/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/validate.js"></script>
+    -->
+    <script type="text/javascript" src="js/openPage.js"></script>
+    <script type="text/javascript" src="js/activities_general_loader.js"></script>
+    <script src="assets/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <title>PERFIL</title>
+    <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+
+    <style type="text/css">
+        .mayus{
+            text-transform: uppercase;
+        }
+
+        .rpu{
+            color: #9496a2;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .bobo{
+            border-bottom: 1px solid #9496a2;
+        }
+
+        #botonMagico{
+            padding: 0;
+            height: 85px;
+            z-index: 9999;
+            width: 100%;
+            position: fixed;
+            bottom: -14px;
+            right: 0px;
+            left: 0px;
+            transform: translateY(100%);
+            transition: all 0.5s ease;
+            background-color: #fff;
+            border-top: 2px solid #efefef;
+
+        }
+
+        .entrar{
+            transform: translateY(0)!important;
+        }
+
+        ul.bullets li:before{
+            content: none!important;
+        }
+
+        hr{
+            border-top: 1px solid #9496a2;
+        }
+
+        .naranja{
+            color: #d8882d!important;
+        }
+
+        .review .author{
+            width: 50px!important;
+            margin-top: 15px!important;
+            margin-right: 10px;
+        }
+
+        .rating .stars .fa.active{
+            color: #d8882d;
+        }
+
+        .date{
+            font-size: 10px;
+            font-weight: lighter;
+        }
+
+        .avatar-design{
+            height: 100px;
+            width: 100px;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            border-radius: 50%;
+            background-size: 100% auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px;
+        }
+
+        .small{
+            height: 50px!important;
+            width: 50px!important;
+        }
+
+        .centarImg{
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: 100% auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px;
+            background-size: cover;
+            height: 175px;
+            width: 175px;
+        }
+
+        @media screen and (max-width:767px){
+            .centarImg{
+                background-repeat: no-repeat;
+                background-position: 50%;
+                background-size: 100% auto;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 15px;
+                background-size: cover;
+                height: 140px;
+                width: 140px;
+            }
+        }
+
+        .nav-tabs{
+                border-bottom: 0px!important;
+                margin-bottom: 15px;
+
+        }
+
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+            color: #000;
+            border:0px;
+            font-weight: bolder;
+            font-size: 18px;
+
+        }
+
+        @media screen and (max-width: 768px){
+            .nav-tabs{
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+
+            .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+                color: #fff;
+                background-color: #cc9340;
+                border:0px;
+                font-weight: bolder;
+                font-size: 18px;
+
+            }
+
+            .god > .activofondo > .col-xs-6{
+                height: 45px;
+                border-top: 1px solid #9496a2;
+                border-bottom: 1px solid #9496a2;
+                text-align: center;
+                font-size: 18px;
+            }
+
+            .god > .activofondo > .active {
+                background-color: #cc9340;
+                text-align: center;
+                color: #fff!important;
+                height: 45px;
+            }
+        }
+
+
+
+
+
+        .nav-tabs > li.active > a.subtab{
+            padding-bottom: 0px;
+            font-size: 14px;
+        }
+
+        .nav-tabs > li.active > a.tabpadre{
+            padding-bottom: 0px;
+            border-bottom: 1px solid #cc9340;
+            font-size: 18px;
+        }
+
+        @media screen and (min-width: 768px){
+            #map-detail{
+                height: 350px!important;
+            }
+
+            input[type="text"], input[type="date"], input[type="email"], input[type="search"], input[type="password"], input[type="number"], input[type="tel"], textarea.form-control, input[type="time" i]{
+                border-radius: 0!important;
+
+            }
+        }
+
+
+
+        @media screen and (max-width: 767px){
+            #imgUser{
+                width: 100px!important;
+                height: 100px!important;
+            }
+
+            #calexp{
+                width: 30px!important;
+                height: 30px!important;
+                padding-top: 8px!important;
+            }
+            #calwix{
+                width: 30px!important;
+                height: 30px!important;
+                padding-top: 8px!important;
+            }
+
+            .evalig{
+                padding: 6px!important;
+            }
+
+            #about{
+                margin: 15px 0px!important;
+                border-bottom: 1px solid #9496a2;
+                padding-bottom: 10px;
+            }
+
+            #info{
+                margin-top: 0px!important;
+            }
+
+            #evaluacionesdiv{
+                border-bottom: 1px solid #9496a2;
+
+            }
+
+
+
+
+        }
+
+        .nav-tabs > li > a{
+            margin-right: 20px;
+            color: #000;
+            padding-bottom: 0px;
+            border-bottom: 1px solid #fff;
+
+        }
+
+        .comments{
+            padding-left: 0px!important;
+            padding-right: 0px!important;
+            padding-top: 14px;
+            padding-bottom: 10px;
+            border-top: 1px solid #9496a2;
+            /*height: 115px;*/
+        }
+
+        @media screen and (max-width: 767px){
+
+            .nav-tabs{
+                margin-left: -30px;
+                margin-right: -30px;
+                border-radius: 0px;
+                height: 45px;
+                margin-bottom: 30px;
+            }
+
+            .nav-tabs > li.active > a.subtab{
+                padding-bottom: 0px;
+                font-size: 14px;
+                text-decoration: underline;
+                text-decoration-color: #cc9340;
+                text-underline-position: under;
+                background-color: transparent;
+                color: #000;
+            }
+
+
+            #acercade{
+                font-size: 1.0em!important;
+
+            }
+
+
+
+            ul > .active {
+                background-color: #cc9340;
+                border-radius: 0px!important;
+                height: 45px;
+            }
+
+            ul > .active.smalltab {
+                background-color: transparent;
+                border-radius: 0px!important;
+                height: 25px;
+                font-size: 18px;
+            }
+
+            .activofondo > li.father {
+                height: 45px;
+                border-top: 1px solid #9496a2;
+                border-bottom: 1px solid #9496a2;
+            }
+
+            .activofondo > li > a{
+                text-align: center;
+                font-size: 12px;
+
+            }
+
+            ul > .active > .tabpadre{
+                width: 100%;
+                text-align: center;
+            }
+
+            ul > .active > .tabpadre{
+                width: 100%;
+                text-align: center;
+            }
+
+            @media(max-width:767px){
+                .act-indiv-profi{
+                    width:100%!important;
+                }
+            }
+
+            @media(min-width:568px){
+                .br-for-next{
+                    display:none
+                }
+            }
+
+        }
+    </style>
+
+    <script type="text/javascript">
+        function switch_language(){
+
+        }
+    </script>
+
+</head>
+
+<body style="display:none;">
+    <div id="NavbarOP">  </div>
+
+    <script type="text/javascript">
+        $("#NavbarOP").load('navbar.html', function(){
+            navbar_white();
+            $("#navbar_select_city_div").removeClass("hidden");
+            $("#navbar_select_city_div").addClass("invited explorer wixer_1");
+
+            $.getScript("js/jqueryvalidate/dist/jquery.validate.min.js");
+            $.getScript("js/validate.js");
+
+            /*FOOTER **********************************************************/
+            $("#myFooter").load('footer.html', function(){
+
+            });
+            /*FOOTER **********************************************************/
+        });
+    </script>
+
+    <div class="container" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col-sm-8 col-xs-12" style="padding-right:0; padding-left:15px">
+                <div class="col-sm-6 col-xs-6" style="padding:0">
+                    <div class="centarImg user-image" style="margin-left:0!important">
+                    </div>
+                    <h6 style="">
+                        <a class="report-user">
+                            <span class="es">Reportar usuario</span>
+                            <span class="en hidden">Report user</span>
+                        </a>
+                    </h6>
+                </div>
+                <div class="col-sm-6 col-xs-6" style="padding:0">
+                    <h3 class="hidden-xs user-name" style="margin-top: 0px; font-weight: bold;"></h3>
+                    <h5 class="hidden-sm hidden-md hidden-lg user-name" style="margin-top: 0px; font-weight: bold;"></h5>
+                    <h6 id="fecha">
+                        <span style="font-weight:bold" class="es">Fecha de registro:</span>
+                        <span style="font-weight:bold" class="en hidden">Register date:</span>
+                        <br class="br-for-next">
+                        <span class="time-joined"></span>
+                    </h6>
+                    <h6 id="idiomas" style="font-weight: 700">
+                        <span class="es">Idiomas hablados: </span>
+                        <span class="en hidden">Spoken languajes: </span>
+                        <br class="br-for-next">
+                        <span class="user-langs"><span>
+                    </h6>
+                    <h6 class="user-city"></h6>
+
+                </div>
+            </div>
+
+
+            <div class=" col-sm-4  col-xs-12" id="evaluacionesdiv" sty>
+                <div style="display: -webkit-box;">
+                    <h5 id="calexp" style="border: 1px solid #cc9340;color: #cc9340; font-weight: bolder; border-radius: 50%; width: 40px; height: 40px; padding-top: 10px; text-align: center"></h5>
+                    <h6 class="evalig" style="padding: 15px;">
+                        <span class="es">Evaluaciones recibidas por los exploradores</span>
+                        <span class="en hidden">Evaluations received by the explorers</span>
+                    </h6>
+                </div>
+
+                <div style="display: -webkit-box;">
+                    <h5 id="calwix" style="border: 1px solid #5a999e;color: #5a999e;font-weight: bolder; border-radius: 50%; width: 40px; height: 40px; padding-top: 10px; text-align: center;"></h5>
+                    <h6 class="evalig" style="padding: 15px; ">
+                        <span class="es">Evaluaciones recibidas por wixers</span>
+                        <span class="en hidden">Evaluations received by the wixers</span>
+                    </h6>
+                </div>
+
+            </div>
+            <div id="about" class="  col-xs-12" style="">
+                <h5 style="font-weight: 700; margin-top: 15px;">
+                    <span class="es">Sobre mi:</span>
+                    <span class="en hidden">About me:</span>
+                </h5>
+                <h5  style="line-height: inherit;font-size: 0.75em; "><span class="es user-desc"></span><span class="en hidden user-desc"></span></h6>
+            </div>
+
+            <div id="info" class=" col-xs-12" style="margin-top: 15px;">
+                <h5 style="font-weight: 700;">
+                    <span class="es">Información autentificada</span>
+                    <span class="en hidden">Authenticated information</span>
+                </h5>
+                <div class="col-sm-4 col-xs-6" style="padding-left: 0px">
+                    <h6>
+                        <span class="es">Identificación oficial </span>
+                        <span class="en hidden">Oficial ID </span>
+                        <span class="id_oficial_cont"></span>
+                    </h6>
+                </div>
+                <div class="col-sm-4 col-xs-6" style="padding-left: 0px">
+                    <h6>
+                        <span class="es">Numero telefónico</span>
+                        <span class="en hidden">Phone number</span>
+                        <i class="fas fa-check" style="color: #5a999e"></i>
+                    </h6>
+                </div>
+                <div class="col-sm-4 col-xs-6" style="padding-left: 0px">
+                    <h6>
+                        <span class="es">Correo</span>
+                        <span class="en hidden">Email</span>
+                        <i class="fas fa-check" style="color: #5a999e"></i>
+                    </h6>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-xs-12" style="padding:0">
+                <ul class="nav nav-tabs activofondo col-xs-12" style="padding:0; margin:0; margin-bottom: 20px;">
+                    <li class="active father col-xs-6 col-sm-4" style="padding:0; margin:0"><a data-toggle="tab" href="#eval" class="tabpadre">
+                        <span class="es">Evaluaciones</span>
+                        <span class="en hidden">Evaluations</span>
+                    </a></li>
+                    <li class="father col-xs-6 col-sm-4" style="padding:0; margin:0"><a data-toggle="tab" href="#act" class="tabpadre">
+                        <span class="es">Actividades</span>
+                        <span class="en hidden">Activities</span>
+                    </a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eval" class="tab-pane fade in active tabpadre">
+                      <ul class="nav nav-tabs activofondo " style="/*left: 14%;*/ max-width: 99%; margin:0">
+                          <li class="eval_by_exp_header smalltab col-xs-12 col-sm-4" style="padding:0">
+                              <a class="subtab" data-toggle="tab" href="#eval_by_exp" style="padding:0; margin-top:5px; margin: 5px 0">
+                                  <span class="es">Evaluaciones por exploradores</span>
+                                  <span class="en hidden">Evaluations by explorers</span>
+                              </a>
+                          </li>
+
+                          <li class="eval_by_wix_header smalltab col-xs-12 col-sm-4" style="padding:0">
+                              <a class="subtab" data-toggle="tab" href="#eval_by_wix" style="padding:0; margin-top:5px; margin: 5px 0">
+                                  <span class="es">Evaluaciones por wixers</span>
+                                  <span class="en hidden">Evaluations by wixers</span>
+                              </a>
+                          </li>
+                      </ul>
+
+                      <div class="tab-content">
+                          <div id="eval_by_exp" class="tab-pane fade in active coments">
+
+
+                          </div>
+
+                          <div id="eval_by_wix" class="tab-pane fade in coments">
+
+
+                          </div>
+                      </div>
+                    </div>
+
+                    <div id="act" class="tab-pane fade tabpadre">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12" style="padding:0">
+                                    <div class="col-xs-12" style="padding-left: 0; padding-right: 30px;" id="act-inside">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <seciton id="myFooter"></section>
+
+    <script type="text/javascript">
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+        function number_evs_filler(json, data) {
+
+            $("#calexp").append(json[0].exp);
+            $("#calwix").append(json[0].wix);
+
+        }
+
+        function user_filler_evaluations(json, data) {
+
+            for (var i = 0; i < json.length; i++) {
+                var evaluation = json[i];
+
+                var master_div;
+                var div_evaluation = document.createElement('div');
+
+                if(evaluation.type == 2 || evaluation.type == "2"){
+                    route = "_evs-by-wixer.html";
+                }
+                else if(evaluation.type == 1 || evaluation.type == "1"){
+                    route = "_evs-by-explorer.html";
+                }
+
+
+
+                $(div_evaluation).attr({'activity_name_spa':evaluation.activity_name_spa,
+                                        'activity_name_eng':evaluation.activity_name_eng,
+                                        'id_activity':evaluation.id_activity,
+                                        'user_name':evaluation.user_name,
+                                        'review':evaluation.review,
+                                        'id':evaluation.review_id,
+                                        'img':evaluation.img,
+                                        'time_review':evaluation.time_review,
+                                        'user_id':evaluation.user_id,
+                                        'type_ev':evaluation.type})
+                .load("assets/external/"+route, function () {
+
+                    if($(this).attr("type_ev") == 2 || $(this).attr("type_ev") == "2"){
+                        master_div = "eval_by_wix";
+                    }
+                    else if($(this).attr("type_ev") == 1 || $(this).attr("type_ev") == "1"){
+                        master_div = "eval_by_exp";
+                    }
+
+                    $("#"+master_div). append($(this));
+                    if($(this).attr('img')){
+                        $(this).find(".imgComents").css({"background-image": "url('"+$(this).attr('img')+"')"});
+                    }
+                    else{
+                        $(this).find(".imgComents").css({"background-image": "url('https://www.axiapayments.com/wp-content/uploads/2014/09/placeholder-square.jpg')"});
+                    }
+
+                        $(this).find("h4.nombre").append("<a class='user-redirect-review' style='text-decoration:none; color:inherit;' href='profile.html?userid="+$(this).attr("user_id")+"'>"+$(this).attr("user_name")+"</a>");
+
+                        $(this).find(".review-actv-name.es").append("<a class='user-redirect-review' style='text-decoration:none; color:inherit;' href='item-detail.html?activityid="+$(this).attr("id_activity")+"'>"+$(this).attr("activity_name_spa")+"</a>");
+                        $(this).find(".review-actv-name.en").append($(this).attr("activity_name_eng"));
+
+                        $(this).find(".review-comment").append($(this).attr("review"));
+
+                        $(this).find(".revie-date").append($(this).attr("time_review"));
+
+                });
+            }
+
+
+        }
+
+        function user_filler_general(json, data) {
+            if(data[0]){
+                var user_f = json[0];
+                var data_c = [];
+                data_c[0] = "wixplorUserProfileGeneral";
+                data_c[1] = null;
+                data_c[2] = null;
+                setCookie(json, data_c);
+            }
+            else{
+                var user_f = getCookie("wixplorUserProfileGeneral");
+                user_f = user_f[0];
+            }
+            console.log(user_f);
+
+            $(".time-joined").append(user_f.time_joined.substring(0,10));
+
+            if(user_f.type == 1){
+                $("#eval_by_exp").remove();
+                $(".eval_by_exp_header").remove();
+                $("#eval_by_wix").addClass("active");
+            }
+            $(".id_oficial_cont").append("<i class='fas fa-check' style='color: #5a999e'></i>");
+
+
+            $(".user-image").css({"background-image": "url('"+user_f.img+"')"});
+            $(".user-name").append(user_f.name);
+            $(".user-langs").append(user_f.us_langs);
+            $(".user-city").append(user_f.city);
+            if(user_f.wix_desc_spa || user_f.wix_desc_eng){
+                $(".user-desc.es").append(user_f.wix_desc_spa);
+                $(".user-desc.en").append(user_f.wix_desc_eng);
+            }
+            else{
+                $(".user-desc.es").append(user_f.exp_desc_spa);
+                $(".user-desc.en").append(user_f.exp_desc_eng);
+            }
+
+        }
+
+        $(document).ready(function () {
+            var id_display = getUrlParameter('userid');
+
+            if( (!id_display) || id_display == undefined){
+                if(user){
+                    id_display = user[0].user_id;
+                }
+                else{
+                    window.location.href="index.html";
+                }
+            }
+
+            var wixplorUserProfileGeneral;
+            var wixplorProfileEvaluations;
+
+            if(!getCookie("wixplorUserProfileGeneral").length == 0){
+                wixplorUserProfileGeneral = getCookie("wixplorUserProfileGeneral");
+                console.log(wixplorUserProfileGeneral);
+
+                if(wixplorUserProfileGeneral[0].id != id_display ){
+                    var dataPHP = {"case":8, "id":id_display};
+                    var data = [];
+                    data[0] = true;
+                    ajax_user(dataPHP, user_filler_general, data);
+                }
+                else{
+                    var data = [];
+                    data[0] = false;
+                    user_filler_general(null, data);
+                }
+            }
+            else{
+                var dataPHP = {"case":8, "id":id_display};
+                var data = [];
+                data[0] = true;
+                ajax_user(dataPHP, user_filler_general, data);
+            }
+
+            //2: //Evaluations received as explorer
+            //5: //Evaluations received as wixer
+
+            var dataPHP = {"case":2, "id":id_display};
+            ajax_evaluation(dataPHP, user_filler_evaluations, null);
+
+            var dataPHP = {"case":5, "id":id_display};
+            ajax_evaluation(dataPHP, user_filler_evaluations, null);
+
+
+            var dataPHP = {"case":3, "id":id_display};
+            ajax_evaluation(dataPHP, number_evs_filler, null);
+
+
+            var dataPHP = {'case': 2,'id':id_display, 'limit':12, 'status':'ACEPTADO'};
+            var data = [];
+            data[0] = $("#act-inside");
+            data[1] = { "width":"250px" , "margin-right":0, "margin-left":"10px", "width":"47%", "float":"left"};
+            data[2] = 'act-indiv-profi';
+
+            ajax_activity(dataPHP, activities_general_loader, data);
+
+            $('body').fadeIn(3000);
+        });
+
+
+    </script>
+
+</body>
+</html>

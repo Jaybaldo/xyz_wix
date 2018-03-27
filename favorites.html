@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/activity_modular.css">
+    <link rel="stylesheet" type="text/css" href="css/slider_main.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nouislider.all.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/cookiesManager.js"></script>
+    <script type="text/javascript" src="js/table_ajax.js"></script>
+    <script type="text/javascript" src="js/modalGenerator.js"></script>
+    <script type="text/javascript" src="js/modalToggle.js"></script>
+    <!--
+    <script type="text/javascript" src="js/jqueryvalidate/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/validate.js"></script>
+    -->
+    <script type="text/javascript" src="js/openPage.js"></script>
+    <script type="text/javascript" src="js/activities_general_loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <title>Favorites</title>
+    <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+
+    <style type="text/css">
+        /* xs ********************************/
+        @media (min-width: 10px){
+            #favorites_header h4{
+                margin-left: none;
+                text-align: center;
+            }
+
+            #favorites_header img{
+                position:absolute;
+                width:20px;
+                height:20px;
+                top: 0px;
+                display: none;
+            }
+        }
+
+        /* sm ********************************/
+        @media (min-width: 768px){
+            #favorites_header h4{
+                margin-left: 30px;
+                text-align: left;
+            }
+
+            #favorites_header img{
+                display: block;
+            }
+        }
+
+        /* md ********************************/
+        @media (min-width: 992px){
+
+        }
+
+        /* lg ********************************/
+        @media (min-width: 1200px){
+
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        if(!getCookie('wixplorUser')){
+            open_index();
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#NavbarOP").load('navbar.html', function(){
+                /*NAVBAR **********************************************************/
+                navbar_white();
+                $('#main_Navbar').css({'border-bottom':'1px solid #9496a2'});
+                $('#li_favorites img.navbar_transparent').attr({'src':'assets/icons/navbar_icons/Naranjas/favoritos.png'});
+                $('#li_favorites img.navbar_white').attr({'src':'assets/icons/navbar_icons/Naranjas/favoritos.png'});
+
+                /*NAVBAR **********************************************************/
+
+                /*FOOTER **********************************************************/
+                $("#myFooter").load('footer.html', function(){
+
+                });
+                /*FOOTER **********************************************************/
+
+                inicializar();
+
+                function inicializar(){
+                    //pantallaMoviles();
+                    get_activities();
+                }
+
+                //$(window).resize(pantallaMoviles);
+
+                function pantallaMoviles(){
+                    var width = $(window).width();
+
+                    if(width <= 767){
+                        /* xs ********************************/
+
+                    }else if(width >= 768){
+                        /* sm ********************************/
+
+                    }
+                }
+
+                function get_activities(){
+                    //var dataphp = {'case':9, 'id':user[0].user_id, 'status':'ACEPTADO'}
+                    var dataphp = {'case':1, 'id':user[0].user_id, 'status':'ACEPTADO'}
+                    var data = [];
+                    data[0] = $('.favorites_main_row');
+                    data[1] = {'1':'1'}; //styles
+                    data[2] = "col-xs-12 col-sm-4 col-md-3";
+                    data[3] = false;
+                    data[4] = false;
+                    data[5] = true; //corazones
+                    data[6] = "favorites_main_row";
+                    data[7] = post_get_activities;
+
+                    ajax_activity(dataphp, activities_general_loader, data);
+                }
+
+                function post_get_activities(json, parent){
+                    $('div.wrapper', parent).each(function(){
+                        $(this).css({'margin-top':'5px'});
+                    });
+
+                    $('body').fadeIn(3000);
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function switch_language(){
+            if(language.language == 'es'){
+
+            }else if(language.language == 'en'){
+
+            }
+        }
+    </script>
+</head>
+
+<body style="display: none;">
+    <div id="NavbarOP">
+
+    </div>
+
+    <div class="main_contaniner" style="margin-top: 55px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                    <section id="favorites_header" style="border-bottom: 1px solid #9496a2;">
+                        <div style="position: relative;">
+                            <h4>
+                                <span class="es">FAVORITOS</span>
+                                <span class="en hidden">FAVORITES</span>
+                            </h4>
+
+                            <img src="assets/icons/navbar_icons/Negros/favoritos.png">
+                        </div>
+                    </section>
+
+                    <br>
+
+                    <section id="favorites_main">
+                        <div class="row favorites_main_row">
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="myFooter"></div>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="assets/js/ie-scripts.js"></script>
+<![endif]-->
+</body>
+</html>

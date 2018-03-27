@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<style>
+    .wix-plan{
+        text-align: center;
+    }    
+
+    .left-wing{
+        width:100%!important
+    }
+</style>
+
+<ul id="nav-cont" class="start-ul">
+
+    <div class="row" style="border-bottom: 2px solid #EFEFEF; padding-bottom: 10px;">
+        <div class="col-xs-9">
+            <div class="brand">
+                <a href="index-restaurants.html">
+                    <img src="assets/img/logo_wixplor_colores.png" alt="logo" style="widht: 80%">
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div id="toggle-navigation-wixplor-dynamic" class="toggle-navigation toggle-navigation-wixplor" style="margin-top: 10px">
+                <div class="icon">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <li class="wix-plan"><a style="margin-top:10px!important; margin-bottom: 10px!important; border-bottom: 0px!important" href="register.html">Registrarse</a></li>
+    <li class="wix-plan"><a style="margin-top:10px!important; margin-bottom: 10px!important; border-bottom: 0px!important" href="sign-in.html">Entrar</a></li>
+    <li class="wix-plan"><a style="margin-top:10px!important; margin-bottom: 10px!important; border-top: 1px solid #9496A2!important; border-bottom: 1px solid #9496A2!important; font-weight: bolder" href="">Ser Wixer</a></li>
+
+    <li class="wix-plan"><a style="padding-left: 38px; margin-bottom: 0px ;border-bottom: 0px!important" href="#languages" data-toggle="collapse" aria-expanded="false" aria-controls="languages">ESP<i class="fa fa-chevron-down pull-right"></i></a>
+        <div class="collapse" id="languages">
+            <ul>
+                <li><a href="">ESP</a></li>
+                <li><a href="">ENG</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <li class="wix-plan"><a style="padding-left: 38px; margin-bottom: 0px ;border-bottom: 0px!important" href="#currencies" data-toggle="collapse" aria-expanded="false" aria-controls="currencies">MXN<i class="fa fa-chevron-down pull-right"></i></a>
+        <div class="collapse" id="currencies">
+            <ul>
+                <li><a href="">MXN</a></li>
+                <li><a href="">USD</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <li class="wix-plan"><a style="margin-top:10px!important; margin-bottom: 10px!important; border-bottom: 0px!important" href="">Ayuda</a></li>
+
+</ul>
+
+<script type="text/javascript">
+    $('.header .toggle-navigation').on( "click", function() {
+        $('#outer-wrapper').toggleClass('show-nav');
+        $('#top-bar').hide();
+        $('#nav-cont').toggleClass('top-annuler');
+        $('#nav-loader').toggleClass('left-wing');
+        $('#nav-loader').css("background-color","#FFF");
+        $('#nav-loader').css("color","#000");
+
+    });
+
+    $('#toggle-navigation-wixplor-dynamic').on("click", function () {
+        $('#outer-wrapper').toggleClass('show-nav');
+        $('#top-bar').show();
+        $('#nav-cont').toggleClass('top-annuler');
+        $('#nav-loader').toggleClass('left-wing');
+        $('#nav-loader').css("background-color","#FFF");
+        $('#nav-loader').css("color","#000");
+    });
+</script>
+</body>
+
+</html>

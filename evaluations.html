@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/activity_modular.css">
+    <link rel="stylesheet" type="text/css" href="css/slider_main.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nouislider.all.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/cookiesManager.js"></script>
+    <script type="text/javascript" src="js/table_ajax.js"></script>
+    <script type="text/javascript" src="js/modalGenerator.js"></script>
+    <script type="text/javascript" src="js/modalToggle.js"></script>
+    <!--
+    <script type="text/javascript" src="js/jqueryvalidate/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/validate.js"></script>
+    -->
+    <script type="text/javascript" src="js/openPage.js"></script>
+    <script type="text/javascript" src="js/evaluations.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <title>Evaluations</title>
+    <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+
+    <style type="text/css">
+        /* xs ********************************/
+        @media (min-width: 10px){
+            #evaluations_header h4{
+                margin-left: none;
+                text-align: center;
+            }
+
+            #evaluations_header img{
+                position:absolute;
+                width:20px;
+                height:20px;
+                top: -2px;
+                display: none;
+            }
+
+            .nav-tabs{
+                border-bottom: none;
+            }
+
+            .nav-tabs li{
+                text-align: center;
+                border: 1px solid #9496a2;
+                width: 50%;
+            }
+
+            .nav-tabs li.active{
+                background-color: #CC9340;
+                border: 1px solid #CC9340;
+            }
+
+            .nav-tabs li a{
+                color: black!important;
+                border: none!important;
+                background-color: transparent!important;
+            }
+
+            .nav-tabs li.active a{
+                color: white!important;
+                border: none!important;
+                background-color: transparent!important;
+            }
+        }
+
+        /* sm ********************************/
+        @media (min-width: 768px){
+            #evaluations_header h4{
+                margin-left: 30px;
+                text-align: left;
+            }
+
+            #evaluations_header img{
+                display: block;
+            }
+
+            .nav-tabs li{
+                width: 25%;
+            }
+
+            .nav-tabs li, .nav-tabs li.active{
+                border: none;
+                background-color: transparent;
+            }
+
+            .nav-tabs li.active a{
+                color: #CC9340!important;
+            }
+
+            #evaluations_main h4, #evaluations_main h5{
+                font-size: 1em!important;
+            }
+
+            .imgUser div{
+                width: 30px!important;
+                height: 30px!important;
+            }
+        }
+
+        /* md ********************************/
+        @media (min-width: 992px){
+            .imgUser div{
+                width: 40px!important;
+                height: 40px!important;
+            }
+        }
+
+        /* lg ********************************/
+        @media (min-width: 1200px){
+
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        if(!getCookie('wixplorUser')){
+            open_index();
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#NavbarOP").load('navbar.html', function(){
+                /*NAVBAR **********************************************************/
+                navbar_white();
+                $('#main_Navbar').css({'border-bottom':'1px solid #9496a2'});
+
+                $('#li_evaluations img.navbar_transparent').attr({'src':'assets/icons/navbar_icons/Naranjas/evaluaciones.png'});
+                $('#li_evaluations img.navbar_white').attr({'src':'assets/icons/navbar_icons/Naranjas/evaluaciones.png'});
+
+                $.getScript("js/jqueryvalidate/dist/jquery.validate.min.js");
+                $.getScript("js/validate.js");
+
+                /*NAVBAR **********************************************************/
+
+                /*FOOTER **********************************************************/
+                $("#myFooter").load('footer.html', function(){ 
+
+                });
+                /*FOOTER **********************************************************/
+
+                inicializar();
+
+                function inicializar(){
+                    //pantallaMoviles();
+                    getAllEvaluations();
+                    $('body').fadeIn(3000);
+                }
+
+                function getAllEvaluations(){
+                    //Evaluations as explorer
+                    get_Received_Evaluations_As_Explorer();
+                    get_Made_Evaluations_As_Explorer();
+
+                    if(user[0].type == 2){
+                        //Evaluations as wixer
+                        get_Received_Evaluations_As_Wixer();
+                        get_Made_Evaluations_As_Wixer();
+                    }
+                }
+
+                function get_Received_Evaluations_As_Explorer(){
+                    var dataphp = {'case':2, 'id':user[0].user_id}
+                    var dataevaluations = [];
+                    dataevaluations[0] = $('#received_as_explorer');
+                    dataevaluations[1] = post_get_activities;
+
+                    ajax_evaluation(dataphp, evaluations, dataevaluations);
+                }
+
+                function get_Made_Evaluations_As_Explorer(){
+                    var dataphp = {'case':1, 'id':user[0].user_id}
+                    var dataevaluations = [];
+                    dataevaluations[0] = $('#made_as_explorer');
+                    dataevaluations[1] = post_get_activities;
+
+                    ajax_evaluation(dataphp, evaluations, dataevaluations);
+                }
+
+                function get_Received_Evaluations_As_Wixer(){
+                    var dataphp = {'case':5, 'id':user[0].user_id}
+                    var dataevaluations = [];
+                    dataevaluations[0] = $('#received_as_wixer');
+                    dataevaluations[1] = post_get_activities;
+
+                    ajax_evaluation(dataphp, evaluations, dataevaluations);
+                }
+
+                function get_Made_Evaluations_As_Wixer(){
+                    var dataphp = {'case':4, 'id':user[0].user_id}
+                    var dataevaluations = [];
+                    dataevaluations[0] = $('#made_as_wixer');
+                    dataevaluations[1] = post_get_activities;
+
+                    ajax_evaluation(dataphp, evaluations, dataevaluations);
+                }
+
+                function post_get_activities(json, parent){
+                    var last_evaluation_space = $('div.evaluation_space', $(parent));
+                    last_evaluation_space = last_evaluation_space[last_evaluation_space.length - 1];
+                    $(last_evaluation_space).addClass('hidden');
+                }
+
+                //$(window).resize(pantallaMoviles);
+
+                function pantallaMoviles(){
+                    var width = $(window).width();
+
+                    if(width <= 767){
+                        /* xs ********************************/
+
+                    }else if(width >= 768){
+                        /* sm ********************************/
+
+                    }
+                }
+
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function switch_language(){
+            if(language.language == 'es'){
+
+            }else if(language.language == 'en'){
+
+            }
+        }
+    </script>
+</head>
+
+<body style="display: none;">
+    <div id="NavbarOP">
+
+    </div>
+
+    <div class="main_contaniner" style="margin-top: 55px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                    <section id="evaluations_header">
+                        <div style="position: relative;">
+                            <h4>
+                                <span class="es">EVALUACIONES</span>
+                                <span class="en hidden">EVALUATIONS</span>
+
+                                <span class="hidden explorer wixer_1">
+                                    <span class="es"> COMO EXPLORADOR</span>
+                                    <span class="en hidden"> AS EXPLORER</span>
+                                </span>
+
+                                <span class="hidden wixer_2">
+                                    <span class="es"> COMO WIXER</span>
+                                    <span class="en hidden"> AS WIXER</span>
+                                </span>
+                            </h4>
+
+                            <img src="assets/icons/navbar_icons/Negros/evaluaciones.png">
+                        </div>
+                    </section>
+
+                    <div class="hidden-xs" style="border-bottom: 1px solid #9496a2;"></div>
+
+                    <section id="evaluations_main">
+                        <div class="row">
+                            <div class="col-xs-12" style="padding-left: 0px; padding-right: 0px;">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#received">
+                                            <span class="es">RECIBIDAS</span>
+                                            <span class="en hidden">RECEIVED</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a data-toggle="tab" href="#made">
+                                            <span class="es">REALIZADAS</span>
+                                            <span class="en hidden">MADE</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <div class="tab-content">
+                                    <div class="hidden-xs" style="border-bottom: 1px solid #9496a2;"></div>
+
+                                    <div id="received" class="tab-pane fade in active">
+                                        <div id="received_as_explorer" class="hidden explorer wixer_1">
+                                            
+                                        </div>
+
+                                        <div id="received_as_wixer" class="hidden wixer_2">
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div id="made" class="tab-pane fade">
+                                        <div id="made_as_explorer" class="hidden explorer wixer_1">
+                                            
+                                        </div>
+
+                                        <div id="made_as_wixer" class="hidden wixer_2">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="myFooter"></div>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="assets/js/ie-scripts.js"></script>
+<![endif]-->
+</body>
+</html>

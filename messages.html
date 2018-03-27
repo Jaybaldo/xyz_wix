@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/activity_modular.css">
+    <link rel="stylesheet" type="text/css" href="css/slider_main.css">
+    <link rel="stylesheet" type="text/css" href="css/hover.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nouislider.all.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/cookiesManager.js"></script>
+    <script type="text/javascript" src="js/table_ajax.js"></script>
+    <script type="text/javascript" src="js/modalGenerator.js"></script>
+    <script type="text/javascript" src="js/modalToggle.js"></script>
+    <script type="text/javascript" src="js/jqueryvalidate/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/validate.js"></script>
+    <script type="text/javascript" src="js/openPage.js"></script>
+    <script type="text/javascript" src="js/activities_general_loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <title>Messages</title>
+    <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+
+    <style type="text/css">
+        /* xs ********************************/
+        @media (min-width: 10px){
+            #messages_header h4{
+                margin-left: none;
+                text-align: center;
+            }
+
+            #messages_header img{
+                position:absolute;
+                width:20px;
+                height:20px;
+                top: 0px;
+                display: none;
+            }
+
+            #messages_main h4, #messages_main h5{
+                font-size: .8em;
+            }
+
+            .imgUser{
+                margin-top: 5px;
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        /* sm ********************************/
+        @media (min-width: 768px){
+            #messages_header h4{
+                margin-left: 30px;
+                text-align: left;
+            }
+
+            #messages_header img{
+                display: block;
+            }
+
+            #messages_main h4, #messages_main h5{
+                font-size: 1em;
+            }
+
+            .imgUser{
+                margin-top: 3px;
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        /* md ********************************/
+        @media (min-width: 992px){
+            .imgUser{
+                margin-top: 0px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* lg ********************************/
+        @media (min-width: 1200px){
+
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        if(!getCookie('wixplorUser')){
+            open_index();
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#NavbarOP").load('navbar.html', function(){
+                /*NAVBAR **********************************************************/
+                navbar_white();
+                $('#main_Navbar').css({'border-bottom':'1px solid #9496a2'});
+
+                $('#li_messages img.navbar_transparent').attr({'src':'assets/icons/navbar_icons/Naranjas/mensajes.png'});
+                $('#li_messages img.navbar_white').attr({'src':'assets/icons/navbar_icons/Naranjas/mensajes.png'});
+
+                /*NAVBAR **********************************************************/
+
+                /*FOOTER **********************************************************/
+                $("#myFooter").load('footer.html', function(){
+
+                });
+                /*FOOTER **********************************************************/
+
+                inicializar();
+
+                function inicializar(){
+                    //pantallaMoviles();
+                    $('body').fadeIn(3000);
+                }
+
+                //$(window).resize(pantallaMoviles);
+
+                function pantallaMoviles(){
+                    var width = $(window).width() + 17;
+
+                    if(width <= 767){
+
+                    }else if(width >= 768){
+
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function switch_language(){
+            if(language.language == 'es'){
+
+            }else if(language.language == 'en'){
+
+            }
+        }
+    </script>
+</head>
+
+<body style="display: none;">
+    <div id="NavbarOP">
+
+    </div>
+
+    <div class="main_contaniner" style="margin-top: 55px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 ">
+                    <section id="messages_header" style="border-bottom: 1px solid #9496a2;">
+                        <div style="position: relative;">
+                            <h4>
+                                <span class="es">MENSAJES</span>
+                                <span class="en hidden">MESSAGES</span>
+                            </h4>
+
+                            <img src="assets/icons/navbar_icons/Negros/mensajes.png">
+                        </div>
+                    </section>
+
+                    <br>
+
+                    <section id="messages_main">
+                        <a style="padding: 10px; color: black; border-bottom: 1px solid #efefef;" class="hvr-bounce-to-right" href="http://wixplor.lwf.pod.mybluehost.me/test/chat.html" >
+                            <div class="row " style="padding-left: 10px;">
+                                <div class="col-xs-2 col-sm-1">
+                                    <div class="imgUser" style="background-image: url('http://www.dogguie.net/wp-content/uploads/2011/04/gente-riendo-3.jpg'); background-size: cover; border-radius: 50%;">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-10 col-sm-11" style="padding-left: 0px;">
+                                    <div class="col-xs-9" style="padding-left: 0px;">
+                                        <h4 class="user_name">
+                                            <span class="userName"><strong>
+                                                Anna
+                                            </strong></span>
+
+                                            <span class="activityTime hidden-sm hidden-md hidden-lg" style="margin-left: 10px;">
+                                                10:00AM
+                                            </span>
+
+                                            <span class="activityName hidden-xs" style="margin-left: 10px;">
+                                                <span class="es">Clases de surf</span>
+                                                <span class="en hidden">Surfs' class</span>
+                                            </span>
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-xs-3 hidden-xs" style="padding-left: 0px; padding-right: 0px;">
+                                        <h5 class="activityDate" style="text-align: right;">
+                                            28.02.2018
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-10" style="padding-left: 0px; padding-right: 0px;">
+                                        <h5 class="activityMsj" style="margin-top: 0px;">
+                                            Duis fermentum dapibus erat quis cursus. Phasellus in sagittis nunc. Nunc a nibh mauris. Sed urna felis, mollis vestibulum malesuada vitae, semper in nulla
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-left: 0px;">
+                                        <h5 style="color: #CC9340;">
+                                            <span class="es">Clases de surf</span>
+                                            <span class="en hidden">Surfs' class</span>
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right: 0px;">
+                                        <h5 style="text-align: right;">
+                                            28.02.2018
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <br>
+
+                        <a style="padding: 10px; color: black;    border-bottom: 1px solid #efefef;"  href="http://wixplor.lwf.pod.mybluehost.me/test/chat.html" class="hvr-bounce-to-right" style="padding: 10px">
+                            <div class="row" style="padding-left: 10px;">
+                                <div class="col-xs-2 col-sm-1">
+                                    <div class="imgUser" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9OLFoan0kgyEyeBe82HMZX5fCpNu9auTYu1kYlmYs-ctZwfah'); background-size: cover; border-radius: 50%;">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-10 col-sm-11" style="padding-left: 0px;">
+                                    <div class="col-xs-9" style="padding-left: 0px;">
+                                        <h4 class="user_name">
+                                            <span class="userName"><strong>
+                                                Marco
+                                            </strong></span>
+
+                                            <span class="activityTime hidden-sm hidden-md hidden-lg" style="margin-left: 10px;">
+                                                10:00AM
+                                            </span>
+
+                                            <span class="activityName hidden-xs" style="margin-left: 10px;">
+                                                <span class="es">Pasear en moto</span>
+                                                <span class="en hidden">Ride my bike</span>
+                                            </span>
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-xs-3 hidden-xs" style="padding-left: 0px; padding-right: 0px;">
+                                        <h5 class="activityDate" style="text-align: right;">
+                                            28.02.2018
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-10" style="padding-left: 0px; padding-right: 0px;">
+                                        <h5 class="activityMsj" style="margin-top: 0px;">
+                                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ultrices diam euismod tellus hendrerit suscipit vitae sit amet ipsum. Curabitur pulvinar facilisis ultricies. Quisque sollicitudin rhoncus porttitor
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-left: 0px;">
+                                        <h5 style="color: #CC9340;">
+                                            <span class="es">Pasear en moto</span>
+                                            <span class="en hidden">Ride my bike</span>
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right: 0px;">
+                                        <h5 style="text-align: right;">
+                                            28.02.2018
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <br>
+
+                        <a style="padding: 10px; color: black;    border-bottom: 1px solid #efefef;"  class="hvr-bounce-to-right" href="http://wixplor.lwf.pod.mybluehost.me/test/chat.html">
+                            <div class="row" style="padding-left: 10px;">
+                                <div class="col-xs-2 col-sm-1">
+                                    <div class="imgUser" style="background-image: url('https://i.pinimg.com/236x/5d/7a/76/5d7a762964a6d8d3ca01bfbd4c5a9808--smiling-people-happy-people.jpg'); background-size: cover; border-radius: 50%;">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-10 col-sm-11" style="padding-left: 0px;">
+                                    <div class="col-xs-9" style="padding-left: 0px;">
+                                        <h4 class="user_name">
+                                            <span class="userName"><strong>
+                                                Fred
+                                            </strong></span>
+
+                                            <span class="activityTime hidden-sm hidden-md hidden-lg" style="margin-left: 10px;">
+                                                10:00AM
+                                            </span>
+
+                                            <span class="activityName hidden-xs" style="margin-left: 10px;">
+                                                <span class="es">Vamos a correr</span>
+                                                <span class="en hidden">Let´s run</span>
+                                            </span>
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-xs-3 hidden-xs" style="padding-left: 0px; padding-right: 0px;">
+                                        <h5 class="activityDate" style="text-align: right;">
+                                            28.02.2018
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-10" style="padding-left: 0px; padding-right: 0px;">
+                                        <h5 class="activityMsj" style="margin-top: 0px;">
+                                            Duis ullamcorper sit amet leo eu tincidunt. Etiam suscipit nulla et rutrum pharetra. Sed nec lectus tellus. Nulla facilisi. Etiam laoreet sem in tincidunt bibendum
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-left: 0px;">
+                                        <h5 style="color: #CC9340;">
+                                            <span class="es">Vamos a correr</span>
+                                            <span class="en hidden">Let´s run</span>
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right: 0px;">
+                                        <h5 style="text-align: right;">
+                                            28.02.2018
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <br>
+
+                        <a style="padding: 10px; color: black;     border-bottom: 1px solid #efefef;" class="hvr-bounce-to-right" href="http://wixplor.lwf.pod.mybluehost.me/test/chat.html">
+                            <div class="row" style="padding-left: 10px;">
+                                <div class="col-xs-2 col-sm-1">
+                                    <div class="imgUser" style="background-image: url('http://www.hdfondos.eu/pictures/2012/0708/1/th1_562932.jpg'); background-size: cover; border-radius: 50%;">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-10 col-sm-11" style="padding-left: 0px;">
+                                    <div class="col-xs-9" style="padding-left: 0px;">
+                                        <h4 class="user_name">
+                                            <span class="userName"><strong>
+                                                Allison
+                                            </strong></span>
+
+                                            <span class="activityTime hidden-sm hidden-md hidden-lg" style="margin-left: 10px;">
+                                                10:00AM
+                                            </span>
+
+                                            <span class="activityName hidden-xs" style="margin-left: 10px;">
+                                                <span class="es">Conociendo gente nueva</span>
+                                                <span class="en hidden">Meeting people</span>
+                                            </span>
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-xs-3 hidden-xs" style="padding-left: 0px; padding-right: 0px;">
+                                        <h5 class="activityDate" style="text-align: right;">
+                                            28.02.2018
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-10" style="padding-left: 0px; padding-right: 0px;">
+                                        <h5 class="activityMsj" style="margin-top: 0px;">
+                                            Cras a mi nec libero condimentum facilisis. Etiam at consectetur lorem, imperdiet consequat enim.
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-left: 0px;">
+                                        <h5 style="color: #CC9340;">
+                                            <span class="es">Conociendo gente nueva</span>
+                                            <span class="en hidden">Meeting people</span>
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right: 0px;">
+                                        <h5 style="text-align: right;">
+                                            28.02.2018
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="myFooter"></div>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="assets/js/ie-scripts.js"></script>
+<![endif]-->
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/activity_modular.css">
+    <link rel="stylesheet" type="text/css" href="css/slider_main.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nouislider.all.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/cookiesManager.js"></script>
+    <script type="text/javascript" src="js/table_ajax.js"></script>
+    <script type="text/javascript" src="js/modalGenerator.js"></script>
+    <script type="text/javascript" src="js/modalToggle.js"></script>
+    <!--
+    <script type="text/javascript" src="js/jqueryvalidate/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/validate.js"></script>
+    -->
+    <script type="text/javascript" src="js/openPage.js"></script>
+    <script type="text/javascript" src="js/activities_general_loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <title>Support</title>
+    <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+
+    <style type="text/css">
+        /* xs ********************************/
+        @media (min-width: 10px){
+
+        }
+
+        /* sm ********************************/
+        @media (min-width: 768px){
+
+        }
+
+        /* md ********************************/
+        @media (min-width: 992px){
+
+        }
+
+        /* lg ********************************/
+        @media (min-width: 1200px){
+
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#NavbarOP").load('navbar.html', function(){
+                /*NAVBAR **********************************************************/
+                navbar_white();
+                $('#main_Navbar').css({'border-bottom':'1px solid #9496a2'});
+
+                $.getScript("js/jqueryvalidate/dist/jquery.validate.min.js");
+                $.getScript("js/validate.js");
+
+                /*NAVBAR **********************************************************/
+
+                /*FOOTER **********************************************************/
+                $("#myFooter").load('footer.html', function(){
+
+                });
+                /*FOOTER **********************************************************/
+
+                inicializar();
+
+                function inicializar(){
+                    $('body').fadeIn(3000);
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function switch_language(){
+            if(language.language == 'es'){
+
+            }else if(language.language == 'en'){
+
+            }
+        }
+    </script>
+</head>
+
+<body style="display: none;">
+    <div id="NavbarOP">
+
+    </div>
+
+    <div class="main_contaniner" style="margin-top: 65px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <section id="page_content">
+                        <h3 style="text-align: center;">
+                           <span class="es">¿Necesitas ayuda?</span>
+                           <span class="en hidden">Do you need help?</span>
+                        </h3>
+
+                        <br>
+
+                        <p style="text-align: center;">
+                            <span class="es">¿Ya leíste nuestras <a href="http://wixplor.com/test/faq.html">preguntas frecuentes?</a> Si tienes más dudas y buscas aclaraciones no dudes en contactarnos. Con gusto te responderemos y daremos seguimiento a tus dudas. support@wixplor.com</span>
+                            <span class="en hidden">¿Ya leíste nuestras <a href="http://wixplor.com/test/faq.html">preguntas frecuentes?</a> Si tienes más dudas y buscas aclaraciones no dudes en contactarnos. Con gusto te responderemos y daremos seguimiento a tus dudas. <br>support@wixplor.com</span>
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myFooter"></div>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="assets/js/ie-scripts.js"></script>
+<![endif]-->
+</body>
+</html>

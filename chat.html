@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+      <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+      <link rel="stylesheet" type="text/css" href="css/activity_modular.css">
+      <link rel="stylesheet" type="text/css" href="css/slider_main.css">
+      <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick.css">
+      <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick-theme.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+      <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+      <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+      <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+      <script type="text/javascript" src="assets/js/jquery.hotkeys.js"></script>
+      <script type="text/javascript" src="assets/js/jquery.nouislider.all.min.js"></script>
+      <script type="text/javascript" src="js/jquery.cookie.js"></script>
+      <script type="text/javascript" src="js/cookiesManager.js"></script>
+      <script type="text/javascript" src="js/table_ajax.js"></script>
+      <script type="text/javascript" src="js/modalGenerator.js"></script>
+      <script type="text/javascript" src="js/modalToggle.js"></script>
+      <script type="text/javascript" src="js/openPage.js"></script>
+      <script type="text/javascript" src="js/activities_general_loader.js"></script>
+      <script src="assets/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <meta name="google-signin-client_id" content="623547845164-2neto0hq74tivarbpi3n54isq63m1dq9.apps.googleusercontent.com">
+
+
+      <title>CHAT</title>
+      <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+      <style type="text/css">
+
+         a{
+            color: #000;
+         }
+
+         .noppdleft{
+         position: relative;
+         top: 5px;
+         }
+         #contenidoNoTOP{
+         margin-top: 20px;
+         }
+         .btnBienvenida{
+         padding: 5px;
+         text-align: center;
+         position: relative;
+         margin-top: 10px;
+         text-align: right;
+         font-size: 0.90em;
+         }
+         @media screen and (max-width: 767px){
+         .font12{
+         font-size: 12px!important;
+         }
+         .btnsActivity{
+         margin-top: -25px!important;
+         }
+         .derechaCel{
+         text-align: right;
+         margin-right: 15px;
+         }
+         .btnActivity{
+         border: 1px solid #000;
+         padding: 10px;
+         }
+         .btnBienvenida{
+         padding: 5px;
+         text-align: center;
+         position: relative;
+         margin-top: 10px;
+         font-size: 0.90em;
+         }
+         #contenidoNoTOP{
+         margin-top: 10px;
+         }
+         .noppdleft{
+         padding-left: 15px;
+         }
+         }
+         .mayus{
+         text-transform: uppercase;
+         }
+         .rpu{
+         color: #9496a2;
+         text-decoration: none;
+         cursor: pointer;
+         }
+         .centarImg{
+         background-repeat: no-repeat;
+         background-position: 50%;
+         background-size: 100% auto;
+         margin-bottom: 15px;
+         }
+         .itemsContaint{
+         margin-top: 50px;
+         }
+         .titles{
+         margin-left: 25px;
+         font-weight: lighter;
+         }
+         .subtitles{
+         margin-top: 0px;
+         margin-left: 25px;
+         }
+         #Contenido{
+         margin-top: 15px;
+         }
+         @media screen and (max-width: 991px){
+         #imgUser{
+         height: 60px!important;
+         width: 60px!important;
+         }
+         h6{
+         font-size: 0.85em;
+         }
+         .col-sm-2 > h5{
+         font-size: 12px;
+         }
+         }
+         @media screen and (max-width: 767px){
+         #imgUser{
+         height: 60px!important;
+         width: 90px!important;
+         }
+         /*Aquí ya comienza la madre de comentarios en movil*/
+         .titulo{
+         text-align: center;
+         font-size: 24px;
+         padding-bottom: 5px!important;
+         }
+         .itemsContaint{
+         margin-top: 80px;
+         }
+         .imgAct{
+         height: 200px!important;
+         width: 92%!important;
+         padding: 15px!important;
+         margin: 15px!important;
+         }
+         .titles{
+         margin-left: 0px;
+         font-weight: lighter;
+         }
+         .subtitles{
+         margin-top: 0px;
+         margin-left: 0px;
+         }
+         }
+         /*Las tabs en general*/
+         .nav-tabs {
+         border-bottom: 1px solid #9496a2;
+         padding-bottom: 10px;
+         }
+         /*Las tabs cuando están seleccionadas*/
+         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a.top:focus{
+         color: #cc9340;
+         cursor: pointer;
+         background-color: #fff;
+         border: 0px solid #ddd;
+         border-bottom-color: transparent;
+         font-weight: 700;
+         }
+         /*Las tabs cuando no son las seleccionadas*/
+         .nav-tabs > li > a{
+         color: #000;
+         font-weight: 400;
+         }
+         /*Las tabs cuando son las no seleccionadas, incluyendo el hover*/
+         .nav-tabs > li > a:hover{
+         font-weight: 400;
+         background-color: #fff;
+         color: #000;
+         border:0px;
+         border-top: 1px solid #000;
+         border-bottom: 1px solid #000;
+         border-radius: 0px;
+         }
+         /*Estructura de las tabs*/
+         .nav-tabs > li > a{
+         margin-right: 30px;
+         }
+         @media screen and (min-width: 768px){
+         .nopaddingpc{
+         padding: 0px;
+         }
+         }
+
+         #typeActivity{
+            font-weight: bold;
+            margin-top: 0px;
+         }
+
+         .messagesPrev{
+            font-weight: bold;
+         }
+
+         .positionOP{
+            display: none;
+         }
+         .onlyMobile{
+            display: none;
+         }
+
+         @media screen and (max-width: 767px){
+
+         .onlyMobile{
+            display: block;
+         }
+
+         .npr{
+            padding-right: 0px;
+         }
+
+            .positionOP{
+               color: #cc9340;
+               margin-top: -65px!important;
+               position: absolute;
+               z-index: 999;
+               margin-left: 35px;
+               font-size: 1.5em;
+            }
+
+
+         .messagesPrev{
+            font-weight: bold;
+            font-size: 13px;
+         }
+
+         #nameP{
+            font-size: 1.22em;
+         }
+
+         #imgUser{
+            height: 50px!important;
+            width: 50px!important;
+            margin-left: 25px!important;
+            margin-top: 5px!important;
+         }
+
+         #typeActivity{
+            color: #cc9340;
+            font-size: 0.9em;
+            margin-top: 8px;
+         }
+
+         .nomargintop{
+         margin-top: 0px!important;
+         font-size: 1em;
+         }
+         .a{
+         margin-top: 12px!important;
+         }
+         .b{
+         margin-top: 35px!important;
+         font-size: 1em;
+         font-weight: bolder;
+         }
+
+
+         }
+
+         /*PRROS*/
+
+         /*Mensajes receptor*/
+
+         /*Mensaje inicial del receptor*/
+         .mensajeRIni{
+            background-color: #cc9340ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 30px 20px 20px 5px;
+            line-height: 2;
+         }
+
+         /*Mensaje en medio de receptor*/
+         .mensajeRNor{
+            background-color: #cc9340ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 5px 20px 20px 5px;
+            line-height: 2;
+         }
+
+         /*Mensaje final de receptor*/
+         .mensajeRFin{
+            background-color: #cc9340ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 5px 20px 20px 30px;
+            line-height: 2;
+         }
+
+         /*Cuando solo manda un mensaje*/
+         .mensajeRUni{
+            background-color: #cc9340ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 1.3em;
+            line-height: 2;
+         }
+
+         @media screen and (max-width: 767px){
+               /*Mensaje inicial del receptor*/
+               .mensajeRIni{
+                  background-color: #DDB67F;
+                  padding: 12px;
+                  color: #000;
+                  border-radius: 0px 20px 20px 5px;
+                  line-height: 2;
+               }
+
+               /*Mensaje en medio de receptor*/
+               .mensajeRNor{
+                  background-color: #DDB67F;
+                  padding: 12px;
+                  color: #000;
+                  border-radius: 5px 20px 20px 5px;
+                  line-height: 2;
+               }
+
+               /*Mensaje final de receptor*/
+               .mensajeRFin{
+                  background-color: #DDB67F;
+                  padding: 12px;
+                  color: #000;
+                  border-radius: 1px 0px 20px 40px;
+                  line-height: 2;
+               }
+
+               /*Cuando solo manda un mensaje*/
+               .mensajeRUni{
+                  background-color: #DDB67F;
+                  padding: 12px;
+                  color: #000;
+                  border-radius: 1.3em;
+                  line-height: 2;
+               }
+         }
+
+          /*Mensajes emisor*/
+
+         /*Mensaje inicial del emisor*/
+         .mensajeEIni{
+            background-color: #538d95ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 30px 20px 20px 5px;
+            line-height: 2;
+         }
+
+         /*Mensaje en medio de emisor*/
+         .mensajeENor{
+            background-color: #538d95ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 5px 20px 20px 5px;
+            line-height: 2;
+         }
+
+         /*Mensaje final de emisor*/
+         .mensajeEFin{
+            background-color: #538d95ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 5px 20px 20px 30px;
+            line-height: 2;
+         }
+
+         /*Cuando solo manda un mensaje*/
+         .mensajeEUni{
+            background-color: #538d95ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 1.3em;
+            line-height: 2;
+         }
+
+         @media screen and (max-width: 767px){
+             /*Mensajes emisor*/
+
+            /*Mensaje inicial del emisor*/
+            .mensajeEIni{
+               background-color: #8BB2B8;
+               padding: 12px;
+               color: #000;
+               border-radius: 20px 0px 20px 5px;
+               line-height: 2;
+            }
+
+            /*Mensaje en medio de emisor*/
+            .mensajeENor{
+               background-color: #8BB2B8;
+               padding: 12px;
+               color: #000;
+               border-radius: 5px 20px 20px 5px;
+               line-height: 2;
+            }
+
+            /*Mensaje final de emisor*/
+            .mensajeEFin{
+               background-color: #8BB2B8;
+               padding: 12px;
+               color: #000;
+               border-radius: 1px 1px 40px 20px;
+               line-height: 2;
+            }
+
+            /*Cuando solo manda un mensaje*/
+            .mensajeEUni{
+               background-color: #8BB2B8;
+               padding: 12px;
+               color: #000;
+               border-radius: 1.3em;
+               line-height: 2;
+            }
+         }
+
+
+
+         /*el otro wey que no envía el mensaje*/
+         .receptor > #mensajes > .col-sm-2 {
+            float: left;
+         }
+
+         /*quien envía el mensaje*/
+         .emisor > #mensajes > .col-sm-2 {
+            float: right;
+         }
+
+         .emisor > #mensajes > .col-sm-10 {
+            text-align: right;
+         }
+
+         textarea{
+            resize: none;
+            padding: 15px;
+            border: 1px solid #000;
+         }
+
+         textarea:focus {
+            outline-color:#39af4a;
+         }
+
+
+
+         @media screen and (max-width: 767px){
+            textarea{
+               resize: none;
+               padding: 18px;
+               border:1px solid #fff;
+               border-right: 1px solid #a0a0a0;
+               font-size: 20px;
+            }
+
+            textarea:focus {
+               outline: none;
+
+            }
+
+            #contenido{
+               background-color: #efefef;
+            }
+
+            .fixed{
+               position: fixed;
+               width: 100%;
+               bottom: 0px!important;
+               z-index: 999;
+               background-color: #fff;
+               border:1px solid #fff;
+               height: 10%;
+            }
+
+            .fixed:focus{
+               top:65%;
+               background-color: #efefef;
+               bottom: 15px;
+            }
+
+            .fixed > .mobilemesagge > .message{
+               width: 70%;
+               border:1px solid #fff;
+               border-left: 1px solid #efefef;
+
+            }
+
+
+            textarea.messageM{
+               border:0px solid #000;
+               padding: 15px;
+               font-size: 14px;
+               border-right: 1px solid #000;
+            }
+
+            textarea.messageM:focus{
+               border-right: 1px solid #efefef;
+               outline: none;
+               width: 80%;
+               padding-top: 5px;
+            }
+
+            .mobilemesagge:focus{
+               width: 80%!important;
+            }
+
+            .mobilemesagge {
+
+               margin: 0px;
+               padding: 0px!important;
+               margin-left: -15px;
+               margin-right: -15px;
+            }
+         }
+
+      </style>
+      <script type="text/javascript">
+         function switch_language(){
+             navbar_white();
+         }
+      </script>
+   </head>
+   <body>
+      <div id="NavbarOP" style="display: none;">  </div>
+      <script type="text/javascript">
+         $("#NavbarOP").load('navbar.html', function(){
+
+         });
+      </script>
+      <!--    <div class="bobo" style="height: 100%; background-color: #fff; color: #000; text-align: center;">
+         <h3 class="es mayus">Perfil</h3>
+         <h3 class="en mayus">Profile</h3>
+         </div>-->
+      <div id="contenidoNoTOP" class="container_fluid">
+         <section id="Titulo">
+            <div class="container">
+               <div class="row" style="border-bottom: 1px solid #9496a2">
+
+                  <div class="col-xs-1">
+                     <a href="messages.html">
+                        <div id="reload" class="centarImg" style="background-image: url('assets/img/arrow_back.png'); background-size: cover; height: 30px!important; width: 30px!important; border-radius: 5%; margin-top: 20px; margin-left: -15px;">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-xs-2 col-sm-1 noppdleft" style="padding: 0;">
+                     <div id="imgUser" class="centarImg" style="background-image: url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t1.0-9/19598758_409042179532116_7107684463906300773_n.jpg?oh=c2b79ae928b29f38f9bcee10d7d9e1e2&oe=5B43F37E'); background-size: cover; height: 80px; width: 80px; border-radius: 5%;">
+                     </div>
+                  </div>
+
+                  <div class="hidden-* visible-xs col-xs-6 ">
+                     <a href="profile.html?userid=7">
+                        <h4 id="name" style="margin-left: 25px;margin-top: 25px;font-weight: bolder;">
+                           <span>Luis Osuna</span>
+                        </h4>
+                     </a>
+                  </div>
+                  <div class="hidden-* visible-xs col-xs-2">
+                     <div id="reload" class="centarImg" style="background-image: url('assets/img/reload.png'); background-size: cover; height: 30px!important; width: 30px!important; border-radius: 5%; margin-top: 20px; margin-left: 0px;">
+                        </div>
+                  </div>
+
+                  <div class="hidden-xs col-sm-5" style="padding-left: 45px;">
+                     <h4 id="name">
+                        <span>Luis Osuna</span>
+                     </h4>
+                     <h5 id="place">
+                        <span>Mazatlán, Sinaloa</span>
+                     </h5>
+
+                     <h6 style="font-size: 12px;">
+                        <span class="es">Información autentificada: </span>
+                        <span class="en">Authenticated information: </span>
+                        <i class="fas fa-check" style="color: #538d95"></i>
+                     </h6>
+
+                  </div>
+
+                  <div class="hidden-xs col-sm-4" style="padding-left: 45px;margin-top: 5px;">
+                     <h4 id="activities" style="font-weight: bold; font-size: 14px;">
+                        <span class="es">Viaje a Xcaret</span>
+                        <span class="en">XCaret Travel</span>
+                     </h4>
+                     <h5 id="reserved">
+                        <span class="es">Reservado para </span>
+                        <span class="en">Reserved to </span>
+                        8 Enero 2018
+                     </h5>
+
+                     <h5 style="color: #39af4a">
+                        <span class="es">Confirmada</span>
+                        <span class="en">Confirmed </span>
+                     </h5>
+                  </div>
+
+                  <div class="hidden-xs col-sm-2">
+                     <a href="google.com">
+                        <h6 style="color: #9294a0">
+                           <span class="es">Denunciar usuario</span>
+                           <span class="en">Report user</span>
+                        </h6>
+                     </a>
+                  </div>
+
+               </div>
+            </div>
+         </section>
+
+         <section id="contenido">
+
+            <div class="container receptor" style="padding-top: 25px; padding-bottom: 25px; border-top: 1px solid #efefef;">
+               <div id="mensajes">
+                  <div class="hidden-xs col-sm-2">
+                     <div id="imgUser" class="centarImg" style="background-image: url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t1.0-9/19598758_409042179532116_7107684463906300773_n.jpg?oh=c2b79ae928b29f38f9bcee10d7d9e1e2&oe=5B43F37E'); background-size: cover; height: 80px; width: 80px; border-radius: 50%;">
+                     </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-10">
+                     <h6>
+                        <span>12.05.2018</span>
+                     </h6>
+                     <h5 id="mensaje" class="mensajeRIni">
+                        <span>¡Hola amigo! Buenas tardes</span>
+                     </h5>
+                     <h5 id="mensaje" class="mensajeRNor">
+                        <span>Ya está todo listo para que venga a disfrutar un poco del puerto</span>
+                     </h5>
+                     <h5 id="mensaje" class="mensajeRFin">
+                        <span>Cualquier cosa que necesite, me avisa por aquí</span>
+                     </h5>
+                  </div>
+               </div>
+            </div>
+
+            <div class="container emisor" style="padding-top: 25px; padding-bottom: 25px; border-top: 1px solid #efefef;">
+               <div id="mensajes">
+                  <div class="hidden-xs    col-sm-2">
+                     <div id="imgUser" class="centarImg" style="background-image: url('assets/img/users/0/user_no_login.png'); background-size: cover; height: 80px; width: 80px; border-radius: 50%;">
+                     </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-10">
+                     <h6>
+                        <span>12.05.2018</span>
+                     </h6>
+                     <h5 id="mensaje" class="mensajeEIni">
+                        <span>Hola Luis, muchas gracias, mi familia está emocionada</span>
+                     </h5>
+                     <h5 id="mensaje" class="mensajeENor">
+                        <span>Solo tengo que saber si debo llevar un poco mas de dinero para comprar comida o ya viene incluida en el iaje</span>
+                     </h5>
+                     <h5 id="mensaje" class="mensajeENor">
+                        <span>Viajes*</span>
+                     </h5>
+                     <h5 id="mensaje" class="mensajeEFin">
+                        <span>Y además del transporte al hotel</span>
+                     </h5>
+                  </div>
+               </div>
+            </div>
+
+
+            <div class="container receptor" style="padding-top: 25px; padding-bottom: 25px; border-top: 1px solid #efefef;">
+               <div id="mensajes">
+                  <div class="hidden-xs col-sm-2">
+                     <div id="imgUser" class="centarImg" style="background-image: url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t1.0-9/19598758_409042179532116_7107684463906300773_n.jpg?oh=c2b79ae928b29f38f9bcee10d7d9e1e2&oe=5B43F37E'); background-size: cover; height: 80px; width: 80px; border-radius: 50%;">
+                     </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-10">
+                     <h6>
+                        <span>12.05.2018</span>
+                     </h6>
+                     <h5 id="mensaje" class="mensajeRUni">
+                        <span class="es">Usted no tiene que preocuparse por nada, nosotros incluimos alimentación para cada uno de sus familiares, que es un plato de ceviche de camaron o un pescado zarandeado (por familia), con un refresco y unas papas sabritas. Y con respecto al viaje, nosotros podemos pasar por usted y dejar a su familia sin ningun problema</span>
+                     </h5>
+                  </div>
+               </div>
+            </div>
+
+            <div class="container emisor" style="padding-top: 25px; padding-bottom: 25px; border-top: 1px solid #efefef;">
+               <div id="mensajes">
+                  <div class="hidden-xs col-sm-2">
+                     <div id="imgUser" class="centarImg" style="background-image: url('assets/img/users/0/user_no_login.png'); background-size: cover; height: 80px; width: 80px; border-radius: 50%;">
+                     </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-10">
+                     <h6>
+                        <span>12.05.2018</span>
+                     </h6>
+                     <h5 id="mensaje" class="mensajeEUni">
+                        <span>Muchas gracias</span>
+                     </h5>
+                  </div>
+               </div>
+            </div>
+            <br><br><br><br>
+
+            <div class="container fixed">
+               <div class="mobilemesagge col-xs-8 col-sm-12" style="padding-left: 20%;">
+                  <div class="">
+                     <textarea name="message" placeholder="Introduce el mensaje" class="messageM" id="message" style="width: 100%;" maxlength="254"></textarea>
+                  </div>
+                <!--  <div class="visible-xs">
+                     <input type="text" name="message" id="messageM" maxlength="254" placeholder="Introduce el mensaje" class="messageM">
+                  </div>
+                -->
+               </div>
+               <div class="col-xs-2">
+                  <div class="visible-xs col-xs-2 noppdleft" style="padding: 0;">
+                     <div id="imgUser" class="centarImg" style="background-image: url('assets/img/call.png'); background-size: cover; height: 30px!important; width: 30px!important; border-radius: 5%;">
+                     </div>
+                  </div>
+               </div>
+               <div class="visible-xs col-xs-2 ">
+                  <div class="col-xs-2 noppdleft" >
+                     <div id="imgUser" class="centarImg" style="background-image: url('assets/img/send.png'); background-size: cover; height: 30px!important; width: 30px!important; border-radius: 5%;">
+                     </div>
+                  </div>
+               </div>
+
+               <div id="sendmessage" class="hidden-xs col-sm-2 col-sm-offset-10" style="margin-top: 15px;height: 40px">
+                  <a  style="text-align: center; background-color: #cc9340; color: #fff; padding: 10px;">Enviar mensaje</a>
+               </div>
+            </div>
+
+         </section>
+
+
+      </div>
+
+   </body>
+
+</html>

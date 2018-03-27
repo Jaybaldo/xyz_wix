@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <link rel="stylesheet" type="text/css" href="css/activity_modular.css">
+    <link rel="stylesheet" type="text/css" href="css/slider_main.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick-theme.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.js"></script>
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/cookiesManager.js"></script>
+    <script type="text/javascript" src="js/table_ajax.js"></script>
+    <script type="text/javascript" src="js/modalGenerator.js"></script>
+    <script type="text/javascript" src="js/modalToggle.js"></script>
+    <script type="text/javascript" src="js/openPage.js"></script>
+    <script type="text/javascript" src="js/activities_general_loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+
+
+
+
+
+    <script src="assets/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <title>Wixplor Activity</title>
+    <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+
+    <style type="text/css">
+        #botonMagico{
+            padding: 0;
+            height: 85px;
+            z-index: 9999;
+            width: 100%;
+            position: fixed;
+            bottom: -14px;
+            right: 0px;
+            left: 0px;
+            transform: translateY(100%);
+            transition: all 0.5s ease;
+            background-color: #fff;
+            border-top: 2px solid #efefef;
+
+        }
+
+        .entrar{
+            transform: translateY(0)!important;
+        }
+
+        ul.bullets li:before{
+            content: none!important;
+        }
+
+        hr{
+            border-top: 1px solid #9496a2;
+        }
+
+        .naranja{
+            color: #d8882d!important;
+        }
+
+        .review .author{
+            width: 50px!important;
+            margin-top: 15px!important;
+            margin-right: 10px;
+        }
+
+        .rating .stars .fa.active{
+            color: #d8882d;
+        }
+
+        .date{
+            font-size: 10px;
+            font-weight: lighter;
+        }
+
+        .avatar-design{
+            height: 100px;
+            width: 100px;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            border-radius: 50%;
+            background-size: 100% auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px;
+        }
+        .avatar-design:hover{
+            cursor: pointer;
+        }
+
+        .small{
+            height: 50px!important;
+            width: 50px!important;
+        }
+
+        .centarImg{
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: 100% auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px;
+        }
+
+        @media screen and (min-width: 768px){
+            #map-detail{
+                height: 350px!important;
+            }
+
+            input[type="text"], input[type="date"], input[type="email"], input[type="search"], input[type="password"], input[type="number"], input[type="tel"], textarea.form-control, input[type="time" i]{
+                border-radius: 0!important;
+
+            }
+            .bottom-img-actv{
+                padding: 17%!important;
+            }
+
+
+        }
+
+        @media screen and (max-width: 767px){
+            .centrarImg{
+                width: 100px!important;
+                height: 100px!important;
+            }
+
+
+
+            .middle-img-actv{
+                background-size: auto!important;
+                padding: 19%!important;
+
+            }
+        }
+
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+       .comments{
+           padding-left: 0px!important;
+           padding-right: 0px!important;
+           padding-top: 14px;
+           padding-bottom: 10px;
+           /*height: 115px;*/
+       }
+       .see-all-actv:hover{
+           cursor: pointer;
+       }
+
+       .thumb {
+            display: inline-block!important;
+            width: 200px!important;
+            height: 200px!important;
+            margin: 5px!important;
+            border: 3px solid #c99!important;
+            background-position: center!important;
+            background-size: cover!important;
+        }
+        .carousel-control{
+            background: none!important;
+        }
+
+
+
+
+        @media (max-width: 768px){
+            .fl_md .modal-dialog {
+                width: 100%!important;
+                height: 100%!important;
+                margin: 0!important;
+                padding: 0!important;
+            }
+
+            .fl_md .modal-content {
+                height: auto!important;
+                min-height: 100%!important;
+                border-radius: 0!important;
+            }
+        }
+
+        .form-control{
+            text-transform: uppercase;
+         }
+
+         /*Añade el margin por el navbar*/
+         #contenidoNoTOP{
+            margin-top: 70px;
+         }
+
+         .nav-tabs {
+         border: 0px solid #9496a2;
+         margin-top: 20px;
+         margin-bottom: 20px;
+         }
+
+         .nav-tabs > li{
+            width: 50%;
+
+            border: 1px solid #efefef;
+         }
+         /*Las tabs cuando están seleccionadas*/
+         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a.top:focus{
+            color: #cc9340;
+            cursor: pointer;
+            background-color: #fff;
+            border: 0px solid #ddd;
+            border-bottom-color: transparent;
+            font-weight: 700;
+         }
+         /*Las tabs cuando no son las seleccionadas*/
+         .nav-tabs > li > a{
+            color: #000;
+            font-weight: 400;
+         }
+         /*Las tabs cuando son las no seleccionadas, incluyendo el hover*/
+         .nav-tabs > li > a:hover{
+            font-weight: 400;
+            background-color: #fff;
+            color: #000;
+            border:0px;
+            border: 1px solid #9294a0;
+            border-radius: 0px;
+         }
+
+         /*Las tabs cuando están seleccionadas*/
+         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a.top:focus{
+            color: #fff!important;
+            border-radius: 0px!important;
+            cursor: pointer!important;
+            background-color: #cc9340!important;
+            border: 0px solid #ddd!important;
+            border-bottom-color: transparent!important;
+            font-weight: 700!important;
+         }
+
+         @media screen and (max-width: 767px){
+            .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a.top:focus{
+               font-size: 0.77em;
+            }
+
+            .nav-tabs > li > a{
+               font-size: 0.77em;
+            }
+         }
+
+         h6{
+            color: #9294a0!important;
+         }
+
+
+    </style>
+
+    <style type="text/css">
+         a{
+            color: #000;
+         }
+
+         .noppdleft{
+         position: relative;
+         top: 5px;
+         }
+         #contenidoNoTOP{
+         margin-top: 20px;
+         }
+         .btnBienvenida{
+         padding: 5px;
+         text-align: center;
+         position: relative;
+         margin-top: 10px;
+         text-align: right;
+         font-size: 0.90em;
+         }
+         @media screen and (max-width: 767px){
+         .font12{
+         font-size: 12px!important;
+         }
+         .btnsActivity{
+         margin-top: -25px!important;
+         }
+         .derechaCel{
+         text-align: right;
+         margin-right: 15px;
+         }
+         .btnActivity{
+         border: 1px solid #000;
+         padding: 10px;
+         }
+         .btnBienvenida{
+         padding: 5px;
+         text-align: center;
+         position: relative;
+         margin-top: 10px;
+         font-size: 0.90em;
+         }
+         #contenidoNoTOP{
+         margin-top: 10px;
+         }
+         .noppdleft{
+         padding-left: 15px;
+         }
+         }
+         .mayus{
+         text-transform: uppercase;
+         }
+         .rpu{
+         color: #9496a2;
+         text-decoration: none;
+         cursor: pointer;
+         }
+         .centarImg{
+         background-repeat: no-repeat;
+         background-position: 50%;
+         background-size: 100% auto;
+         margin-bottom: 15px;
+         }
+         .itemsContaint{
+         margin-top: 50px;
+         }
+         .titles{
+         margin-left: 25px;
+         font-weight: lighter;
+         }
+         .subtitles{
+         margin-top: 0px;
+         margin-left: 25px;
+         }
+         #Contenido{
+         margin-top: 15px;
+         }
+         @media screen and (max-width: 991px){
+         #imgUser{
+         height: 60px!important;
+         width: 60px!important;
+         }
+         h6{
+         font-size: 0.85em;
+         }
+         .col-sm-2 > h5{
+         font-size: 12px;
+         }
+         }
+         @media screen and (max-width: 767px){
+         #imgUser{
+         height: 60px!important;
+         width: 90px!important;
+         }
+         /*Aquí ya comienza la madre de comentarios en movil*/
+         .titulo{
+         text-align: center;
+         font-size: 24px;
+         padding-bottom: 5px!important;
+         }
+         .itemsContaint{
+         margin-top: 80px;
+         }
+         .imgAct{
+         height: 200px!important;
+         width: 92%!important;
+         padding: 15px!important;
+         margin: 15px!important;
+         }
+         .titles{
+         margin-left: 0px;
+         font-weight: lighter;
+         }
+         .subtitles{
+         margin-top: 0px;
+         margin-left: 0px;
+         }
+         }
+         /*Las tabs en general*/
+         .nav-tabs {
+         border-bottom: 1px solid #9496a2;
+         padding-bottom: 10px;
+         }
+         /*Las tabs cuando están seleccionadas*/
+         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a.top:focus{
+         color: #cc9340;
+         cursor: pointer;
+         background-color: #fff;
+         border: 0px solid #ddd;
+         border-bottom-color: transparent;
+         font-weight: 700;
+         }
+         /*Las tabs cuando no son las seleccionadas*/
+         .nav-tabs > li > a{
+         color: #000;
+         font-weight: 400;
+         }
+         /*Las tabs cuando son las no seleccionadas, incluyendo el hover*/
+         .nav-tabs > li > a:hover{
+         font-weight: 400;
+         background-color: #fff;
+         color: #000;
+         border:0px;
+         border-top: 1px solid #000;
+         border-bottom: 1px solid #000;
+         border-radius: 0px;
+         }
+         /*Estructura de las tabs*/
+         .nav-tabs > li > a{
+         margin-right: 30px;
+         }
+         @media screen and (min-width: 768px){
+         .nopaddingpc{
+         padding: 0px;
+         }
+         }
+
+         #typeActivity{
+            font-weight: bold;
+            margin-top: 0px;
+         }
+
+         .messagesPrev{
+            font-weight: bold;
+         }
+
+         .positionOP{
+            display: none;
+         }
+         .onlyMobile{
+            display: none;
+         }
+
+         @media screen and (max-width: 767px){
+
+         .onlyMobile{
+            display: block;
+         }
+
+         .npr{
+            padding-right: 0px;
+         }
+
+            .positionOP{
+               color: #cc9340;
+               margin-top: -65px!important;
+               position: absolute;
+               z-index: 999;
+               margin-left: 35px;
+               font-size: 1.5em;
+            }
+
+
+         .messagesPrev{
+            font-weight: bold;
+            font-size: 13px;
+         }
+
+         #nameP{
+            font-size: 1.22em;
+         }
+
+         #imgUser{
+            height: 50px!important;
+            width: 50px!important;
+            margin-left: 25px!important;
+            margin-top: 5px!important;
+         }
+
+         #typeActivity{
+            color: #cc9340;
+            font-size: 0.9em;
+            margin-top: 8px;
+         }
+
+         .nomargintop{
+         margin-top: 0px!important;
+         font-size: 1em;
+         }
+         .a{
+         margin-top: 12px!important;
+         }
+         .b{
+         margin-top: 35px!important;
+         font-size: 1em;
+         font-weight: bolder;
+         }
+
+
+         }
+
+         /*PRROS*/
+
+         /*Mensajes receptor*/
+
+         /*Mensaje inicial del receptor*/
+         .mensajeRIni{
+            background-color: #cc9340ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 30px 20px 20px 5px;
+            line-height: 2;
+         }
+
+         /*Mensaje en medio de receptor*/
+         .mensajeRNor{
+            background-color: #cc9340ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 5px 20px 20px 5px;
+            line-height: 2;
+         }
+
+         /*Mensaje final de receptor*/
+         .mensajeRFin{
+            background-color: #cc9340ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 5px 20px 20px 30px;
+            line-height: 2;
+         }
+
+         /*Cuando solo manda un mensaje*/
+         .mensajeRUni{
+            background-color: #cc9340ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 1.3em;
+            line-height: 2;
+         }
+
+         @media screen and (max-width: 767px){
+               /*Mensaje inicial del receptor*/
+               .mensajeRIni{
+                  background-color: #DDB67F;
+                  padding: 12px;
+                  color: #000;
+                  border-radius: 0px 20px 20px 5px;
+                  line-height: 2;
+               }
+
+               /*Mensaje en medio de receptor*/
+               .mensajeRNor{
+                  background-color: #DDB67F;
+                  padding: 12px;
+                  color: #000;
+                  border-radius: 5px 20px 20px 5px;
+                  line-height: 2;
+               }
+
+               /*Mensaje final de receptor*/
+               .mensajeRFin{
+                  background-color: #DDB67F;
+                  padding: 12px;
+                  color: #000;
+                  border-radius: 1px 0px 20px 40px;
+                  line-height: 2;
+               }
+
+               /*Cuando solo manda un mensaje*/
+               .mensajeRUni{
+                  background-color: #DDB67F;
+                  padding: 12px;
+                  color: #000;
+                  border-radius: 1.3em;
+                  line-height: 2;
+               }
+         }
+
+          /*Mensajes emisor*/
+
+         /*Mensaje inicial del emisor*/
+         .mensajeEIni{
+            background-color: #538d95ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 30px 20px 20px 5px;
+            line-height: 2;
+         }
+
+         /*Mensaje en medio de emisor*/
+         .mensajeENor{
+            background-color: #538d95ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 5px 20px 20px 5px;
+            line-height: 2;
+         }
+
+         /*Mensaje final de emisor*/
+         .mensajeEFin{
+            background-color: #538d95ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 5px 20px 20px 30px;
+            line-height: 2;
+         }
+
+         /*Cuando solo manda un mensaje*/
+         .mensajeEUni{
+            background-color: #538d95ab;
+            padding: 12px;
+            color: #000;
+            border-radius: 1.3em;
+            line-height: 2;
+         }
+
+         @media screen and (max-width: 767px){
+             /*Mensajes emisor*/
+
+            /*Mensaje inicial del emisor*/
+            .mensajeEIni{
+               background-color: #8BB2B8;
+               padding: 12px;
+               color: #000;
+               border-radius: 20px 0px 20px 5px;
+               line-height: 2;
+            }
+
+            /*Mensaje en medio de emisor*/
+            .mensajeENor{
+               background-color: #8BB2B8;
+               padding: 12px;
+               color: #000;
+               border-radius: 5px 20px 20px 5px;
+               line-height: 2;
+            }
+
+            /*Mensaje final de emisor*/
+            .mensajeEFin{
+               background-color: #8BB2B8;
+               padding: 12px;
+               color: #000;
+               border-radius: 1px 1px 40px 20px;
+               line-height: 2;
+            }
+
+            /*Cuando solo manda un mensaje*/
+            .mensajeEUni{
+               background-color: #8BB2B8;
+               padding: 12px;
+               color: #000;
+               border-radius: 1.3em;
+               line-height: 2;
+            }
+         }
+
+
+
+         /*el otro wey que no envía el mensaje*/
+         .receptor > #mensajes > .col-sm-2 {
+            float: left;
+         }
+
+         /*quien envía el mensaje*/
+         .emisor > #mensajes > .col-sm-2 {
+            float: right;
+         }
+
+         .emisor > #mensajes > .col-sm-10 {
+            text-align: right;
+         }
+
+         textarea{
+            resize: none;
+            padding: 15px;
+            border: 1px solid #8bb2b8;
+         }
+
+         textarea:focus {
+            outline-color:#39af4a;
+         }
+
+
+
+         @media screen and (max-width: 767px){
+            textarea{
+               resize: none;
+               padding: 18px;
+               border:1px solid #fff;
+               border-right: 1px solid #a0a0a0;
+               font-size: 20px;
+            }
+
+            textarea:focus {
+               outline: none;
+
+            }
+
+            #contenido{
+               background-color: #efefef;
+            }
+
+            .fixed{
+               position: fixed;
+               width: 100%;
+               bottom: 0px!important;
+               z-index: 999;
+               background-color: #fff;
+               border:1px solid #fff;
+               height: 10%;
+            }
+
+            .fixed:focus{
+               top:65%;
+               background-color: #efefef;
+               bottom: 15px;
+            }
+
+            .fixed > .mobilemesagge > .message{
+               width: 70%;
+               border:1px solid #fff;
+               border-left: 1px solid #efefef;
+
+            }
+
+
+            textarea.messageM{
+               border:0px solid #000;
+               padding: 15px;
+               font-size: 14px;
+               border-right: 1px solid #000;
+            }
+
+            textarea.messageM:focus{
+               border-right: 1px solid #efefef;
+               outline: none;
+               width: 80%;
+               padding-top: 5px;
+            }
+
+            .mobilemesagge:focus{
+               width: 80%!important;
+            }
+
+            .mobilemesagge {
+
+               margin: 0px;
+               padding: 0px!important;
+               margin-left: -15px;
+               margin-right: -15px;
+            }
+         }
+
+         .see-all-carrousell:hover{
+             cursor: pointer;
+         }
+
+         .rateYo-reservation, .rateYo-specific{
+            width: 80px!important;
+            margin-top: 1px;
+         }
+
+         .rateYo-reservation svg, .rateYo-specific svg{
+            width: 15px!important;
+            height: 15px!important;
+         }
+
+    </style>
+
+    <script type="text/javascript">
+        function switch_language(){
+
+        }
+    </script>
+
+</head>
+
+<body style="display:none;">
+
+    <div id="NavbarOP">
+
+    </div>
+
+    <div class="rImg activity-main-image" style=" background-position: center; background-repeat: no-repeat; background-size: cover; height: 400px; position: relative;"></div>
+
+    <section class="container" style="margin-bottom: 3%;">
+
+        <div class="row main-content">
+
+            <div class="col-xs-12 col-sm-8 activity-container" style="margin-top:35px">
+                <div class="col-xs-12 activity-header">
+                    <h3 style="font-weight: bolder"><span class="es activity-tittle"></span> <span class="en activity-tittle"></span></h3>
+                    <h5 class="es activity-desc-short"></h5>
+                    <h5 class="en hidden activity-desc-short"></h5>
+                </div>
+
+                <div class="col-xs-12 activity-wixer-inc" style="margin: 5px 0">
+                    <div class="col-xs-12 col-sm-7" style="padding:0; margin: 5px 0;font-size: .9em;">
+                        <div class="col-xs-6 col-sm-3" style="padding:0; margin: 5px 0">
+                            <i class="fas fa-hourglass-end"></i>
+                            <span class="duration es"></span> <span class="duration en hidden"></span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3" style="padding:0; margin: 5px 0">
+                            <i class="fas fa-map-marker"></i>
+                            <span class="city"></span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3" style="padding:0; margin: 5px 0">
+                            <i class="fas fa-compass"></i>
+                            <span class="category es"></span> <span class="category en hidden"></span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3" style="padding:0; margin: 5px 0">
+                            <i class="fas fa-user"></i>
+                            <span class="max-persons es"></span><span class="max-persons en hidden"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-5" style="padding:0; margin: 5px 0">
+                        <div class="col-xs-12" style="padding:0; margin: 5px 0">
+                            <i class="fas fa-comment"></i>
+                            <span class="es">Este wixer habla: </span><span class="en">This wixer speaks: </span>
+                            <span class="languages"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 desc-container">
+                    <h4 style="font-weight: bolder"><span class="es">DESCRIPCIÓN</span><span class="en">DESCRIPTION</span></h4>
+                    <p><span class="activity-desc-long es"></span><span class="activity-desc-long en hidden"></span></p>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 activity-wixer-container">
+                    <div class="hidden-xs web-only">
+                        <h4 style="font-weight: bolder"><span class="es">TU WIXER</span><span class="en hidden">Your wixer</span></h4>
+                        <div class="col-xs-9" style="padding:0">
+                            <h4 style="padding:0" class="wixer-name"></h4>
+                            <p class=""><span class="es wixer-desc"></span><span class="en wixer-desc hidden"></span></p>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="avatar-design small" ></div>
+                            <button type="button" class="btn btn-default" style="background-color: #fff; color: #000; border:none; font-size:.7em" data-toggle="modal" data-target="#modal_chat"><span class="es" >Enviar mensaje al Wixer</span><span class="en">Send message to Wixer</span></button>
+                        </div>
+                    </div>
+
+                    <div class="hidden-sm hidden-md hidden-lg mobile-only">
+                        <h3><span class="es">Tu wixer</span><span class="en hidden">Your wixer</span></h3>
+                        <div style="text-align: center">
+                            <h4 style="padding:0">Nombre del wixer</h4>
+                            <div class="avatar-design small" style="background-image: url(https://vignette.wikia.nocookie.net/marvelcentral/images/9/97/Tony-Stark.jpg/revision/latest/scale-to-width-down/280?cb=20130429010603);"></div>
+                            <div style="text-align:left"><p class=""><span class="es wixer-desc"></span><span class="en wixer-desc hidden"></span></p></div>
+                            <button type="button" class="btn btn-default" style="background-color: #fff; color: #000; border:none"><span class="es">Enviar mensaje al Wixer</span><span class="en">Send message to Wixer</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 requ-container">
+                    <h4 style="font-weight: bolder"><span class="es">REQUERIMIENTOS</span><span class="en hidden">REQUIREMENTS</span></h4>
+                    <div class="requirements es">
+
+                    </div>
+
+                    <div class="requirements en hidden">
+
+                    </div>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 includes-container">
+                    <h4 style="font-weight: bolder"><span class="es">TE INCLUYE</span><span class="en hidden">IT INCLUDES</span></h4>
+                    <div class="covers col-xs-12" style="padding:0">
+
+                    </div>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 tips-container">
+                    <h4 style="font-weight: bolder">TIPS</h4>
+                    <p ><span class="es tips"></span><span class="en tips hidden"></span></p>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 gallery-static-container">
+                    <div class="col-xs-12" style="padding:0; vertical-align:middle;">
+                        <h4 style="float:left; margin: 0; font-weight:bolder">
+                            <span class="es">GALERÍA</span>
+                            <span class="en hidden">GALLERY</span>
+                        </h4>
+                        <h5 class="see-all-actv" style="float:right; margin: 0; " data-toggle="modal" data-target="#gallery-modal">
+                            <span class="es">Ver todo +</span>
+                            <span class="en hidden">See all +</span>
+                        </h5>
+                    </div>
+
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 location-container">
+                    <div class="col-xs-12" style="padding:0">
+                        <h4><span class="es">UBICACIÓN</span><span class="en hidden">LOCATION</span></h4>
+                        <p><i class="fas fa-map-marker" style="margin-right:10px"></i><span class="location es"></span><span class="location en"></span></p>
+                    </div>
+
+                    <div class="col-xs-12" style="padding:0">
+                        <div id="map"></div>
+
+                    </div>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 rating-general-specific">
+                    <p><span class="rateYo-specific"></span></p>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 comments-container">
+                    <!-- NEED TO MODULATE COMMENTS -->
+                    <div class="comments col-xs-12">
+                        <div class="col-sm-1 col-xs-2" style="padding:0; margin-right:5px; left:-10px">
+                            <div class="centarImg" style="background-image: url('assets/img/users/0/user_no_login.png'); background-size: cover; height: 45px; width: 45px; margin-left: 0px; border-radius: 10px; margin-right: 0px;">
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-xs-9" style="padding:0;">
+                            <div class="col-xs-12" style="padding: 0">
+                                <div class="col-xs-6" style="padding:0"><h4 id="nombre" style="margin-top: 0px; font-weight: bold;">Juan Gabriel</h4></div>
+                                <div class="col-xs-6" style="padding:0"><h5 style="text-align: right; margin-top: 0px; font-size: 12px;"><span class="es date">07 de Febrero del 2018</span><span class="en date hidden"></span></h5></div>
+                            </div>
+                            <div class="col-xs-12" style="padding: 0">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="comments col-xs-12">
+                        <div class="col-sm-1 col-xs-2" style="padding:0; margin-right:5px; left:-10px">
+                            <div class="centarImg" style="background-image: url('assets/img/users/0/user_no_login.png'); background-size: cover; height: 45px; width: 45px; margin-left: 0px; border-radius: 10px; margin-right: 0px;">
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-xs-9" style="padding:0;">
+                            <div class="col-xs-12" style="padding: 0">
+                                <div class="col-xs-6" style="padding:0"><h4 id="nombre" style="margin-top: 0px; font-weight: bold;">Juan Gabriel</h4></div>
+                                <div class="col-xs-6" style="padding:0"><h5 style="text-align: right; margin-top: 0px; font-size: 12px;"><span class="es date">07 de Febrero del 2018</span><span class="en date hidden"></span></h5></div>
+                            </div>
+                            <div class="col-xs-12" style="padding: 0">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="comments col-xs-12">
+                        <div class="col-sm-1 col-xs-2" style="padding:0; margin-right:5px; left:-10px">
+                            <div class="centarImg" style="background-image: url('assets/img/users/0/user_no_login.png'); background-size: cover; height: 45px; width: 45px; margin-left: 0px; border-radius: 10px; margin-right: 0px;">
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-xs-9" style="padding:0;">
+                            <div class="col-xs-12" style="padding: 0">
+                                <div class="col-xs-6" style="padding:0"><h4 id="nombre" style="margin-top: 0px; font-weight: bold;">Juan Gabriel</h4></div>
+                                <div class="col-xs-6" style="padding:0"><h5 style="text-align: right; margin-top: 0px; font-size: 12px;"><span class="es date">07 de Febrero del 2018</span><span class="en date hidden"></span></h5></div>
+                            </div>
+                            <div class="col-xs-12" style="padding: 0">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 insurance-container">
+                    <h4 style="font-weight: bolder"><span class="es">SEGURO OPCIONAL</span><span class="en hidden">NON-MANDATORY INSURANCE</span></h4>
+                    <p><span class="es insurance">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span><span class="en insurance">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+                <div class="col-xs-12 cancelation-policy-container">
+                    <h4 style="font-weight: bolder"><span class="es">POLÍTICA DE CANCELACION</span><span class="en hidden">CANCELATION POLICY</span></h4>
+                    <p><span class="es cancelation-policy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span><span class="en cancelation-policy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
+                </div>
+                <div class="col-xs-12"><hr></div>
+
+            </div>
+
+            <div class="hidden-xs col-sm-4 " style="">
+                <div class="col-xs-12" style="margin:25px">
+
+                </div>
+                <div id="floating-reservation" class="col-xs-12" style="">
+                    <div  id="reservation-box" class="hidden-xs col-sm-12" style="padding: 0px;border: 1px solid #000;">
+                        <div class="col-xs-12" style="padding: 0; background-color:rgb(29, 155, 160); color:#fff; text-align:center">
+                            <h4>$<span class="activity-price mxn">900 MXN</span> <span class="price usd hidden"></h4>
+                        </div>
+                        <div class="col-xs-12" style="margin-top:10px">
+                            <h4 style="display: flex; justify-content: center;">
+                                <span class='rateYo-reservation'></span>
+                                <span class='number-ratings'></span>
+                            </h4>
+                        </div>
+                        <div class="col-xs-12"> <hr> </div>
+
+                        <div style="margin-top: 10px;">
+
+                            <div class='col-sm-12' >
+                               <div class="form-group">
+                                   <div class='input-group date' id='reservation_web'>
+                                       <input type='text' class="form-control" style="color: black; font-size: 1.5em;" />
+                                       <span class="input-group-addon">
+                                           <span class="glyphicon glyphicon-calendar"></span>
+                                       </span>
+                                   </div>
+                               </div>
+                           </div>
+
+                            <div  class="col-sm-12" style="margin-top: 10px;">
+                                <label><span class="es">Número de personas</span><span class="en hidden">Number of people</span></label>
+                                <select class="bootstrap-select" style="width:100%!important">
+                                    <option value="1" class="es">1 persona</option>
+                                    <option value="1" class="en hidden">1 person</option>
+                                    <option value="2" class="es">2 personas</option>
+                                    <option value="2" class="en hidden">2 persons</option>
+                                    <option value="3" class="es">3 personas</option>
+                                    <option value="3" class="en hidden">3 persons</option>
+                                    <option value="4" class="es">4 personas</option>
+                                    <option value="4" class="en hidden">4 persons</option>
+                                    <option value="5" class="es">5 personas</option>
+                                    <option value="5" class="en hidden">5 persons</option>
+                                    <option value="6" class="es">6 personas</option>
+                                    <option value="6" class="en hidden">6 persons</option>
+                                </select>
+
+                                <p style="margin-top:10px;font-size: 0.83em; color: #9496a2"><span class="es minimum-age"></span><span class="en minimum-age hidden"></</p>
+                                <p style="font-size: 0.83em; color: #9496a2"><span class="es">Mínimo 1 persona por actividad</span><span class="en hidden">1 person minimum for activity</</p>
+                            </div>
+                            <div class="col-sm-12" style="height: 100%;margin: 10px 0; padding-left: 5px; padding-right: 5px;">
+                                <button class="btn btn-primary btn-lg btn-block hidden explorer wixer_1 wixer_2 btnDisponibilidad" style=" background-color: #d8882D; color: #fff;width: 100%; height: 60%;" data-toggle="modal" data-target="#modal_details_of_reserve">
+                                    <span class="es">Reservar</span>
+                                    <span class="en hidden">Reserve</span>
+                                </button>
+
+                                <button class="btn btn-primary btn-lg btn-block hidden invited li_sign_in_as_explorer" style=" background-color: #d8882D; color: #fff;width: 100%; height: 60%;">
+                                    <span class="es">Reservar</span>
+                                    <span class="en hidden">Reserve</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden-sm hidden-lg hidden-md">
+                <div id="floating-mobile-reservation" style="width:100%;position:fixed; bottom: 0px;z-index: 999; background-color:#FFF; border:1px solid #9496a2">
+                    <div class="col-xs-12" style="text-align: center;vertical-align: middle">
+                        <div class="col-xs-6" style="">
+                            <div class="col-xs-12" style="padding:0">
+                                <p style=""> <span class="price mxn" style="font-weight:bolder">$900 MXN</span><span class="price usd hidden" style="font-weight:bolder"></span><span>p/p</span></span> </p>
+                            </div>
+                            <div class="col-xs-12" style="  padding:0">
+                                <p class="rateYo-mobile " style="height: 25%;width: 45%; top:2px;float:left"></p>
+                                <p class="number-ratings" style="float:left">(254)</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" style="margin-top:3%; padding:0">
+                            <button class="btn btn-primary btn-lg btn-block hidden explorer wixer_1 wixer_2 btnDisponibilidad" style=" background-color: #d8882D; color: #fff;width: 100%; height: 60%;" data-toggle="modal" data-target="#modal_details_of_reserve">
+                                <span class="es">Reservar</span>
+                                <span class="en hidden">Reserve</span>
+                            </button>
+
+                            <button class="btn btn-primary btn-lg btn-block hidden invited li_sign_in_as_explorer" style=" background-color: #d8882D; color: #fff;width: 100%; height: 60%;">
+                                <span class="es">Reservar</span>
+                                <span class="en hidden">Reserve</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slider-activity-container" class="col-xs-12 slider-activity-container" style="margin:20px 0">
+            <div class="col-xs-12" style="padding:0; vertical-align:middle;">
+                <h4 style="float:left; margin: 0; font-weight:bolder">
+                    <span class="es">EXPERIENCIAS SIMILARES</span>
+                    <span class="en hidden">RELATED EXPERIENCES</span>
+                </h4>
+
+                <h5 class="see-all-carrousell" style="float:right; margin: 0; z-index:9 ">
+                    <span class='es'>Ver todo +</span>
+                    <span class="en hidden">See all +</span>
+                </h5>
+            </div>
+            <div id="activities-slider" class="actv-all col-xs-12" style="margin-top: 20px">
+                <div class='variable0 slider slider-row slider-items-inside' style='margin: 0px; width: 100%;'></div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section id="myFooter">
+
+    </section>
+
+    <div id="static-modals">
+        <div class="modal fade fl_md" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i data-dismiss="modal" class="fas fa-times button_data_miss"></i>
+                        <h4 class="modal-title" style="text-align: center;">
+                            <span class="es">Galería</span>
+                            <span class="en hidden">Gallery</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="myCarousel" class="carousel " data-ride="carousel">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+
+                          </ol>
+
+                          <!-- Wrapper for slides -->
+                          <div class="carousel-inner">
+
+
+
+                          </div>
+
+                          <!-- Left and right controls -->
+                          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <p style="text-align: left;">
+                            <span class='es'>Para brindar una mejor experiencia de uso esta galería esta en construcción</span>
+
+                            <span class='en hidden'>To provide a better user experience this gallery is under construction
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal details of the reserve -->
+        <div class="modal fade full_modal" id="modal_details_of_reserve" role="dialog">
+            <div class="modal-dialog ">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i data-dismiss="modal" class="fas fa-times button_data_miss"></i>
+                        <h4 class="modal-title" style="text-align: center;">
+                            <span class="es">DETALLES DE LA RESERVA</span>
+                            <span class="en">DETAILS OF THE RESERVE</span>
+                        </h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                    <div class="container col-xs-12 col-sm-8">
+                         <div class="row" style="border-bottom: 1px solid #9492a0;">
+                            <div class="col-xs-8 ">
+                               <h3 style="font-weight: bold;">
+                                  <span class="es">Datos para el seguro (opcional)</span>
+                                  <span class="en">Dates for the insurance (optional)</span>
+                               </h3>
+                                  <h6>
+                                     <span class="es">A veces, la paciencia es la clave de la victoria. A veces, conduce a muy poco y parece que no vale la pena. Y te preguntas por qué esperaste tanto tiempo para algo tan decepcionante...</span>
+                                     <span class="en">Sometimes, patience is the key to victory. Sometimes, it leads to very little and it seems that it is not worth it. And you wonder why you waited so long for something so disappointing</span>
+                                  </h6>
+                            </div>
+                            <div class="col-xs-4" style="margin-top: 35px;font-weight: bold; text-align: center; font-size: 1.5em; ">
+                               <label>
+                                  +$1150 <input type="checkbox" name="seguro" class="form-check-input" style="transform: scale(2); margin-left: 5px;">
+                               </label>
+                            </div>
+                         </div>
+                         <div class="row">
+                            <ul id="tabs" class="nav nav-tabs">
+                              <li class="active"><a data-toggle="tab" href="#cards">
+                                 <span class="es">Tarjeta de crédito / débito</span>
+                                 <span class="en">Credit / Debit card</span>
+                              </a></li>
+                              <li><a data-toggle="tab" href="#paypal">Paypal</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                              <div id="cards" class="tab-pane fade in active">
+                                <form id="form_detailvalidation" name="form_detailvalidation">
+                                  <div class="form-group row">
+                                      <div class="col-xs-12" style="margin-top: 15px;">
+                                          <h4 for="form-country_code" style="">
+                                              <span class="es">Número de tarjeta</span>
+                                              <span class="en">Number card</span>
+                                           </h4>
+                                           <h6>
+                                              <span class="es">Los 16 dígitos de la tarjeta</span>
+                                              <span class="en">16 digits from your card</span>
+                                           </h6>
+                                      </div>
+
+                                      <div class="col-xs-12">
+                                           <div class="col-xs-12" style="padding:0px;">
+                                             <input id="creditnumber" name="form_mobile" class="form-control" placeholder="" required>
+                                         </div>
+                                      </div>
+                                  </div><!-- /.form-group -->
+
+                                  <div class="form-group row">
+                                      <div class="col-xs-12" style="margin-top: 15px;">
+                                          <h4 for="form-country_code" style="">
+                                              <span class="es">Nombre del tarjetahabiente</span>
+                                              <span class="en">Full name</span>
+                                           </h4>
+                                           <h6>
+                                              <span class="es">Su nombre completo, como aparece en la tarjeta</span>
+                                              <span class="en">Like this appear in your card</span>
+                                           </h6>
+                                      </div>
+
+                                      <div class="col-xs-12">
+                                           <div class="col-xs-12" style="padding:0px;">
+                                             <input id="fullname" name="form_mobile" class="form-control" placeholder="" required>
+                                         </div>
+                                      </div>
+                                  </div><!-- /.form-group -->
+
+                                  <div class="form-group row">
+                                      <div class="col-xs-12 col-sm-6" style="padding-left: 0">
+                                         <div class="col-xs-12" style="margin-top: 15px;">
+                                             <h4 for="form-country_code" style="">
+                                                 <span class="es">Fecha de expiración</span>
+                                                 <span class="en">Expiration date</span>
+                                              </h4>
+                                              <h6>
+                                                 <span class="es">Seleccione el mes y año</span>
+                                                 <span class="en">Select month and year</span>
+                                              </h6>
+                                         </div>
+
+                                         <div class="col-xs-12">
+                                              <div class="col-xs-12" style="padding:0px;">
+                                                <input type="month" id="monthyear" name="form_mobile" class="form-control" placeholder="" required>
+                                            </div>
+                                         </div>
+                                      </div>
+                                      <div class="col-xs-12 col-sm-6" style="padding-right: 0">
+                                           <div class="col-xs-12" style="margin-top: 15px;">
+                                             <h4 for="form-country_code" style="">
+                                                 <span>CVC</span>
+                                              </h4>
+                                              <h6>
+                                                 <span class="es">El código de seguridad de su tarjeta</span>
+                                                 <span class="en">Security code behind your card</span>
+                                              </h6>
+                                            </div>
+
+                                            <div class="col-xs-12">
+                                                 <div class="col-xs-12" style="padding:0px;">
+                                                   <input type="password" pattern="[0-9]*" inputmode="numeric" title="" id="cvc" name="form_mobile" maxlength="3" class="form-control" placeholder="" required>
+                                               </div>
+                                            </div>
+                                      </div>
+                                  </div><!-- /.form-group -->
+
+                                  <div class="form-group row">
+                                      <div class="col-xs-12 col-sm-6" style="padding-left: 0">
+                                         <div class="col-xs-12" style="margin-top: 15px;">
+                                             <h4 for="form-country_code" style="">
+                                                 <span class="es">Dirección</span>
+                                                 <span class="en">Addres</span>
+                                              </h4>
+                                              <h6>
+                                                 <span class="es">Dirección donde desea facturar</span>
+                                                 <span class="en">Addres where do you want factures</span>
+                                              </h6>
+                                         </div>
+
+                                         <div class="col-xs-12">
+                                              <div class="col-xs-12" style="padding:0px;">
+                                                <input type="text" class="form-control" placeholder="" required>
+                                            </div>
+                                         </div>
+                                      </div>
+                                      <div class="col-xs-12 col-sm-6" style="padding-right: 0">
+                                           <div class="col-xs-12" style="margin-top: 36px;">
+                                             <h4 for="form-country_code" style="">
+                                                 <span class="es">Codigo postal</span>
+                                                 <span class="en">CP</span>
+                                              </h4>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                 <div class="col-xs-12" style="padding:0px;">
+                                                   <input type="number" id="cp" name="form_mobile" maxlength="3" class="form-control" placeholder="" pattern="[0-9]{5}" required>
+                                               </div>
+                                            </div>
+                                      </div>
+                                  </div><!-- /.form-group -->
+
+                                   <div class="form-group row">
+                                      <div class="col-xs-12 col-sm-4" style="padding: 0">
+                                         <div class="col-xs-12" style="margin-top: 15px;">
+                                             <h4 for="form-country_code" style="">
+                                                 <span class="es">País</span>
+                                                 <span class="en">Country</span>
+                                              </h4>
+                                         </div>
+                                         <div class="col-xs-12">
+                                              <div class="col-xs-12" style="padding:0px;">
+                                                <input type="text" class="form-control" placeholder="" required>
+                                            </div>
+                                         </div>
+                                      </div>
+
+                                      <div class="col-xs-12 col-sm-4" style="padding: 0">
+                                         <div class="col-xs-12" style="margin-top: 15px;">
+                                             <h4 for="form-country_code" style="">
+                                                 <span class="es">Estado</span>
+                                                 <span class="en">State</span>
+                                              </h4>
+                                         </div>
+                                         <div class="col-xs-12">
+                                              <div class="col-xs-12" style="padding:0px;">
+                                                <input type="text" class="form-control" placeholder="" required>
+                                            </div>
+                                         </div>
+                                      </div>
+
+                                      <div class="col-xs-12 col-sm-4" style="padding: 0">
+                                         <div class="col-xs-12" style="margin-top: 15px;">
+                                             <h4 for="form-country_code" style="">
+                                                 <span class="es">Ciudad</span>
+                                                 <span class="en">City</span>
+                                              </h4>
+                                         </div>
+                                         <div class="col-xs-12">
+                                              <div class="col-xs-12" style="padding:0px;">
+                                                <input type="text" class="form-control" placeholder="" required>
+                                            </div>
+                                         </div>
+                                      </div>
+                                     </div><!-- /.form-group -->
+
+
+
+
+                            </form>
+                          </div>
+                          <div id="paypal" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Some content in menu 1.</p>
+                          </div>
+                            </div>
+
+                         </div>
+
+                    </div>
+
+                    <div class="hidden-xs col-sm-4">
+                        <div style="margin: 25px;"></div>
+                        
+                        <div id="THE_info-floating-reservation" class="col-sm-12" style="border: 1px solid #000;">
+
+                            <h4 id="titleActivity" style="font-weight: bold;">
+                                <span class="es">Surfear con delfines</span>
+                                <span class="en">Surf with dolphins</span>
+                            </h4>
+                            <h5 id="shortDescp">
+                                <span class="es">Increible surf con delfines blancos</span>
+                                <span class="en">Incredible surf with white dolphins</span>
+                            </h5>
+                            <div id="imgUser" class="centarImg" style="background-image: url('assets/img/activities/3/main.png'); background-size: cover; height: 220px!important; width: 220px!important;">
+                            </div>
+                            <h6 style="color: #000">
+                                <span id="city">Los Cabos</span> |
+                                <span class="es" style="font-weight: bold;">Afuera</span>
+                                <span class="en" style="font-weight: bold;">Outdoor</span>
+                            </h6>
+
+                            <h5 id="priceAct">
+                                <span class="es">$900.00 MXN <span style="font-size: 0.7em">por persona</span></span>
+                                <span class="en">$80 DLS <span style="font-size: 0.7em">Per person</span></span>
+                            </h5>
+                            <hr>
+
+                            <h5 id="wixerName">
+                                <span class="es"><span style="font-weight: bolder;font-size: 0.85em;text-transform: uppercase;">Tu wixer:</span></span>
+                                <span class="en">
+                                    <span style="font-weight: bolder;font-size: 0.85em;text-transform: uppercase;">Your wixer:</span>
+                                </span>
+                                Luis Osuna
+                            </h5>
+
+                            <hr>
+
+                            <h5 id="day">
+                                <span class="es">Lunes, 8 de enero</span>
+                                <span class="en">Monday, January 8</span>
+                            </h5>
+                            <h5 id="hour">
+                                10:00 AM
+                            </h5>
+
+                            <hr>
+
+                            <h5 id="durationAct">
+                                <span class="es">Duración: 2 horas</span>
+                                <span class="en">Duration: 2 hours</span>
+                            </h5>
+
+                            <h5 id="noPeople">
+                                <span class="es">Número de personas: </span>
+                                <span class="en">People: </span>
+                                2
+                            </h5>
+
+                            <hr>
+
+                            <h6>
+                                $900 X 2 personas     $1800 MXN
+                            </h6>
+
+                            <h6>
+                                Seguro (2 personas)    $300 MXN
+                            </h6>
+
+                            <h3 style="color: #9294a0">
+                                <span class="es">Total: $2100 MXN</span>
+                                <span class="en">Total: $210 DLS</span>
+                            </h3>
+
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal details of the reserve -->
+
+    </div>
+
+    <!-- Modal details of the reserve -->
+    <div class="modal fade full_modal" id="modal_chat" role="dialog">
+        <div class="modal-dialog ">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                      <div class="col-xs-1">
+                         <i data-dismiss="modal" class="fas fa-times button_data_miss"></i>
+                      </div>
+                      <div class="col-xs-2 col-sm-1 noppdleft" style="padding: 0;">
+                         <div id="imgUser" class="centarImg" style="background-image: url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t1.0-9/19598758_409042179532116_7107684463906300773_n.jpg?oh=c2b79ae928b29f38f9bcee10d7d9e1e2&oe=5B43F37E'); background-size: cover; height: 80px; width: 80px; border-radius: 5%;">
+                         </div>
+                      </div>
+
+                      <div class="hidden-* visible-xs col-xs-7">
+                         <a href="profile.html?userid=7">
+                            <h4 id="name" style="margin-left: 25px;margin-top: 25px;font-weight: bolder;">
+                               <span>Luis Osuna</span>
+                            </h4>
+                         </a>
+                      </div>
+                      <div class="hidden-* visible-xs col-xs-2">
+                         <div id="reload" class="centarImg" style="background-image: url('assets/img/reload.png'); background-size: cover; height: 30px!important; width: 30px!important; border-radius: 5%; margin-top: 20px; margin-left: -15px;">
+                            </div>
+                      </div>
+
+                      <div class="hidden-xs col-sm-4" style="padding-left: 45px;">
+                         <h4 id="name">
+                            <span>Luis Osuna</span>
+                         </h4>
+                         <h5 id="place">
+                            <span>Mazatlán, Sinaloa</span>
+                         </h5>
+
+                         <h6 style="font-size: 12px;">
+                            <span class="es">Información autentificada: </span>
+                            <span class="en">Authenticated information: </span>
+                            <i class="fas fa-check" style="color: #538d95"></i>
+                         </h6>
+
+                      </div>
+
+    <!--
+                      <div class="hidden-xs col-sm-5" style="padding-left: 45px;">
+                         <h4 id="name">
+                            IGNORAR********************
+                            <span>Romeo Santos</span>
+                         </h4>
+                         <h5 id="place">
+                            <span>Mazatlán, Sinaloa</span>
+                         </h5>
+
+                         <h6 style="font-size: 12px;">
+                            <span class="es">Información autentificada: </span>
+                            <span class="en">Authenticated information: </span>
+                            <i class="fas fa-check" style="color: #538d95"></i>
+                         </h6>
+
+                         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+                         <textarea id="myText">
+                             Lorem ipsum...
+                         </textarea>
+                         <button id="send">Send</button>
+
+                         <script type="text/javascript">
+                            $(document).ready(function(){
+                                  $('#send').click(function() {
+                                        $.ajax({
+                                           url: 'php/mailtest.php',
+                                           type: 'POST',
+                                           dataType: 'text',
+                                           data: 'a',
+                                            success: function(s){
+                                                 console.log(e, "Si sirve");
+                                            },
+
+                                            error: function(e){
+
+                                              console.log('Te pelaste la verga');
+
+                                            }
+                                        })
+                                  });
+                            });
+                         </script>
+
+
+                      </div>
+
+             -->
+
+                      <div class="hidden-xs col-sm-4" style="padding-left: 45px;margin-top: 5px;">
+                         <h4 id="activities" style="font-weight: bold; font-size: 14px;">
+                            <span class="es">Viaje a Xcaret</span>
+                            <span class="en">XCaret Travel</span>
+                         </h4>
+                         <h5 id="reserved">
+                            <span class="es">Reservado para </span>
+                            <span class="en">Reserved to </span>
+                            8 Enero 2018
+                         </h5>
+
+                         <h5 style="color: #39af4a">
+                            <span class="es">Confirmada</span>
+                            <span class="en">Confirmed </span>
+                         </h5>
+                      </div>
+
+                      <div class="hidden-xs col-sm-2">
+                         <a href="google.com">
+                            <h6 style="color: #9294a0">
+                               <span class="es">Denunciar usuario</span>
+                               <span class="en">Report user</span>
+                            </h6>
+                         </a>
+                      </div>
+
+                   </div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container receptor" style="padding-top: 25px; padding-bottom: 25px;">
+                       <div id="mensajes">
+                          <div class="hidden-xs col-sm-2">
+                             <div id="imgUser" class="centarImg" style="background-image: url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t1.0-9/19598758_409042179532116_7107684463906300773_n.jpg?oh=c2b79ae928b29f38f9bcee10d7d9e1e2&oe=5B43F37E'); background-size: cover; height: 80px; width: 80px; border-radius: 50%;">
+                             </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-10">
+                             <h6 class="hidden-xs">
+                                <span>12.05.2018</span>
+                             </h6>
+                             <h5 id="mensaje" class="mensajeRIni">
+                                <span>¡Hola amigo! Buenas tardes</span>
+                             </h5>
+                             <h5 id="mensaje" class="mensajeRNor">
+                                <span>Ya está todo listo para que venga a disfrutar un poco del puerto</span>
+                             </h5>
+                             <h5 id="mensaje" class="mensajeRFin">
+                                <span>Cualquier cosa que necesite, me avisa por aquí</span>
+                             </h5>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="container emisor" style="padding-top: 25px; padding-bottom: 25px; border-top: 1px solid #efefef;">
+                       <div id="mensajes">
+                          <div class="hidden-xs    col-sm-2">
+                             <div id="imgUser" class="centarImg" style="background-image: url('assets/img/users/0/user_no_login.png'); background-size: cover; height: 80px; width: 80px; border-radius: 50%;">
+                             </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-10">
+                             <h6>
+                                <span>12.05.2018</span>
+                             </h6>
+                             <h5 id="mensaje" class="mensajeEIni">
+                                <span>Hola Luis, muchas gracias, mi familia está emocionada</span>
+                             </h5>
+                             <h5 id="mensaje" class="mensajeENor">
+                                <span>Solo tengo que saber si debo llevar un poco mas de dinero para comprar comida o ya viene incluida en el iaje</span>
+                             </h5>
+                             <h5 id="mensaje" class="mensajeENor">
+                                <span>Viajes*</span>
+                             </h5>
+                             <h5 id="mensaje" class="mensajeEFin">
+                                <span>Y además del transporte al hotel</span>
+                             </h5>
+                          </div>
+                       </div>
+                    </div>
+
+
+                    <div class="container receptor" style="padding-top: 25px; padding-bottom: 25px; border-top: 1px solid #efefef;">
+                       <div id="mensajes">
+                          <div class="hidden-xs col-sm-2">
+                             <div id="imgUser" class="centarImg" style="background-image: url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t1.0-9/19598758_409042179532116_7107684463906300773_n.jpg?oh=c2b79ae928b29f38f9bcee10d7d9e1e2&oe=5B43F37E'); background-size: cover; height: 80px; width: 80px; border-radius: 50%;">
+                             </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-10">
+                             <h6>
+                                <span>12.05.2018</span>
+                             </h6>
+                             <h5 id="mensaje" class="mensajeRUni">
+                                <span class="es">Usted no tiene que preocuparse por nada, nosotros incluimos alimentación para cada uno de sus familiares, que es un plato de ceviche de camaron o un pescado zarandeado (por familia), con un refresco y unas papas sabritas. Y con respecto al viaje, nosotros podemos pasar por usted y dejar a su familia sin ningun problema</span>
+                             </h5>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="container emisor" style="padding-top: 25px; padding-bottom: 25px; border-top: 1px solid #efefef;">
+                       <div id="mensajes">
+                          <div class="hidden-xs col-sm-2">
+                             <div id="imgUser" class="centarImg" style="background-image: url('assets/img/users/0/user_no_login.png'); background-size: cover; height: 80px; width: 80px; border-radius: 50%;">
+                             </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-10">
+                             <h6>
+                                <span>12.05.2018</span>
+                             </h6>
+                             <h5 id="mensaje" class="mensajeEUni">
+                                <span>Muchas gracias</span>
+                             </h5>
+                          </div>
+                       </div>
+                    </div>
+                    <br><br><br><br>
+
+                    <div class="container fixed">
+                       <div class="mobilemesagge col-xs-8 col-sm-12" style="padding-left: 20%;">
+                          <div class="">
+                             <textarea name="message" placeholder="Introduce el mensaje" class="messageM" id="message" style="width: 100%;" maxlength="254"></textarea>
+                          </div>
+                        <!--  <div class="visible-xs">
+                             <input type="text" name="message" id="messageM" maxlength="254" placeholder="Introduce el mensaje" class="messageM">
+                          </div>
+                        -->
+                       </div>
+                       <div class="col-xs-2">
+                          <div class="visible-xs col-xs-2 noppdleft" style="padding: 0;">
+                             <div id="imgUser" class="centarImg" style="background-image: url('assets/img/call.png'); background-size: cover; height: 30px!important; width: 30px!important; border-radius: 5%;">
+                             </div>
+                          </div>
+                       </div>
+                       <div class="visible-xs col-xs-2 ">
+                          <div class="col-xs-2 noppdleft" >
+                             <div id="imgUser" class="centarImg" style="background-image: url('assets/img/send.png'); background-size: cover; height: 30px!important; width: 30px!important; border-radius: 5%;">
+                             </div>
+                          </div>
+                       </div>
+
+                       <div id="sendmessage" class="hidden-xs col-sm-2 col-sm-offset-10" style="margin-top: 15px;height: 40px">
+                          <a  style="text-align: center; background-color: #cc9340; color: #fff; padding: 10px;">Enviar mensaje</a>
+                       </div>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal details of the reserve -->
+
+    <script type="text/javascript" >
+        $("#myFooter").load('footer.html', function(){
+
+        });
+    </script>
+
+
+    <script type="text/javascript">
+
+
+
+        function activity_loader_specific(json, data) {
+            var activity = json[0];
+
+            $(".number-ratings").empty().append("("+activity.num_rat+")");
+
+            $(".see-all-carrousell").click(function () {
+                window.location.replace("activities.html?city="+activity.id_city);
+            });
+
+            $("span.activity-tittle.es").append(activity.name_spa);
+
+            if(activity.name_eng != ""){
+                $("span.activity-tittle.en").append(activity.name_eng);
+            }
+            else{
+                $("span.activity-tittle.en").append(activity.name_spa);
+            }
+
+
+
+            $("span.activity-desc-short.es").append(activity.short_desc_spa);
+            $("span.activity-desc-short.en").append(activity.short_desc_eng);
+
+            var duration = activity.duration;
+            var hours = duration.substring(0, 2);
+            var minutes = duration.substring(3, 5);
+            if(hours.substring(0,1) == "0"){
+              hours = hours.substring(1,2);
+            }
+            if(minutes.substring(0,1) == "0"){
+              minutes = minutes.substring(1,2);
+            }
+
+            if(minutes = "0"){
+                var time_es = hours+" horas";
+                var time_en = hours+" hours";
+            }
+            else{
+                var time_es = hours+" horas";
+                var time_en = hours+" hours";
+            }
+
+
+            $(".activity-main-image").css("background-image","url("+activity.img_src+")");
+
+            $(".avatar-design").click(function () {
+                window.location.href="profile.html?userid="+activity.id_wixer
+            });
+
+
+            $("span.duration.es").append(time_es);
+            $("span.duration.en").append(time_en);
+
+
+            $("span.city").append(activity.city);
+
+            $("span.category.es").append(activity.main_category_spa);
+            $("span.category.en").append(activity.main_category_eng);
+
+            $("span.max-persons.es").append(activity.max_persons+" personas");
+            $("span.max-persons.en").append(activity.max_persons+" persons");
+
+            $("span.activity-desc-long.es").append(activity.description_spa);
+            $("span.activity-desc-long.en").append(activity.description_eng);
+
+            $(".wixer-name").attr("href", "profile.html?userid"+activity.id_wixer);
+
+            $("span.wixer-name").append("<a style='color:inherit; text-decoration: none' href='profile.html?userid="+activity.id_wixer+"'>"+activity.name+"</a>");
+            $("h4.wixer-name").append("<a style='color:inherit; text-decoration: none' href='profile.html?userid="+activity.id_wixer+"'>"+activity.name+"</a>");
+
+            $("span.wixer-desc.es").append(activity.wixer_desc_es);
+            $("span.wixer-desc.en").append(activity.wixer_desc_en);
+
+            $("div.avatar-design").css("background-image","url("+activity.user_main_img+")");
+
+            $("span.minimum-age.es").append("Edad mínima: "+activity.minimun_age+" años");
+            $("span.minimum-age.en").append("Minimum age: "+activity.minimun_age+" years");
+
+
+            $("span.tips.es").append(activity.tips_spa);
+            $("span.tips.en").append(activity.tips_eng);
+
+            $("span.location.es").append(activity.location_spa);
+            $("span.location.en").append(activity.location_eng);
+
+            $(".rateYo-specific").rateYo({
+                rating: 1*activity.global_score,
+                starWidth: "10px",
+                readOnly: true
+            });
+            $(".rateYo-reservation").rateYo({
+                rating: 1*activity.global_score,
+                starWidth: "10px",
+                readOnly: true
+            });
+            $(".rateYo-mobile").rateYo({
+                rating: 1*activity.global_score,
+                starWidth: "10px",
+                readOnly: true
+            });
+
+            var dataPHP = {'case': 7,'id':activity.id_wixer};
+            ajax_user(dataPHP, activity_loader_specific_only_languages, null);
+
+            var dataPHP = {'case': 6,'id':activity.id_activity_unused};
+            ajax_activity(dataPHP, activity_loader_specific_only_covers, null);
+
+            var dataPHP = {'case': 7,'id':activity.id_activity_unused};
+            ajax_activity(dataPHP, activity_loader_specific_only_requirements, null);
+
+            var dataPHP = {'case':5, 'id':activity.id_activity_unused};
+            ajax_images_info(dataPHP, load_actv_images, null );
+
+
+
+            latitude_globa_map = activity.meeting_point_latitude;
+            longitude_globa_map = activity.meeting_point_longitude;
+            map_item_detail();
+
+        }
+
+        function activity_loader_specific_only_languages(json, data) {
+
+            var lang_final;
+
+            for (var i = 0; i < json.length; i++) {
+                var language = json[i];
+                if(i != 0){
+                    lang_final = lang_final + ", " +language.lang_name;
+                }
+                else{
+                    lang_final = language.lang_name;
+
+                }
+            }
+            $("span.languages").append(lang_final);
+        }
+
+        function activity_loader_specific_only_covers(json, data) {
+
+            for (var i = 0; i < json.length; i++) {
+                var cover = json[i];
+
+                var icon_cover;
+
+                switch (cover.id_cover) {
+                    case "1":
+                        icon_cover ="fas fa-tint";
+                    break;
+                    case "2":
+                        icon_cover = "fas fa-lemon";
+                    break;
+                    case "3":
+                        icon_cover = "fas fa-coffee";
+                    break;
+                    case "4":
+                        icon_cover="fas fa-utensils";
+                    break;
+                    case "5":
+                        icon_cover="fas fa-gift";
+                    break;
+                    case "6":
+                        icon_cover="fas fa-cut";
+                    break;
+                    case "7":
+                        icon_cover="fas fa-camera";
+                    break;
+                    case "8":
+                        icon_cover="fas fa-train";
+                    break;
+
+                    default:break;
+                }
+
+                var cover_formated = "<div class='col-xs-6 col-sm-3' style='padding:0';><div class='col-xs-2' style='padding:0; margin:0;'><p><i class='"+icon_cover+"'></i></p></div><div class='col-xs-10' style='padding:0; margin-top:4px'><h5 style='margin:0'><span class='es'>"+cover.name_spa+"</span><span class='en hidden'>"+cover.name_eng+"</span></h5><p style='font-size:.7em'><span class='es'>"+cover.description_spa+"</span><span class='en hidden'>"+cover.description_eng+"</span></p></div></div>"
+
+                $(".covers").append(cover_formated);
+            }
+        }
+
+        function activity_loader_specific_only_requirements(json, data) {
+
+
+            for (var i = 0; i < json.length; i++) {
+                var requirement = json[i];
+                $(".requirements.es").append("<p> - "+requirement.requierement_spa+"</p>");
+                $(".requirements.en").append("<p> - "+requirement.requierement_eng+"</p>");
+            }
+
+        }
+
+        function map_item_detail() {
+            var myKey = "myAPIKey";
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBrouNc6KKfcUTTHtUK0x0KA34i8HyKjXY&callback=initMap_item_detail";
+            document.body.appendChild(script);
+        }
+
+        var latitude_globa_map;
+        var longitude_globa_map;
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+        function initMap_item_detail() {
+
+
+            var uluru = {lat: 1*latitude_globa_map, lng:1*longitude_globa_map};
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: uluru
+            });
+
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+
+
+        function load_actv_images(json, data) {
+
+            for (var i = 0; i < json.length; i++) {
+                var image = json[i];
+                if(i == 0){
+                    $(".carousel-indicators").append("<li data-target='#myCarousel' data-slide-to='0' class='active'></li>");
+                    $(".carousel-inner").append(`<div class='item active'> <div style='width: 100%;height: 100%;background-size: cover!important; background-image:url(${image.source}); padding: 34%;'></div> </div>`);
+                }
+                else{
+                    $(".carousel-indicators").append("<li data-target='#myCarousel' data-slide-to='"+i+"' ></li>");
+
+                    //"background-image:url('"+image.source+"')"
+                    //console.log(image.source)
+                    $(".carousel-inner").append(`<div class='item'> <div style='width: 100%;height: 100%;background-size: cover!important; background-image:url(${image.source}); padding: 34%;'></div> </div>`);
+                }
+                if(i < 5 ){
+                    switch (i) {
+                        case 0:
+                        case 1:
+                        case 4:
+                            $(".gallery-static-container").append(`<div class='col-sm-4 col-xs-6' style='padding:5px'> <div style='width: 100%;height: 100%;background-size: cover!important; background-image:url(${image.source}); padding: 34%;'></div> </div>`);
+                        break;
+                        case 2:
+                            $(".gallery-static-container").append(`<div class='col-sm-4 col-xs-12 ' style='padding:5px'> <div class='middle-img-actv' style='width: 100%;height: 100%;background-size: cover!important; background-image:url(${image.source}); padding: 34%;'></div> </div>`);
+                        break;
+                        case 3:
+                            $(".gallery-static-container").append(`<div class='col-sm-8 col-xs-6 ' style='padding:5px'> <div class='bottom-img-actv' style='width: 100%;height: 100%;background-size: cover!important; background-image:url(${image.source}); padding: 34%;'></div> </div>`);
+                        break;
+                        default:
+                        break;
+
+                    }
+
+                }
+
+            }
+
+/*
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="http://gulfinfotech.com/wp-content/uploads/revslider/rev_slider_example/placeholder-blue.png" alt="Los Angeles">
+              </div>
+
+              <div class="item">
+                <img src="http://gulfinfotech.com/wp-content/uploads/revslider/rev_slider_example/placeholder-blue.png" alt="Chicago">
+              </div>
+
+              <div class="item">
+                <img src="http://gulfinfotech.com/wp-content/uploads/revslider/rev_slider_example/placeholder-blue.png" alt="New York">
+              </div>
+            </div>
+*/
+
+
+
+        }
+
+
+
+
+
+        $(document).ready(function () {
+
+
+            $('#reservation_web').datetimepicker({
+                defaultDate: "03/05/2018",
+                disabledDates: [
+                    new Date("2018-03-27 00:00:00")
+                ],
+                sideBySide: true
+            });
+
+
+
+
+            $("#NavbarOP").load('navbar.html', function(){
+                navbar_white();
+                $("#navbar_select_city_div").removeClass("hidden");
+                $("#navbar_select_city_div").addClass("invited explorer wixer_1");
+
+
+                $('.navbar-default .navbar-toggle').click(function(){
+                    if($('#myNavbar').hasClass('in')){
+                        $('#floating-mobile-reservation').removeClass('hidden');
+                    }else $('#floating-mobile-reservation').addClass('hidden');
+                });
+            });
+
+
+
+
+
+            var activityid = getUrlParameter('activityid');
+            var dataPHP_item_detail = {'case': 3,'id':activityid};
+
+            ajax_activity(dataPHP_item_detail, activity_loader_specific, null);
+
+            /*
+            var lastScrollTop = 0;
+
+            $(window).scroll(function(){
+               change_navbar();
+            });
+
+            function change_navbar(){
+                var scroll = $(window).scrollTop();
+
+                if(scroll > lastScrollTop && scroll >= 1){
+                    navbar_white();
+                }else if(scroll < lastScrollTop && scroll <= 0){
+                    navbar_transparent();
+                }
+
+               lastScrollTop = scroll;
+            }
+
+            change_navbar();
+            */
+
+
+            //Need to add case with categories and parametes
+            var dataPHP = {'case': 5,'id':"1,2", 'limit':12, 'status':'ACEPTADO'};
+            var data = new Array();
+            data[0] = $(".slider-items-inside");
+            data[1] = { "width":"250px" , "margin-right":0, "margin-left":"10px"};
+            data[2] = '1';
+            data[3] = "item-detail_main";
+            data[4] = false;
+            data[5] = "getAllFavs";
+            data[6] = "actv-all";
+
+            ajax_activity(dataPHP, activities_general_loader, data);
+
+            $('body').fadeIn(3000);
+            //$('body').css('display','flex');
+            $('body').css('justify-content','center');
+        });
+
+        $(function() {
+
+            (function($) {
+                var element = $('#floating-reservation'),
+                    originalY = element.offset().top;
+
+                // Space between element and top of screen (when scrolling)
+                var topMargin = 20;
+
+                // Should probably be set in CSS; but here just for emphasis
+                element.css('position', 'relative');
+
+                $(window).on('scroll', function(event) {
+                    var scrollTop = $(window).scrollTop();
+
+                    if(scrollTop <= $('#slider-activity-container').position().top - $("#reservation-box").height() - 140){
+                        element.stop(false, false).animate({
+                            top: scrollTop < originalY - 5
+                                    ? 0
+                                    : scrollTop - originalY + topMargin + 100
+                        }, 0);
+                    }
+                });
+            })(jQuery);
+
+        });
+
+        $(function() {
+
+           /* (function($) {
+                var element = $('#info-floating-reservation'),
+                    originalY = element.offset().top;
+
+                // Space between element and top of screen (when scrolling)
+                var topMargin = 20;
+
+                // Should probably be set in CSS; but here just for emphasis
+                element.css('position', 'relative');
+
+                $(window).on('scroll', function(event) {
+                    var scrollTop = $(window).scrollTop();
+
+                    if(scrollTop <= $('#slider-activity-container').position().top - $("#reservation-box").height() - 140){
+                        element.stop(false, false).animate({
+                            top: scrollTop < originalY - 5
+                                    ? 0
+                                    : scrollTop - originalY + topMargin + 100
+                        }, 0);
+                    }
+                });
+            })(jQuery);
+*/
+        });
+
+    </script>
+
+
+
+</body>
+</html>

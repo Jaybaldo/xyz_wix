@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/activity_modular.css">
+    <link rel="stylesheet" type="text/css" href="css/slider_main.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nouislider.all.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/cookiesManager.js"></script>
+    <script type="text/javascript" src="js/table_ajax.js"></script>
+    <script type="text/javascript" src="js/modalGenerator.js"></script>
+    <script type="text/javascript" src="js/modalToggle.js"></script>
+    <!--
+    <script type="text/javascript" src="js/jqueryvalidate/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/validate.js"></script>
+    -->
+    <script type="text/javascript" src="js/openPage.js"></script>
+    <script type="text/javascript" src="js/activities_general_loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <title>FAQ</title>
+    <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+
+    <style type="text/css">
+        /* xs ********************************/
+        @media (min-width: 10px){
+
+        }
+
+        /* sm ********************************/
+        @media (min-width: 768px){
+
+        }
+
+        /* md ********************************/
+        @media (min-width: 992px){
+
+        }
+
+        /* lg ********************************/
+        @media (min-width: 1200px){
+
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#NavbarOP").load('navbar.html', function(){
+                /*NAVBAR **********************************************************/
+                navbar_white();
+                $('#main_Navbar').css({'border-bottom':'1px solid #9496a2'});
+
+                $.getScript("js/jqueryvalidate/dist/jquery.validate.min.js");
+                $.getScript("js/validate.js");
+
+                /*NAVBAR **********************************************************/
+
+                /*FOOTER **********************************************************/
+                $("#myFooter").load('footer.html', function(){
+
+                });
+                /*FOOTER **********************************************************/
+
+                inicializar();
+
+                function inicializar(){
+                    $('body').fadeIn(3000);
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function switch_language(){
+            if(language.language == 'es'){
+
+            }else if(language.language == 'en'){
+
+            }
+        }
+    </script>
+</head>
+
+<body style="display: none;">
+    <div id="NavbarOP">
+
+    </div>
+
+    <div class="main_contaniner" style="margin-top: 65px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <section id="page_content">
+                        <h2>PREGUNTAS FRECUENTES</h2>
+
+                        <br>
+
+                        <h3>¿Qué es Wixplor?</h3>
+                        <p>
+                            Wixplor es una plataforma que une viajeros con auténticas experiencias personalizadas proporcionadas por expertos locales.  Ofrecemos la oportunidad de crear una conexión con un destino desde una perspectiva genuina, así como la oportunidad a un local de compartir una actividad por la que esta apasionado y es experimentado con el beneficio de generar ingreso económico al hacerlo.
+                            <br>
+                            Las experiencias que los Wixers ofrecen pueden ser de cualquier disciplina y naturaleza. Al Wixplor trabajar con los mejores, te aseguramos que será una divertida y participativa experiencia que te envuelva en la cultura del sitio y genere memorias inolvidables.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Cómo funciona?</h3>
+                        <p>
+                            Como Explorador; encuentras la experiencia que te gustaría, reservas, pagas y la vives. Puedes conectarte con el Wixer de la actividad incluso antes de reservar, por dudas o requerimientos, personalizando así tu experiencia.
+                            <br>
+                            Como Wixer; registras tu experiencia, Wixplor perfecciona, autentifica y promueve tu experiencia. Al realizar tu experiencia con un Explorador, recibes tu pago.
+
+                        </p>
+
+                        <br>
+
+                        <h3>¿Qué se necesita para ser Wixer?</h3>
+                        <p>
+                            Ser un local (no necesariamente originario) con el gusto de compartir alguna actividad por la que esta apasionado y es experimentado. Ser social y dar una cálida y genuina bienvenida es requisito para ser Wixer.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Qué se necesita para ser un Explorador?</h3>
+                        <p>
+                            Ser una persona con el interés de conocer el destino a través de una actividad  y obtener una perspectiva autentica del sitio. Un Explorador busca involucrarse, interactuar y ser parte de lo que se vive en ese lugar, al mismo tiempo que se enriquece y aprende de las vivencias. La experiencia es su mejor souvenir.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Quiénes somos?</h3>
+                        <p>
+                            Somos un grupo de amigos apasionados por lo que hacen. Somos jóvenes y creemos en que los sueños son posibles. Queremos dar una perspectiva de lo que es México a través lo que me mejor tiene: Su gente. Salir de lo convencional, ofrecer alternativas turísticas, compartir pasiones, oportunidad de auto-empleo son formas con las que le agradecemos a nuestro país todo lo que nos ha dado.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Cómo es el pago al Wixer?</h3>
+                        <p>
+                            El pago es realizado directamente al Wixer por parte del Explorador, Wixplor retiene el pago y una vez que la experiencia ha sido satisfactoria, lo libera al Wixer. Wixplor percibe un 15% del total de la experiencia.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Qué servicios recibe el Wixer?</h3>
+                        <ul>
+                            <li>La confianza su experiencia, al haber aprobado nuestros filtros de seguridad y calidad.</li>
+                            <li>Seguridad en la transacción de pagos y en su caso, devoluciones seguras.</li>
+                            <li>Panel administrativo de reservas, ganancias y estadísticas.</li>
+                            <li>Facilidad para crear contenido de su experiencia, con propósito de promoción. Además de estrategia en redes para su clase de experiencia en específico.</li>
+                            <li>Asesoramiento en la construcción de tu experiencia, costos, logística y precios.</li>
+
+                        </ul>
+
+                        <br>
+
+                        <h3>¿Qué experiencias encuentro en Wixplor?</h3>
+                        <p>
+                            Cualquier tipo de experiencia puede formar parte de Wixplor, siempre y cuando brinde una autentica perspectiva de la vida local. Las experiencias en Wixplor son ofrecidas por personas apasionadas por la actividad que realizan.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Como se paga una experiencia?</h3>
+                        <p>
+                            El Explorador paga la experiencia una vez que la reserva haya sido confirmada por el Wixer. Wixplor retine el pago hasta que la experiencia ha sido satisfactoria, en caso de cualquier devolución. Una vez satisfactoria, Wixplor libera el pago a el Wixer.
+                        </p>
+
+                        <br>
+
+                        <h3>¿¿Métodos de Pago?</h3>
+                        <p>
+                            Tarjeta de Crédito o Debito
+                        </p>
+
+                        <br>
+
+                        <h3>¿Cómo son las políticas de reservación?</h3>
+                        <p>
+                            El Explorador tiene hasta 7 días antes de la experiencia para cancelar y recibir el 100% de reembolso. Si cancela entre 7 y 2 días, se reembolsa el 50% menos gastos administrativos. Si cancela a 2 o menos días de la experiencia, no habrá reembolso.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Es seguro el Wixer y su experiencia?</h3>
+                        <p>
+                            Si. Todos los Wixers pasan por un proceso de autentificación, una vez verificada la persona se pasa a la aprobación de la experiencia, en donde Wixplor realiza pruebas y perfecciona la experiencia hasta que cumpla la calidad para poder ser ofrecida
+                        </p>
+
+                        <br>
+
+                        <h3>¿Qué pasa si la experiencia no es satisfactoria?</h3>
+                        <p>
+                            Te regresamos el 85% de tu pago, reteniendo el restante por gastos administrativos. Wixplor te compensaría con algún beneficio en tu próxima experiencia. Se pueden dar casos especiales.
+                            <br>
+                            Si el Wixer no se presenta, el 100% se reembolsa. Esto podría causar penalidades al Wixer.
+                        </p>
+
+                        <br>
+
+                        <h3>Al ser Wixer ¿puedo rechazar o aceptar una reservación?</h3>
+                        <p>
+                            Como Wixer, tienes en tu panel la opción de poner tus experiencias en reserva inmediata o con una ventana de días. En caso de elegir la segunda opción, podrás aceptar o rechazar la reserva de acuerdo a tus tiempos, dentro del tiempo límite para aceptarla, o será rechazada automáticamente.
+                            Como Wixer, eliges tus días y horarios que gustes ofrecer experiencias.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Qué comisión toma Wixplor?</h3>
+                        <p>
+                            Wixplor toma un 15% del total de la experiencia como tarifa por sus servicios, el cual ya va incluido en los precios.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Solo puedo ofrecer una experiencia?</h3>
+                        <p>
+                            No, Como Wixer tienes la facilidad de crear cuantas experiencias desees. Todo está en tu creatividad y cualquier actividad puede ser una experiencia que valga la pena.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Debo ser profesional o estar certificado?</h3>
+                        <p>
+                            No, Wixplor está abierto para aquellos que se apasionan por lo que hacen y gustan de compartirlo. Al ser apasionado por la actividad, debes de contar con experiencia para realizarla.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Cómo sabré que alguien reservo mi experiencia?</h3>
+                        <p>
+                            Una vez solicitada la reserva de tu actividad, se to notificará vía correo, teléfono y a través de tu perfil de Wixplor.
+                        </p>
+
+                        <br>
+
+                        <h3>¿El Explorador es seguro?</h3>
+                        <p>
+                            Tanto Exploradores como Wixers pasan por un proceso de autentificación donde son recabados sus datos personales y de identidad, por lo que puedes informarte y saber que esperar de la persona. Pueden ser contactados y localizados.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Cómo se soluciona algún problema con el viajero?</h3>
+                        <p>
+                            Como Wixer, Wixplor asegura tu pago. Deberás comunicarte con Wixplor para dar seguimiento y aclaración.
+                        </p>
+
+                        <br>
+
+                        <h3>¿Wixplor respalda legalmente mi experiencia ofrecida como Wixer?</h3>
+                        <p>
+                            No. Cualquier restricción legal, cuotas, permisos o multas aplicables a la actividad son responsabilidad del Wixer.  Es su responsabilidad asegurar y acatar dichas regulaciones.
+                        </p>
+
+                        <br>
+
+                        <h3>Aún tengo dudas sobre mi experiencia</h3>
+                        <p>
+                            Ponte en contacto con tu Wixer a través de la plataforma o contáctanos en support@wixlor.com Aclararemos tus dudas y te comunicaremos con tu Wixer
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="myFooter"></div>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="assets/js/ie-scripts.js"></script>
+<![endif]-->
+</body>
+</html>

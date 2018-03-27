@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Wixplor Activity</title>
+        <link rel="icon" href="assets/icons/favicon.png" type="image/gif" sizes="16x16">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">
+        <link rel="stylesheet" href="assets/bs-toggle/bootstrap-toggle.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/jquery-ui.min.css" type="text/css">
+        <link rel="stylesheet" href="assets/jqui-multidates/jquery-ui.multidatespicker.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" type="text/css">
+
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
+
+        <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+        <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+
+        <script type="text/javascript" src="js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/cookiesManager.js"></script>
+        <script type="text/javascript" src="js/table_ajax.js"></script>
+        <script type="text/javascript" src="js/modalGenerator.js"></script>
+        <script type="text/javascript" src="js/modalToggle.js"></script>
+        <!--<script type="text/javascript" src="js/jqueryvalidate/dist/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/validate.js"></script>-->
+        <script type="text/javascript" src="js/openPage.js"></script>
+        <script type="text/javascript" src="js/list_categories.js"></script>
+        <script type="text/javascript" src="js/createButtonsToViews.js"></script>
+        <script type="text/javascript" src="assets/bs-toggle/bootstrap-toggle.js"></script>
+        <script type="text/javascript" src="assets/jqui-multidates/jquery-ui.multidatespicker.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+
+
+        <script type="text/javascript">
+            function switch_language(){
+                if(language.languge == "es"){
+                    $("body").find(".en").addClass("hidden");
+                    $("body").find(".es").removeClass("hidden");
+                }
+                else{
+                    $("body").find(".es").addClass("hidden");
+                    $("body").find(".en").removeClass("hidden");
+                }
+            }
+        </script>
+
+        <style media="screen">
+            .centarImg_primary{
+                background-repeat: no-repeat;
+                background-position: 50%;
+                background-size: 100% auto;
+                margin-left: 0;
+                margin-right: auto;
+                margin-bottom: 0;
+                background-size: cover;
+                height: 180px;
+                width: 200px;
+            }
+
+            @media(max-width: 416px){
+                .centarImg_primary{
+                    width:150px;
+                    height:135px;
+                }
+            }
+
+            .toggle{
+                width: 100px!important;
+                height: auto!important;
+            }
+
+            @media screen and (min-width:768px){
+
+                .toggle{
+                    position: relative!important;
+                    width: 100px!important;
+                    height: auto!important;
+                    top: -50px!important;
+                    left: 70%!important;
+                }
+
+
+            /*
+                .centarImg_primary{
+                    background-repeat: no-repeat;
+                    background-position: 50%;
+                    background-size: 100% auto;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 15px;
+                    background-size: cover;
+                    height: 140px;
+                    width: 165px;
+                }
+                .img-surround{
+                    padding:0!important;
+                }
+                .add_experience{
+                    float:left!important;
+                }
+                */
+            }
+
+
+            .wixer-actv-togglers:hover{
+                cursor: pointer;
+            }
+
+            .black-screen{
+                position: relative;
+                width: 200px;
+                background-color: rgba(0,0,0,.4);
+                margin-top: -190px;
+                height: 180px;
+                color: #FFF; text-align:center
+            }
+
+            .myinvisible{
+                display: none;
+            }
+
+            .cat-color-inside{
+                background-color:#cc9340;
+            }
+            .main{
+                text-align:center;
+            }
+            .main:hover{
+                cursor: pointer;
+            }
+
+
+            .savebtn{
+                color:#FFF;
+            }
+
+
+            .ui-datepicker{
+                width:100%!important
+            }
+
+        </style>
+
+    </head>
+    <body style="display:none;">
+
+        <div id="NavbarOP">
+
+        </div>
+
+        <section class="container" style="margin-top:70px">
+            <div class="row" >
+                <div class="col-sm-6 col-xs-12 header-myexp">
+                    <h3 style="margin:0"><span class="es">Mis Experiencias</span><span class="en hidden">My experiences</span></h3>
+                </div>
+                <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
+                    <hr>
+                </div>
+                <div class="col-sm-6 col-xs-12" style="">
+                    <button class="add_experience btn btn-primary btn-add-exp-in" style="background-color:#FFF; color:#000; border:1px solid #000">
+                        <h4 style="margin:0; padding:0;font-size:14px" class=""><span class="es">Añandir experiencia</span>
+                        <span class="en hidden">Add experience</span></h4>
+
+                    </button>
+                </div>
+                <style media="screen">
+                    @media (max-width:767px){
+                        .header-myexp{
+                            text-align: center!important;
+                        }
+                    }
+                    @media(min-width:768px){
+                        .btn-add-exp-in{
+                            float:right;
+                        }
+                    }
+                </style>
+
+                <div class="col-xs-12">
+                    <hr>
+                </div>
+                <div class="col-xs-12">
+                    <p style="color:#9294a0; font-size:12px">
+                        <span class="es">Crea experiencias unicas para que los viajeros puedan disfrutar de tu ciudad como locales</span>
+                        <span class="en hidden">Create unique experiences that allow travelers to enjoy your city as locals</span>
+                    </p>
+                </div>
+
+                <div class="col-xs-12 wixer-all-activities " style="padding:0;">
+                    <div class="col-xs-12 wixer-actv-togglers show-wixer-activities-published">
+                        <h4 style="color:#5a999E" ><span class="es">Experiencias publicadas</span><span class="en hidden">Published experiences</span></h4>
+                        <hr>
+                    </div>
+                    <div class="container wixer-activities-published">
+
+                        <div class="row wixer-activities-published-inside" style="margin-top: 20px; margin-bottom:20px">
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 wixer-actv-togglers show-wixer-activities-rev">
+                        <h4 style="color:#5a999E" ><span class="es">Experiencias en revision</span><span class="en hidden">Under-revision experiences</span></h4>
+                        <hr>
+                    </div>
+                    <div class="container wixer-activities-rev">
+
+                        <div class="row wixer-activities-rev-inside" style="margin-top: 20px; margin-bottom:20px">
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-xs-12 wixer-actv-togglers show-wixer-activities-incomplete">
+                        <h4 style="color:#5a999E" ><span class="es">Experiencias incompletas</span><span class="en hidden">Incomplete experiences</span></h4>
+                        <hr>
+                    </div>
+                    <div class="container wixer-activities-incomplete">
+
+                        <div class="row wixer-activities-incomplete-inside" style="margin-top: 20px; margin-bottom:20px">
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12" style="padding:0">
+
+                    <div class="container ">
+                        <div class="row hidden wizard-header">
+                            <div class="col-xs-12" style="padding:0; margin-bottom: 15px">
+                                <div class="col-xs-4 wizard-info" style="color:#fff; text-align:center; background:#cc9340">
+                                    <h4><span class="es">Información</span><span class="en hidden">Information</span></h4>
+                                </div>
+                                <div class="col-xs-4 wizard-pic" style="color:#000; text-align:center; background:#FFF; border-bottom:1px solid #9496a2">
+                                    <h4><span class="es">Fotos</span><span class="en hidden">Pictures</span></h4>
+                                </div>
+                                <div class="col-xs-4 wizard-aval" style="color:#000; text-align:center; background:#FFF; border-bottom:1px solid #9496a2">
+                                    <h4><span class="es">Disponibilidad</span><span class="en hidden">Avaliability</span></h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="add-activity-informacion" class="row hidden">
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom:15px">
+                                <h5><span class="es">Nombre de la experiencia</span><span class="en hidden">Name of the experience</span></h5>
+                                <p style="color:#9496a2; font-size:.7em">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <input type="text" style="width:100%">
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom:15px">
+                                <h5><span class="es">Breve descripción</span><span class="en hidden">Short description</span></h5>
+                                <p style="color:#9496a2; font-size:.7em">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <input type="text" style="width:100%">
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="padding:0; margin-bottom:15px">
+                                <div class="col-xs-6">
+                                    <h5><span class="es">Precio</span><span class="en hidden">Price</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+
+                                    <i class="fas fa-dollar-sign" style="left:5px; position:relative; color:#9496a2"></i>
+                                    <input type="text" style="width:50%; margin-right:10%; padding-left:15px; margin-left:-14px" type="number" min="0.01" step="1.00">
+                                    <input style="width:25%" placeholder="  MXN">
+                                </div>
+                                <div class="col-xs-6">
+                                    <h5><span class="es">Duración de la experiencia</span><span class="en hidden">Experience duration</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em"><span class="es">Número de horas que durará tu experiencia</span><span class="en hidden">Number of hours that your experience will last</span></p>
+                                    <input type="number" style="width:70%">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="padding:0; margin-bottom:15px">
+                                <div class="col-xs-6">
+                                    <h5><span class="es">Seleccionar ciudad</span><span class="en hidden">Select cities</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                    <select class="form-control" style="width:60%;height: auto!important">
+                                        <option value="1">Los Cabos</option>
+                                        <option value="2">Mazatlán</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <h5><span class="es">Categoria</span><span class="en hidden">Category</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em"><span class="es">Número de horas que durará tu experiencia</span><span class="en hidden">Number of hours that your experience will last</span></p>
+                                    <input class="cat-mod-open" data-toggle="modal" data-target="#modal_select_categories" type="text" style="width:70%"></input>
+                                    <style media="screen">
+                                        .cat-mod-open:hover{
+                                            cursor: pointer;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom:15px">
+                                <h5><span class="es">Descripción general</span><span class="en hidden">General description</span></h5>
+                                <p style="color:#9496a2; font-size:.7em">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <textarea type="text-area" style="width:100%"></textarea>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom:15px">
+                                <h5><span class="es">Agregar tips</span><span class="en hidden">Add tips</span></h5>
+                                <p style="color:#9496a2; font-size:.7em">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <textarea type="text-area" style="width:100%"></textarea>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom:15px">
+                                <h5><span class="es">Ubicación</span><span class="en hidden">Location</span></h5>
+                                <p style="color:#9496a2; font-size:.7em"><span class="es">Indica donde te encontrarás con tus exploradores</span><span class="en hidden">Set where you will meet your explorers</span></p>
+                                <input type="text" style="width:100%">
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="padding:0">
+
+                                <div class="col-xs-12" style="padding:0; margin-top:20px">
+                                    <div class="col-xs-12" >
+                                        <input type="checkbox" style="position: relative;">
+                                        <i class="fas fa-medkit" style="position:relative; left:-1px;"></i>
+                                        <div style="top: -27px;position: relative;left: 40px;">
+                                            <h5><span class="es">Seguro</span><span class="en hidden">Insurance</span></h4>
+                                            <p style="width:88%; font-size:.7em; color:·9496a2;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12" style="padding:0">
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-12" style="padding:0">
+                                            <input type="checkbox" style="position: relative;">
+                                            <i class="fas fa-train" style="position:relative; left:-1px;"></i>
+                                            <div style="top: -27px;position: relative;left: 40px;">
+                                                <h5><span class="es">Transporte</span><span class="en hidden">Transportation</span></h4>
+                                                <textarea rows="3" style="width:88%"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-12" style="padding:0">
+                                            <input type="checkbox" style="position: relative;">
+                                            <i class="fas fa-coffee" style="position:relative; left:-1px;"></i>
+                                            <div style="top: -27px;position: relative;left: 40px;">
+                                                <h5><span class="es">Bebidas</span><span class="en hidden">Drinks</span></h4>
+                                                <textarea rows="3" style="width:88%"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12" style="padding:0">
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-12" style="padding:0">
+                                            <input type="checkbox" style="position: relative;">
+                                            <i class="fas fa-utensils" style="position:relative; left:-1px;"></i>
+                                            <div style="top: -27px;position: relative;left: 40px;">
+                                                <h5><span class="es">Comida</span><span class="en hidden">Food</span></h4>
+                                                <textarea rows="3" style="width:88%"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-12" style="padding:0">
+                                            <input type="checkbox" style="position: relative;">
+                                            <i class="fas fa-gift" style="position:relative; left:-1px;"></i>
+                                            <div style="top: -27px;position: relative;left: 40px;">
+                                                <h5><span class="es">Regalos</span><span class="en hidden">Gifts</span></h4>
+                                                <textarea rows="3" style="width:88%"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12" style="padding:0">
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-12" style="padding:0">
+                                            <input type="checkbox" style="position: relative;">
+                                            <i class="fas fa-cut" style="position:relative; left:-1px;"></i>
+                                            <div style="top: -27px;position: relative;left: 40px;">
+                                                <h5><span class="es">Equipo</span><span class="en hidden">Equipment</span></h4>
+                                                <textarea rows="3" style="width:88%"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-12" style="padding:0">
+                                            <input type="checkbox" style="position: relative;">
+                                            <i class="fas fa-camera" style="position:relative; left:-1px;"></i>
+                                            <div style="top: -27px;position: relative;left: 40px;">
+                                                <h5><span class="es">Fotos</span><span class="en hidden">Pictures</span></h4>
+                                                <textarea rows="3" style="width:88%"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="text-align:center; margin-top:30px; margin-bottom:50px">
+                                <button class="btn  btn-small savebtn save-to-add-actv-fotos" style="background-color:#cc9340;"><span class="es">Guardar y continuar</span> <span class="en hidden">Save and continue</span></button>
+                            </div>
+
+
+                        </div>
+
+                        <div id="add-activity-fotos" class="row hidden">
+                            <div class="col-sm-9 col-xs-12">
+                                <h4><span class="es">Foto de portada</span> <span class="en hidden">Profile picture</span></h4>
+                                <p style="font-size:.7em; color:#9496a2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
+                            <div class="col-sm-9 col-xs-12">
+                                <div class="col-sm-9 col-xs-12" style="padding:0">
+                                    <div class="centarImg_primary" style="border:1px solid #9496a2">
+                                        <div style="float:left;width:100%;height:100%;display: flex;justify-content: center; align-items: center;">
+                                            <h4 style="padding:0; margin:0; width:auto;position:absolute; top:70px"><span class="es">Agregar</span><span class="en hidden">Add</span></h4>
+                                            <h4 style="padding:0; margin:0; width:auto;position:absolute; top:90px"><span class="es">experienca</span><span class="en hidden">experience</span></h4>
+                                        </div>
+                                        <div style="position: relative;top: -100%;right: -100%;float:left;width:100%;height:100%;display: flex;justify-content: center; align-items: center;">
+                                            <h6 style="color:#9496a2 ;padding:0; margin:0; width:auto;position:absolute; top:70px"><span class="es">Tamaño optimo:</span><span class="en hidden">Recomended size</span></h6>
+                                            <h6 style="color:#9496a2 ;padding:0; margin:0; width:auto;position:absolute; top:90px">999 x 999 px</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="border:1px solid #9294a0; padding:15px; top:-100px">
+                                <div class="col-xs-4" style="padding:12%; border:1px solid rgba(146, 148, 160, 0.5)"></div>
+                                <div class="col-xs-4" style="padding:12%; border:1px solid rgba(146, 148, 160, 0.5)"></div>
+                                <div class="col-xs-4" style="padding:12%; border:1px solid rgba(146, 148, 160, 0.5)"></div>
+                                <div class="col-xs-4" style="padding:12%; border:1px solid rgba(146, 148, 160, 0.5)"></div>
+                                <div class="col-xs-4" style="padding:12%; border:1px solid rgba(146, 148, 160, 0.5)"></div>
+                                <div class="col-xs-4" style="padding:12%; border:1px solid rgba(146, 148, 160, 0.5)"></div>
+                                <div class="col-xs-12" style="top:-125px; text-align:center">
+                                    <button class="btn" style="color:#fff; background-color:#cc9340; text-align: center; margin-top:-27%;"><span class="es">Subir fotos</span><span class="en hidden">Upload pictures</span></button>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="text-align:center; margin-top:30px; margin-bottom:50px">
+                                <button class="btn  btn-small savebtn save-to-add-disponibilidad" style="background-color:#cc9340;"><span class="es">Guardar y continuar</span> <span class="en hidden">Save and continue</span></button>
+                            </div>
+
+                        </div>
+
+                        <div id="add-activity-disponibilidad" class="row hidden"> <!-- need to hide -->
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom: 20px;">
+                                <div class="col-xs-12" style="padding:0">
+                                    <h5><span class="es">1.-¿Cuánto timepo necesitas de anticipación para que te reserven?</span><span class="en hidden">1.-How much time will you need to accept a reservation?</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em"><span class="es">Este es el tiempo que te toma preparar todos los detalles de tu experiencia.</span><span class="en hidden">This is the time it will take for you to get everything you need for the experience</span></p>
+                                </div>
+                                <select class="form-control" style="width:45%">
+                                    <option value="-1">-----</option>
+                                    <option value="0" class="es">Inmediato</option>
+                                    <option value="0" class="en hidden">immediately</option>
+                                    <option value="1" class="es">1 día</option>
+                                    <option value="1" class="en hidden">1 day</option>
+                                    <option value="2" class="es">2 días</option>
+                                    <option value="2" class="en hidden">2 days</option>
+                                    <option value="3" class="es">3 días</option>
+                                    <option value="3" class="en hidden">3 days</option>
+                                    <option value="4" class="es">4 días</option>
+                                    <option value="4" class="en hidden">4 days</option>
+                                    <option value="5" class="es">5 días</option>
+                                    <option value="5" class="en hidden">5 days</option>
+                                    <option value="6" class="es">6 días</option>
+                                    <option value="6" class="en hidden">6 days</option>
+                                    <option value="7" class="es">1 semana</option>
+                                    <option value="7" class="en hidden">1 week</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom: 20px;">
+                                <div class="col-xs-12" style="padding:0">
+                                    <h5><span class="es">2.-¿Cuántas personas mínimo deben de tomar esta actividad?</span><span class="en hidden">2.-How many people are needed to take this activity?</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em"><span class="es">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span><span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span></p>
+                                </div>
+                                <input type="number" style="width:45%">
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12">
+                                <div class="col-xs-12" style="padding:0">
+                                    <h5><span class="es">3.-¿Máximo cuántas personas pueden tomar esta actividad?</span><span class="en hidden">3.-What is the meximum of people for this activity?</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em"><span class="es">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span><span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span></p>
+                                </div>
+                                <input type="number" style="width:110px">
+                                <p style="position:relative;top: -23px;left: 30px; width:5px"><span class="es">Personas</span><span class="en hidden">Persons</span></p>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom: 20px;">
+                                <div class="col-xs-12" style="padding:0">
+                                    <h5><span class="es">4.-Reservación automática</span><span class="en hidden">4.-Automatic reservation</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em"><span class="es">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span><span class="en hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span></p>
+                                </div>
+                                <input id="reservation" type="checkbox" checked data-toggle="toggle" data-on="Auto" data-off="No Auto" data-onstyle="warning" data-offstyle="info">
+
+                                <script>
+                                    $(function() {
+                                        $('#reservation').bootstrapToggle();
+                                    });
+                                </script>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12">
+                                <div class="col-xs-12" style="padding:0">
+                                    <h5><span class="es">5.-Días y horarios</span><span class="en hidden">5.-Days and schedules</span></h5>
+                                    <p style="color:red"><span class="es">Recuerda mantener tu calendario de actividades actualizado</span><span class="en hidden">Remember to keep your activities schedules updated</span></p>
+                                </div>
+
+                                <div class="col-xs-12" style="padding:0">
+                                    <button class="btn btn-small add_option_modal" style="background:#FFF;width:130px; border:1px solid #9492a2"><span class="es">Añadir opcion +</span><span class="en hidden">Add option +</span></button>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-9 col-xs-12">
+                                <div class="col-xs-12" style="padding:0">
+                                    <h5><span class="es">6.-Política de cancelación</span><span class="en hidden">6.-Cancelation policy</span></h5>
+                                    <p style="color:#9496a2; font-size:.7em"><span class="es">Seleccionse el tipo de cancelación</span><span class="en hidden">Select the cancelation type</span></p>
+
+                                    <div class="col-xs-12" style="padding:0">
+                                        <p style="padding:15px; "><span class="es">Cancelación flexible</span><span class="en hidden">Flex cancelation</span> <input style="margin-left:10px; position:relative; top:2px" type="checkbox"> </p>
+                                        <p style="padding:15px; ">
+                                            <span class="es">Para que un explorador reciba un reembolso completo por tu experiencia, deberá cancelarla dentro de las 24hrs posteriores a la compra. Consulta la política de cancelación</span>
+                                            <span class="en hidden">In order for an explorer to recieve a refund of one of your activities, it must be canceled within 24hrs of the purchase. Check our cancelation policy</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12" style="padding:0">
+                                        <p style="padding:15px; "><span class="es">Cancelación estricta</span><span class="en hidden">Strict cancelation</span> <input style="margin-left:10px; position:relative; top:2px" type="checkbox"> </p>
+                                        <p style="padding:15px; ">
+                                            <span class="es">Si el explorador cancela hasta siete días antes de la llegada, se le reembolsará un 50% (menos las cuotas de servicio). Si cancela dentro de los siete días previos, la reservación no será reembolsable.</span>
+                                            <span class="en hidden">If the explorer cancels at the most seven days before the experience, a refund of 50% will take place (without service fees). If it cancels within seven days of the reservation, it won't be refunded.</span>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-xs-12" style="padding:0">
+                                    <button class="btn btn-small add_option_modal" style="background:#FFF;width:130px; border:1px solid #9492a2"><span class="es">Añadir opcion +</span><span class="en hidden">Add option +</span></button>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-sm-9 col-xs-12" style="text-align:center; margin-top:30px; margin-bottom:50px">
+                                <button class="btn  btn-small savebtn save-experience" style="background-color:#cc9340;"><span class="es">Guardar y continuar</span> <span class="en hidden">Save and continue</span></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+        <div id="myFooter" ></div>
+
+        <div class="modals-static">
+
+            <div class="modal fade pre_full_modal" id="modal_select_categories" role="dialog">
+                <div class="modal-dialog" style="max-width: 220px;">
+                    <!-- Modal content-->
+                    <div class="modal-content" style="max-width: 220px;">
+                        <div class="modal-header">
+                            <button type="button" data-dismiss="modal" class="button_data_miss"></button>
+
+                            <h4 class="modal-title" style="text-align: center;">
+                                <span class="es">Idiomas</span>
+                                <span class="en hidden">Languages</span>
+                            </h4>
+                        </div>
+
+                        <div class="modal-body">
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="col-xs-10 col-xs-offset-1">
+                                <br>
+                                <input type="button" id="submit-categories-on-modal" name="submit-categories-on-modal" class="btn btn-block" style="background-color: #CC9340; color: white;">
+
+                                <label id="edit_profile_form_languages-error" class="hidden error" style="width: 100%; text-align: center;"></label>
+                                <label id="edit_profile_form_languages-correct" class="correct" style="display: none; width: 100%; text-align: center;">
+                                    <span class="es">Cambios guardados con éxito</span>
+                                    <span class="en hidden">Changes saved successfully</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade modal_for_schedules" role="dialog">
+                <div class="modal-dialog ">
+                    <div class="modal-content">
+                        <div class="modal-header" style="padding-bottom: 30px!important;">
+                            <button type="button" data-dismiss="modal" class="button_data_miss"></button>
+
+                            <h4 class="modal-title" style="text-align: center;">
+                                <span class="es option_number"></span>
+                                <span class="en hidden option_number"></span>
+                            </h4>
+                        </div>
+
+                        <div class="modal-body" style="">
+
+                            <div class="row" style="padding:10px">
+                                <div class="col-xs-12" style="padding:0">
+                                    <div class="col-xs-12" style="margin-bottom:25px; padding:0">
+                                        <div class="col-xs-12" style="padding:0">
+                                            <h3><span class="es">Horarios</span><span class="en hidden">Schedules</span></h3>
+                                        </div>
+                                        <div class="col-xs-12" style="padding:0">
+                                            <p style="font-size:.7em; color:#9496a2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0;vertical-align:middle">
+                                        <h4 style="position:relative; top:10px;padding-right:10px; float:left; margin:0"><span class="es">Inicia</span><span class="en hidden">Starts</span></h4>
+                                        <input id="time_reservation" type="text" class="form-control input-small" style="width:30%">
+                                        <script type="text/javascript">
+                                            $('#time_reservation').timepicker();
+                                        </script>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="col-xs-12" style="padding:0">
+                                    <h3><span class="es">Días disponibles</span><span class="en hidden">Avaliable days</span></h3>
+                                </div>
+                                <div class="col-xs-12" style="padding: 0;display: flex;justify-content: center;">
+                                    <div id="multicalendar" style="width:100%">
+
+                                    </div>
+                                    <script type="text/javascript">
+                                        $("#multicalendar").multiDatesPicker();
+                                    </script>
+                                </div>
+
+                                <div class="col-xs-12" style="padding:0;text-align:center; margin-top:30px">
+                                    <button class="btn btn-small  savebtn save-dates-option" style="background-color:#cc9340; width: 145px;"><span class="es hidden">Guardar</span> <span class="en">Save</span></button>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <script type="text/javascript">
+
+
+            $(document).ready(function () {
+
+                $("#NavbarOP").load('navbar.html', function(){
+
+                    $.getScript("js/jqueryvalidate/dist/jquery.validate.min.js");
+                    $.getScript("js/validate.js");
+
+
+                    /*NAVBAR **********************************************************/
+                    navbar_white();
+                    $('#li_experiences img.navbar_transparent').attr({'src':'assets/icons/navbar_icons/Naranjas/experiencias.png'});
+                    $('#li_experiences img.navbar_white').attr({'src':'assets/icons/navbar_icons/Naranjas/experiencias.png'});
+                    /*NAVBAR **********************************************************/
+
+                    /*FOOTER **********************************************************/
+                    $("#myFooter").load('footer.html', function(){
+
+                    });
+                    /*FOOTER **********************************************************/
+
+                    function fill_published(json) {
+                        console.log(json)
+                        if(json.length == 0){
+                            $(".wixer-activities-published-inside").append("<div class='col-xs-12' style='margin-top:15px; margin-bottom:15px; text-align:center'><h3><span class='es'>Nada que mostrar</span><span class='en hidden'>Nothing to show</span></h3></div>");
+                        }
+                        else{
+                            for (var i = 0; i < json.length; i++) {
+                                var activity = json[i];
+
+                                var actv_col = document.createElement('div');
+
+                                $(actv_col).addClass("col-xs-12");
+                                $(actv_col).css({"margin-top":"15px", "margin-bottom":"15px"});
+
+                                $(actv_col).attr({'id':activity.id, 'id_wixer':activity.id_wixer, 'city':activity.city, 'reservation-type_es':activity.reservation_type_es,
+                                'reservation-type_en':activity.reservation_type_en, 'id_category':activity.id_category, 'wixer_langs':activity.wixer_langs,
+                                'name_spa':activity.name_spa, 'name_eng':activity.name_eng, 'id_city':activity.id_city, 'main_category_eng':activity.main_category_eng,
+                                'description_spa':activity.description_spa, 'description_eng':activity.description_eng, 'main_category_spa':activity.main_category_spa,
+                                'price':activity.price, 'banner':activity.banner, 'type':activity.type, 'max_persons':activity.max_persons, 'status':activity.status,
+                                'short_desc_spa':activity.short_desc_spa, 'short_desc_eng':activity.short_desc_eng, 'minimun_age':activity.minimun_age,
+                                'tips_spa':activity.tips_spa, 'tips_eng':activity.tips_eng, 'duration':activity.duration, 'global_score':activity.global_score,
+                                'veracity':activity.veracity, 'communication':activity.communication, 'puntuality':activity.puntuality, 'activity':activity.quality,
+                                'meeting_point_latitude':activity.meeting_point_latitude, 'meeting_point_longitude':activity.meeting_point_longitude, 'num_rat': activity.num_rat,
+                                'user_id':activity.user_id, 'name':activity.name, 'email':activity.email, 'mobile':activity.mobile, 'img_src':activity.img_src,
+                                'id_activity_unused':activity.id_activity_unused, 'wixer_desc_en':activity.wixer_desc_en, 'wixer_desc_es':activity.wixer_desc_es,
+                                'activity_reservation_type':activity.activity_reservation_type, 'last_update':activity.time_stamp}).load("assets/external/_activity-created-editable.html", function () {
+
+                                    var img_url = $(this).attr('img_src');
+                                    $(this).find(".act-img").css("background-image", `url('${img_url}')`);
+
+                                    $(this).find(".actv-name-spa").append($(this).attr("name_spa"));
+                                    $(this).find(".actv-name-eng").append($(this).attr("name_eng"));
+
+                                    $(this).find(".activity-city").append($(this).attr("city"));
+
+                                    $(this).find(".activity-last-update").append($(this).attr("last_update"));
+
+
+
+                                    $(".wixer-activities-published-inside").append($(this));
+                                });
+                            }
+                        }
+
+
+                    }
+
+
+                    function fill_rev(json) {
+                        console.log(json)
+                        if(json.length == 0){
+                            $(".wixer-activities-rev-inside").append("<div class='col-xs-12' style='margin-top:15px; margin-bottom:15px; text-align:center'><h3><span class='es'>Nada que mostrar</span><span class='en hidden'>Nothing to show</span></h3></div>");
+                        }
+                        else{
+                            for (var i = 0; i < json.length; i++) {
+                                var activity = json[i];
+
+                                var actv_col = document.createElement('div');
+
+                                $(actv_col).addClass("col-xs-12");
+                                $(actv_col).css({"margin-top":"15px", "margin-bottom":"15px"});
+
+                                $(actv_col).attr({'id':activity.id, 'id_wixer':activity.id_wixer, 'city':activity.city, 'reservation-type_es':activity.reservation_type_es,
+                                'reservation-type_en':activity.reservation_type_en, 'id_category':activity.id_category, 'wixer_langs':activity.wixer_langs,
+                                'name_spa':activity.name_spa, 'name_eng':activity.name_eng, 'id_city':activity.id_city, 'main_category_eng':activity.main_category_eng,
+                                'description_spa':activity.description_spa, 'description_eng':activity.description_eng, 'main_category_spa':activity.main_category_spa,
+                                'price':activity.price, 'banner':activity.banner, 'type':activity.type, 'max_persons':activity.max_persons, 'status':activity.status,
+                                'short_desc_spa':activity.short_desc_spa, 'short_desc_eng':activity.short_desc_eng, 'minimun_age':activity.minimun_age,
+                                'tips_spa':activity.tips_spa, 'tips_eng':activity.tips_eng, 'duration':activity.duration, 'global_score':activity.global_score,
+                                'veracity':activity.veracity, 'communication':activity.communication, 'puntuality':activity.puntuality, 'activity':activity.quality,
+                                'meeting_point_latitude':activity.meeting_point_latitude, 'meeting_point_longitude':activity.meeting_point_longitude, 'num_rat': activity.num_rat,
+                                'user_id':activity.user_id, 'name':activity.name, 'email':activity.email, 'mobile':activity.mobile, 'img_src':activity.img_src,
+                                'id_activity_unused':activity.id_activity_unused, 'wixer_desc_en':activity.wixer_desc_en, 'wixer_desc_es':activity.wixer_desc_es,
+                                'activity_reservation_type':activity.activity_reservation_type, 'last_update':activity.time_stamp}).load("assets/external/_activity-created-rev.html", function () {
+
+                                    var img_url = $(this).attr('img_src');
+                                    $(this).find(".act-img").css("background-image", `url('${img_url}')`);
+
+                                    $(this).find(".actv-name-spa").append($(this).attr("name_spa"));
+                                    $(this).find(".actv-name-eng").append($(this).attr("name_eng"));
+
+                                    $(this).find(".activity-city").append($(this).attr("city"));
+
+                                    $(this).find(".activity-last-update").append($(this).attr("last_update"));
+
+
+
+                                    $(".wixer-activities-rev-inside").append($(this));
+                                });
+                            }
+                        }
+                    }
+
+                    function fill_edit(json) {
+                        console.log(json)
+                        if(json.length == 0){
+                            $(".wixer-activities-incomplete-inside").append("<div class='col-xs-12' style='margin-top:15px; margin-bottom:15px; text-align:center'><h3><span class='es'>Nada que mostrar</span><span class='en hidden'>Nothing to show</span></h3></div>");
+                        }
+                        else{
+                            for (var i = 0; i < json.length; i++) {
+                                var activity = json[i];
+
+                                var actv_col = document.createElement('div');
+
+                                $(actv_col).addClass("col-xs-12");
+                                $(actv_col).css({"margin-top":"15px", "margin-bottom":"15px"});
+
+                                $(actv_col).attr({'id':activity.id, 'id_wixer':activity.id_wixer, 'city':activity.city, 'reservation-type_es':activity.reservation_type_es,
+                                'reservation-type_en':activity.reservation_type_en, 'id_category':activity.id_category, 'wixer_langs':activity.wixer_langs,
+                                'name_spa':activity.name_spa, 'name_eng':activity.name_eng, 'id_city':activity.id_city, 'main_category_eng':activity.main_category_eng,
+                                'description_spa':activity.description_spa, 'description_eng':activity.description_eng, 'main_category_spa':activity.main_category_spa,
+                                'price':activity.price, 'banner':activity.banner, 'type':activity.type, 'max_persons':activity.max_persons, 'status':activity.status,
+                                'short_desc_spa':activity.short_desc_spa, 'short_desc_eng':activity.short_desc_eng, 'minimun_age':activity.minimun_age,
+                                'tips_spa':activity.tips_spa, 'tips_eng':activity.tips_eng, 'duration':activity.duration, 'global_score':activity.global_score,
+                                'veracity':activity.veracity, 'communication':activity.communication, 'puntuality':activity.puntuality, 'activity':activity.quality,
+                                'meeting_point_latitude':activity.meeting_point_latitude, 'meeting_point_longitude':activity.meeting_point_longitude, 'num_rat': activity.num_rat,
+                                'user_id':activity.user_id, 'name':activity.name, 'email':activity.email, 'mobile':activity.mobile, 'img_src':activity.img_src,
+                                'id_activity_unused':activity.id_activity_unused, 'wixer_desc_en':activity.wixer_desc_en, 'wixer_desc_es':activity.wixer_desc_es,
+                                'activity_reservation_type':activity.activity_reservation_type, 'last_update':activity.time_stamp}).load("assets/external/_activity-created-incomplete.html", function () {
+
+                                    var img_url = $(this).attr('img_src');
+                                    var act_name_spa = $(this).attr("name_spa");
+                                    var act_name_eng = $(this).attr("name_eng");
+                                    var city = $(this).attr("city");
+                                    var last_update = $(this).attr("last_update");
+
+                                    if(img_url){
+                                        $(this).find(".act-img").css("background-image", `url('${img_url}')`);
+                                    }
+                                    else{
+                                        $(this).find(".act-img").css("background-image", "assets/img/activities/placeholder.png");
+                                    }
+
+                                    if(act_name_spa || act_name_eng){
+                                        $(this).find(".actv-name-spa").append($(this).attr("name_spa"));
+                                        $(this).find(".actv-name-eng").append($(this).attr("name_eng"));
+                                    }
+
+                                    $(this).find(".actv-name-spa").append($(this).attr("name_spa"));
+                                    $(this).find(".actv-name-eng").append($(this).attr("name_eng"));
+
+                                    if(act_city){
+                                        $(this).find(".activity-city").append($(this).attr("city"));
+                                    }
+
+                                    if(last_update)                                {
+                                        $(this).find(".activity-last-update").append($(this).attr("last_update"));
+                                    }
+
+
+                                    $(".wixer-activities-incomplete-inside").append($(this));
+                                });
+                            }
+                        }
+                    }
+
+
+                    function fill_activities_rows(id){
+                        console.log(id);
+                        dataphp = {'case':2, 'id':id, 'status':'ACEPTADO'};
+                        ajax_activity(dataphp, fill_published, null);
+
+                        dataphp = {'case':2, 'id':id, 'status':'REVISION'};
+                        ajax_activity(dataphp, fill_rev, null);
+
+                        dataphp = {'case':2, 'id':id, 'status':'CREADO'};
+                        ajax_activity(dataphp, fill_edit, null);
+
+                    }
+
+
+                    if(user){
+                        fill_activities_rows(user[0].user_id);
+                    }
+                    else{
+                        window.location.href="index.html";
+                    }
+
+
+
+
+
+                    $('body').fadeIn(3000);
+
+                    $("#submit-categories-on-modal").click(function () {
+                        var cats = "";
+                        var cats_name = "";
+                        var num = 0;
+                        $("#modal_select_categories").find(".main").each(function() {
+                            if($(this).hasClass("cat-color-inside")){
+                                cats = cats + $(this).attr('id') + ",";
+
+                                num = num+1;
+                            }
+                        });
+                        if(num < 3){
+                            $(".cat-mod-open").attr("cats_id", cats);
+                            console.log(cats, num);
+                            $("#modal_select_categories").modal("toggle");
+                        }
+
+                    });
+
+                    function loadcategoriesinmodal(json, parent) {
+                        switch_language();
+                        $(".myHeader", parent).remove();
+                        $(".button", parent).remove();
+
+                    }
+
+                    function click_on_cat(row) {
+                        $(row).toggleClass("cat-color-inside");
+                    }
+
+                    var datacc = [];
+                    datacc[0] = $("#modal_select_categories .modal-body");
+                    datacc[1] = loadcategoriesinmodal;
+                    datacc[2] = null;
+                    datacc[3] = click_on_cat;
+
+                    ajax_category({"case":1}, list_categories, datacc);
+
+
+                    $(".show-wixer-activities-published").click(function () {
+                        $(".wixer-activities-published").slideToggle(500);
+                    });
+
+                    $(".show-wixer-activities-rev").click(function () {
+                        $(".wixer-activities-rev").slideToggle(500);
+                    });
+
+                    $(".show-wixer-activities-incomplete").click(function () {
+                        $(".wixer-activities-incomplete").slideToggle(500);
+                    });
+
+                    $(".add_experience").click(function () {
+                        $(".add_experience").addClass("hidden");
+                        $(".wixer-all-activities").addClass("hidden");
+                        $("#add-activity-informacion").removeClass("hidden");
+                        $(".wizard-header").removeClass("hidden");
+                        window.scrollTo(0,0);
+                    });
+
+                    $(".save-to-add-actv-fotos").click(function () {
+                        $("#add-activity-informacion").addClass("hidden");
+                        $("#add-activity-fotos").removeClass("hidden");
+                        $(".wizard-pic").css({"color":"#fff","background":"#cc9340", "border":"none"});
+                        window.scrollTo(0,0);
+                    });
+
+                    $(".save-to-add-disponibilidad").click(function () {
+                        $("#add-activity-fotos").addClass("hidden");
+                        $("#add-activity-disponibilidad").removeClass("hidden");
+                        window.scrollTo(0,0);
+                        $(".wizard-aval").css({"color":"#fff","background":"#cc9340", "border":"none"});
+                    });
+
+                    $(".add_option_modal").click(function () {
+                        $("#multicalendar").multiDatesPicker('resetDates');
+                        $(".modal_for_schedules").modal();
+                    });
+
+                    $(".save-dates-option").click(function () {
+                        $(".modal_for_schedules").modal();
+                        var dates_notISO = $("#multicalendar").multiDatesPicker('getDates', 'object');
+
+                        var time = $("#time_reservation").val();
+                        var hours = Number(time.match(/^(\d+)/)[1]);
+                        var minutes = Number(time.match(/:(\d+)/)[1]);
+                        var AMPM = time.match(/\s(.*)$/)[1];
+                        if(AMPM == "PM" && hours<12) hours = hours+12;
+                        if(AMPM == "AM" && hours==12) hours = hours-12;
+                        var sHours = hours.toString();
+                        var sMinutes = minutes.toString();
+                        if(hours<10) sHours = "0" + sHours;
+                        if(minutes<10) sMinutes = "0" + sMinutes;
+                        time = sHours + ":" + sMinutes;
+                        var date = [];
+                        for(var i = 0; i < dates_notISO.length; i++){
+                            date[i] = dates_notISO[i].toISOString().substring(0, 10);
+                        }
+                        //Send to php handler to create it
+                        console.log(time, date);
+                    });
+
+
+
+                    $(".save-experience").click(function () {
+                        location.reload();
+                    });
+
+                    var getUrlParameter = function getUrlParameter(sParam) {
+                        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                            sURLVariables = sPageURL.split('&'),
+                            sParameterName,
+                            i;
+
+                        for (i = 0; i < sURLVariables.length; i++) {
+                            sParameterName = sURLVariables[i].split('=');
+
+                            if (sParameterName[0] === sParam) {
+                                return sParameterName[1] === undefined ? true : sParameterName[1];
+                            }
+                        }
+                    };
+
+                    var action = getUrlParameter("action");
+                    if(action == "create"){
+                        $(".add_experience").click();
+                    }
+
+                });
+
+
+
+
+
+            });
+
+
+        </script>
+
+    </body>
+</html>

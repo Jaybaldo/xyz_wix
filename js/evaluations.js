@@ -28,12 +28,12 @@ function evaluations(json, data){
                 var date = $(this).attr('time_review').substring(0, 9);
                 var time = $(this).attr('time_review').substring(10);
 
-                $('.imgUser', $(this)).attr({'href':'http://wixplor.com/test/profile.html?userid=' + $(this).attr('user_id')});
+                $('.imgUser', $(this)).attr({'href':'profile.html?userid=' + $(this).attr('user_id')});
                 $('.imgUser div', $(this)).css({'background-image':"url('"+$(this).attr('img')+"')"});
-                $('.userName', $(this)).attr({'href':'http://wixplor.com/test/profile.html?userid=' + $(this).attr('user_id')});
+                $('.userName', $(this)).attr({'href':'profile.html?userid=' + $(this).attr('user_id')});
                 $('.userName strong', $(this)).html($(this).attr('user_name'));
                 $('.activityTime', $(this)).html(time);
-                $('.activityName', $(this)).attr({'href':'http://wixplor.com/test/item-detail.html?activityid=' + $(this).attr('id_activity')});
+                $('.activityName', $(this)).attr({'href':'item-detail.html?activityid=' + $(this).attr('id_activity')});
                 $('.activityName .es', $(this)).html($(this).attr('activity_name_spa'));
                 $('.activityName .en', $(this)).html($(this).attr('activity_name_eng'));
                 $('.activityDate', $(this)).html(date);

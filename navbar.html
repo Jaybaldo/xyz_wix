@@ -60,10 +60,10 @@
 				}else if(user[0].type == 1){
 					switch_to_explorer();
 					$('.navbar_img_profile').attr({'src':user[0].img});
-					$('.li_view_profile a').attr({'href':'http://wixplor.com/test/profile.html?userid=' + user[0].user_id});
+					$('.li_view_profile a').attr({'href':'profile.html?userid=' + user[0].user_id});
 				}else if(user[0].type == 2){
 					$('.navbar_img_profile').attr({'src':user[0].img});
-					$('.li_view_profile a').attr({'href':'http://wixplor.com/test/profile.html?userid=' + user[0].user_id});
+					$('.li_view_profile a').attr({'href':'profile.html?userid=' + user[0].user_id});
 
 					if(user_mode.user_mode == 'wixer_2'){
 						switch_to_wixer_2();
@@ -87,8 +87,8 @@
 					pantallaMoviles();
 					compress_navbar();
 
-					$('.city_temp_mazatlan').attr({'href':'http://wixplor.com/test/activities.html?city=1'});
-					$('.city_temp_los_cabos').attr({'href':'http://wixplor.com/test/activities.html?city=2'});
+					$('.city_temp_mazatlan').attr({'href':'activities.html?city=1'});
+					$('.city_temp_los_cabos').attr({'href':'activities.html?city=2'});
 
 					$("body").fadeIn(2000);
 				}
@@ -549,7 +549,7 @@
 
 	            $('.li_explorer_log_out').click(function(){
 	            	removeAllCookies();
-	            	window.location.href = "http://wixplor.com/test/index.html";
+	            	window.location.href = "index.html";
 	            });
 
 	            $("#form_login_google").click(function(){
@@ -1123,7 +1123,7 @@
 		        		<img src="assets/icons/close.png" style="width: 18px; height: 18px;">
 		      		</button>
 
-		      		<a class="navbar-brand" href="http://wixplor.com/test/" style="height: 100%; padding-bottom: 0px;">
+		      		<a class="navbar-brand" href="index.html" style="height: 100%; padding-bottom: 0px;">
 		      			<span class="navbar_transparent">
 		      				<img src="assets/img/wixplor_logo_blanco.png" style="width: 100%; height: 100%;">
 		      			</span>
@@ -1202,14 +1202,14 @@
 
 		        		<li class="hidden-xs hidden-sm hidden-md"><a style="font-size: 1.5em;">|</a></li>
 
-		        		<li id="li_favorites" class="hidden explorer wixer_1"><a href="http://wixplor.com/test/favorites.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/favoritos.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/favoritos.png"><span class="span_margin hidden-lg"><span class="es">Favoritos</span><span class="en">Favorites</span></span></a></li>
-		        		<li id="li_reservations_explorer" class="hidden explorer wixer_1"><a href="http://wixplor.com/test/reservations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/reservaciones_explorador.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/reservaciones_explorador.png"><span class="span_margin hidden-lg"><span class="es">Reservaciones</span><span class="en">Reservations</span></span></a></li>
+		        		<li id="li_favorites" class="hidden explorer wixer_1"><a href="favorites.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/favoritos.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/favoritos.png"><span class="span_margin hidden-lg"><span class="es">Favoritos</span><span class="en">Favorites</span></span></a></li>
+		        		<li id="li_reservations_explorer" class="hidden explorer wixer_1"><a href="reservations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/reservaciones_explorador.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/reservaciones_explorador.png"><span class="span_margin hidden-lg"><span class="es">Reservaciones</span><span class="en">Reservations</span></span></a></li>
 
-		        		<li id="li_experiences" class="hidden wixer_2"><a href="http://wixplor.com/test/wixplor-activity.html?action=view"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/experiencias.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/experiencias.png"><span class="span_margin hidden-lg"><span class="es">Experiencias</span><span class="en">Experiences</span></span></a></li>
-		        		<li id="li_reservations_wixer" class="hidden wixer_2"><a href="http://wixplor.com/test/reservations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/reservaciones_wixer.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/reservaciones_wixer.png"><span class="span_margin hidden-lg"><span class="es">Reservaciones</span><span class="en">Reservations</span></span></a></li>
+		        		<li id="li_experiences" class="hidden wixer_2"><a href="wixplor-activity.html?action=view"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/experiencias.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/experiencias.png"><span class="span_margin hidden-lg"><span class="es">Experiencias</span><span class="en">Experiences</span></span></a></li>
+		        		<li id="li_reservations_wixer" class="hidden wixer_2"><a href="reservations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/reservaciones_wixer.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/reservaciones_wixer.png"><span class="span_margin hidden-lg"><span class="es">Reservaciones</span><span class="en">Reservations</span></span></a></li>
 
-		        		<li id="li_messages"><a href="http://wixplor.com/test/messages.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/mensajes.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/mensajes.png"><span class="span_margin hidden-lg"><span class="es">Mensajes</span><span class="en">Messages</span></span></a></li>
-		        		<li id="li_evaluations"><a href="http://wixplor.com/test/evaluations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/evaluaciones.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/evaluaciones.png"><span class="span_margin hidden-lg"><span class="es">Evaluaciones</span><span class="en">Evaluation</span></span></a></li>
+		        		<li id="li_messages"><a href="messages.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/mensajes.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/mensajes.png"><span class="span_margin hidden-lg"><span class="es">Mensajes</span><span class="en">Messages</span></span></a></li>
+		        		<li id="li_evaluations"><a href="evaluations.html"><img class="navbar_transparent" src="assets/icons/navbar_icons/Blancos/evaluaciones.png"><img class="navbar_white hidden" src="assets/icons/navbar_icons/Negros/evaluaciones.png"><span class="span_margin hidden-lg"><span class="es">Evaluaciones</span><span class="en">Evaluation</span></span></a></li>
 
 		        		<hr class="hidden-lg">
 
@@ -1222,7 +1222,7 @@
 		        		<li class="hidden-xs hidden-sm hidden-md"><a style="font-size: 1.5em;">|</a></li>
 
 		        		<li class="hidden-lg li_view_profile"><a href="#"><img style="margin-right: 12px;" class="navbar_img_profile" src=""><span class="es">Mi perfil</span><span class="en">Profile</span></a></li>
-		        		<li class="hidden-lg"><a href="http://wixplor.com/test/edit_profile.html" class="a_padding"><span class="es">Editar perfil</span><span class="en hidden">Edit profile</span></a></li>
+		        		<li class="hidden-lg"><a href="edit_profile.html" class="a_padding"><span class="es">Editar perfil</span><span class="en hidden">Edit profile</span></a></li>
 
 		        		<hr class="hidden-lg">
 
@@ -1261,7 +1261,7 @@
 		        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-bottom: 0px;"><img class="navbar_img_profile" src=""></a>
 		        			<ul class="dropdown-menu">
 		        				<li class="li_view_profile"><a href="#"><span class="es">Ver perfil</span><span class="en hidden">View profile</span></a></li>
-		        				<li><a href="http://wixplor.com/test/edit_profile.html"><span class="es">Editar perfil</span><span class="en hidden">Edit profile</span></a></li>
+		        				<li><a href="edit_profile.html"><span class="es">Editar perfil</span><span class="en hidden">Edit profile</span></a></li>
 		        				<hr>
 		        				<li><a href="#"><span class="es">Ayuda</span><span class="en hidden">Support</span></a></li>
 		        				<li class="li_explorer_log_out"><a href="#"><span class="es">Cerrar sesión</span><span class="en hidden">Log out</span></a></li>

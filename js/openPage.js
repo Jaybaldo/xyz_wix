@@ -3,13 +3,13 @@ function open_reload(){
 }
 
 function open_index(){
-	window.location.href = 'http://wixplor.com/test/index.html';
+	window.location.href = 'index.html';
 }
 
 function open_confirm_user(){
-	window.location.href = 'http://wixplor.com/test/confirm_user.html';
+	window.location.href = 'confirm_user.html';
 }
 
 function open_edit_profile(){
-	window.location.href = 'http://wixplor.com/test/edit_profile.html?end_register_wixer=1';
+	window.location.href = 'edit_profile.html?end_register_wixer=1';
 }

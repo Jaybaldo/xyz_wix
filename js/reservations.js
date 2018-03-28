@@ -41,7 +41,7 @@ function reservations(json, data){
                 var reservation_date = $(this).attr('reservation_date').substring(0, 10);
                 var reservation_time = $(this).attr('reservation_date').substring(11, 16);
 
-                $('.experience_link', $(this)).attr({'href':'http://wixplor.com/test/item-detail.html?activityid=' + $(this).attr('id_activity')});
+                $('.experience_link', $(this)).attr({'href':'item-detail.html?activityid=' + $(this).attr('id_activity')});
                 $('.experience_img', $(this)).css({'background-image':"url('"+$(this).attr('activity_img')+"')"});
                 $('.experience_name_es', $(this)).html($(this).attr('name_spa'));
                 $('.experience_name_en', $(this)).html($(this).attr('name_eng'));
@@ -49,11 +49,11 @@ function reservations(json, data){
                 $('.experience_price_usd .usd', $(this)).html($(this).attr('total'));
                 $('.reservation_status', $(this)).html($(this).attr('status'));               
 
-                $('.explorer_link', $(this)).attr({'href':'http://wixplor.com/test/profile.html?userid=' + $(this).attr('id_explorer')});
+                $('.explorer_link', $(this)).attr({'href':'profile.html?userid=' + $(this).attr('id_explorer')});
                 $('.explorer_img', $(this)).css({'background-image':"url('"+$(this).attr('explorer_img')+"')"});
                 $('.explorer_name', $(this)).html($(this).attr('explorer_name'));
 
-                $('.wixer_link', $(this)).attr({'href':'http://wixplor.com/test/profile.html?userid=' + $(this).attr('id_wixer')});
+                $('.wixer_link', $(this)).attr({'href':'profile.html?userid=' + $(this).attr('id_wixer')});
                 $('.wixer_img', $(this)).css({'background-image':"url('"+$(this).attr('wixer_img')+"')"});
                 $('.wixer_name', $(this)).html($(this).attr('wixer_name'));
 
